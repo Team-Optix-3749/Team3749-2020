@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.subsystems.Shooter;
 
 import java.util.HashMap;
 
@@ -211,7 +212,6 @@ public class RobotContainer {
   private JoystickButton xbxButton4;
 
   private void configureButtonBindings() {
-	xboxCtrl = new XboxController(0);
 	stick = new Joystick(1);
 	jsButton1 = new JoystickButton(stick, 1);
 	jsButton2 = new JoystickButton(stick, 2);
@@ -224,6 +224,8 @@ public class RobotContainer {
 	jsButton9 = new JoystickButton(stick, 9);
 	jsButton10 = new JoystickButton(stick, 10);
 	jsButton11 = new JoystickButton(stick, 11);
+
+	xboxController.getAButtonPressed(Robot.get;
   }
 
 
