@@ -15,6 +15,10 @@ public class Shooter extends SubsystemBase {
     shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
   }
 
+  public void shoot(double speed) {
+    
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
