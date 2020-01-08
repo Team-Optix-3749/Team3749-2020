@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.Command;
 
 import java.util.HashMap;
 
@@ -77,9 +76,6 @@ public class RobotContainer {
   
     configureButtonBindings();
   }
-
-  
-
 
   /**
 	* Method to set a PWM port
@@ -179,8 +175,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
