@@ -22,12 +22,16 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  private static RobotContainer map;
+
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   @Override
   public void robotInit() {
+    map = new RobotContainer();
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
