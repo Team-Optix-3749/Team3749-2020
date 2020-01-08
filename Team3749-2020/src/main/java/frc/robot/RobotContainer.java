@@ -35,19 +35,6 @@ public class RobotContainer {
 	private static HashMap <String, Integer> mapDIO; //the DIO port map
 	private static HashMap <String, Integer> mapCTRL; //the controller port map
   private static HashMap <String, Integer> mapSys; // the subsystems mode map
-
-  private XboxController xboxController = new XboxController(0);
-
-  public static final int xboxControllerLeftStickX = 0;
-  public static final int xboxControllerLeftStickY = 1;
-  public static final int xboxControllerRightStickX = 4;
-  public static final int xboxControllerRightStickY = 5;
-  public static final int xboxControllerAButton = 1;
-  public static final int xboxControllerBButton = 2;
-  public static final int xboxControllerXButton = 3;
-  public static final int xboxControllerYButton = 4;
-  public static final int xboxControllerLeftBumper = 5;
-  public static final int xboxControllerRightBumper = 6;
   
   public RobotContainer() {
     // Configure the button bindings
@@ -89,6 +76,7 @@ public class RobotContainer {
     setSys("wheelio", 1);
     setSys("elevator", 1);
     setSys("climb", 0);
+  
     configureButtonBindings();
   }
 
@@ -205,10 +193,12 @@ public class RobotContainer {
   private JoystickButton jsButton9;
   private JoystickButton jsButton10;
   private JoystickButton jsButton11;
-  private JoystickButton xbxButton1; //dpad buttons
+  private JoystickButton xbxButton1; //extra buttons
   private JoystickButton xbxButton2;
   private JoystickButton xbxButton3;
   private JoystickButton xbxButton4;
+  private JoystickButton xbxButton5;
+  private JoystickButton xbxButton6;
 
   private void configureButtonBindings() {
 	xboxCtrl = new XboxController(0);
@@ -223,9 +213,14 @@ public class RobotContainer {
 	jsButton8 = new JoystickButton(stick, 8);
 	jsButton9 = new JoystickButton(stick, 9);
 	jsButton10 = new JoystickButton(stick, 10);
-	jsButton11 = new JoystickButton(stick, 11);
+	jsButton11 = new JoystickButton(stick, 11);    // XBOX BUTTONS GUIDE 
+	xbxButton1 = new JoystickButton(xboxCtrl, 5);  // B1: LEFT BUMPER
+	xbxButton2 = new JoystickButton(xboxCtrl, 6);  // B2: RIGHT BUMPER
+	xbxButton3 = new JoystickButton(xboxCtrl, 7);  // B3: SELECT
+	xbxButton4 = new JoystickButton(xboxCtrl, 8);  // B4: MENU
+	xbxButton5 = new JoystickButton(xboxCtrl, 9);  // B5: LEFT STICK CLICK
+	xbxButton6 = new JoystickButton(xboxCtrl, 10); // B6: RIGHT STICK CLICK
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
