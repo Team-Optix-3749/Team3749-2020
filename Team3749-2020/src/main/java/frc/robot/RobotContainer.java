@@ -36,19 +36,6 @@ public class RobotContainer {
 	private static HashMap <String, Integer> mapDIO; //the DIO port map
 	private static HashMap <String, Integer> mapCTRL; //the controller port map
   private static HashMap <String, Integer> mapSys; // the subsystems mode map
-
-  private XboxController xboxController = new XboxController(0);
-
-  public static final int xboxControllerLeftStickX = 0;
-  public static final int xboxControllerLeftStickY = 1;
-  public static final int xboxControllerRightStickX = 4;
-  public static final int xboxControllerRightStickY = 5;
-  public static final int xboxControllerAButton = 1;
-  public static final int xboxControllerBButton = 2;
-  public static final int xboxControllerXButton = 3;
-  public static final int xboxControllerYButton = 4;
-  public static final int xboxControllerLeftBumper = 5;
-  public static final int xboxControllerRightBumper = 6;
   
   public RobotContainer() {
     // Configure the button bindings
@@ -90,6 +77,7 @@ public class RobotContainer {
     setSys("wheelio", 1);
     setSys("elevator", 1);
     setSys("climb", 0);
+  
     configureButtonBindings();
   }
 
@@ -206,10 +194,12 @@ public class RobotContainer {
   private JoystickButton jsButton9;
   private JoystickButton jsButton10;
   private JoystickButton jsButton11;
-  private JoystickButton xbxButton1; //dpad buttons
+  private JoystickButton xbxButton1; //extra buttons
   private JoystickButton xbxButton2;
   private JoystickButton xbxButton3;
   private JoystickButton xbxButton4;
+  private JoystickButton xbxButton5;
+  private JoystickButton xbxButton6;
 
   private void configureButtonBindings() {
 	stick = new Joystick(1);
@@ -229,7 +219,6 @@ public class RobotContainer {
 		Robot.getShooter().shoot(0.5);
 	}
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
