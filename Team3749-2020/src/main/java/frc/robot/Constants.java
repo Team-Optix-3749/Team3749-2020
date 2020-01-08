@@ -52,7 +52,7 @@ import java.util.HashMap;
         mapCTRL = new HashMap<>();
         mapSys = new HashMap<>();
 
-        public map() {
+        public Constants() {
             // loading map values for drive
             // first character = left or right
             // second character = front, middle, or back
