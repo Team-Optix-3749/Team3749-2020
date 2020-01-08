@@ -31,6 +31,8 @@ import java.util.HashMap;
 
         public static XboxController xboxController = new XboxController(0);
 
+        public static Joystick joystick = new Joystick(1);
+
         public Constants() {
 
             // Configure the button bindings
