@@ -32,7 +32,7 @@ import java.util.HashMap;
         private static HashMap <String, Integer> mapCTRL; //the controller port map
         private static HashMap <String, Integer> mapSys; // the subsystems mode map
 
-        private XboxController xboxController = new XboxController(0);
+        public static XboxController xboxController = new XboxController(0);
 
         public static final int xboxControllerLeftStickX = 0;
         public static final int xboxControllerLeftStickY = 1;
@@ -53,7 +53,7 @@ import java.util.HashMap;
             mapDIO = new HashMap<>();
             mapCTRL = new HashMap<>();
             mapSys = new HashMap<>();
-            
+
             // loading map values for drive
             // first character = left or right
             // second character = front, middle, or back
