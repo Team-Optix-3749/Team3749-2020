@@ -32,6 +32,8 @@ public class RobotContainer {
 	private static HashMap <String, Integer> mapDIO; //the DIO port map
 	private static HashMap <String, Integer> mapCTRL; //the controller port map
   private static HashMap <String, Integer> mapSys; // the subsystems mode map
+
+  private XboxController xboxController;
   
   public RobotContainer() {
     // Configure the button bindings
@@ -73,6 +75,8 @@ public class RobotContainer {
     setSys("wheelio", 1);
     setSys("elevator", 1);
     setSys("climb", 0);
+
+    xboxController = new XboxController(0);
   
     configureButtonBindings();
   }
@@ -175,7 +179,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    
+
   }
 
   /**
