@@ -8,8 +8,11 @@ public class Shooter extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
+
+  private VictorSPX shooterMotor;
+
   public Shooter() {
-    public final VictorSPX shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
+    shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
   }
 
   @Override
