@@ -46,10 +46,10 @@ import java.util.HashMap;
             // first character = left or right
             // second character = front, middle, or back
             setCAN("drive_lf", 10);
-            setCAN("drive_lm", 21);
+            // setCAN("drive_lm", 21);
             setCAN("drive_lb", 23);
             setCAN("drive_rf", 11);
-            setCAN("drive_rm", 20);
+            // setCAN("drive_rm", 20);
             setCAN("drive_rb", 22);
 
             // intake/grabber wheel map
