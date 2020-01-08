@@ -52,38 +52,40 @@ import java.util.HashMap;
         mapCTRL = new HashMap<>();
         mapSys = new HashMap<>();
 
-        // loading map values for drive
-        // first character = left or right
-        // second character = front, middle, or back
-        setCAN("drive_lf", 10);
-        setCAN("drive_lm", 21);
-        setCAN("drive_lb", 23);
-        setCAN("drive_rf", 11);
-        setCAN("drive_rm", 20);
-        setCAN("drive_rb", 22);
+        public map() {
+            // loading map values for drive
+            // first character = left or right
+            // second character = front, middle, or back
+            setCAN("drive_lf", 10);
+            setCAN("drive_lm", 21);
+            setCAN("drive_lb", 23);
+            setCAN("drive_rf", 11);
+            setCAN("drive_rm", 20);
+            setCAN("drive_rb", 22);
 
-        // intake/grabber wheel map
-        setCAN("wheel_left", 3);
-        setCAN("wheel_right", 1);
+            // intake/grabber wheel map
+            setCAN("wheel_left", 3);
+            setCAN("wheel_right", 1);
 
-        // main subsystem srx motor ports
-        setCAN("tilt", 1);
-        setCAN("elevator", 2);
-        
-        // victor spx
-        setCAN("climb", 2);
+            // main subsystem srx motor ports
+            setCAN("tilt", 1);
+            setCAN("elevator", 2);
+            
+            // victor spx
+            setCAN("climb", 2);
 
-        // limit switches
-        setDIO("intake_switch", 0);
-        setDIO("climb_switch", 1);
+            // limit switches
+            setDIO("intake_switch", 0);
+            setDIO("climb_switch", 1);
 
-        // whether a subsystem is installed and in use
-        // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
-        setSys("tilt", 2);
-        setSys("drive", 1);
-        setSys("wheelio", 1);
-        setSys("elevator", 1);
-        setSys("climb", 0);
+            // whether a subsystem is installed and in use
+            // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
+            setSys("tilt", 2);
+            setSys("drive", 1);
+            setSys("wheelio", 1);
+            setSys("elevator", 1);
+            setSys("climb", 0);
+        }
 
         /**
         * Method to set a PWM port
