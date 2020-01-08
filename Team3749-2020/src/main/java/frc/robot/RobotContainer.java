@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
+import java.util.HashMap;
+
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -26,8 +28,19 @@ public class RobotContainer {
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
+  private static HashMap <String, Integer> mapPWM; //the PWM port map
+	private static HashMap <String, Integer> mapCAN; //the CAN port map
+	private static HashMap <String, Integer> mapDIO; //the DIO port map
+	private static HashMap <String, Integer> mapCTRL; //the controller port map
+  private static HashMap <String, Integer> mapSys; // the subsystems mode map
+  
   public RobotContainer() {
     // Configure the button bindings
+    mapPWM = new HashMap<>();
+	  mapCAN = new HashMap<>();
+    mapDIO = new HashMap<>();
+    mapCTRL = new HashMap<>();
+    mapSys = new HashMap<>();
     configureButtonBindings();
   }
 

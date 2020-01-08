@@ -7,7 +7,7 @@ public class Shooter extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
   public Shooter() {
-
+    
   }
 
   @Override
