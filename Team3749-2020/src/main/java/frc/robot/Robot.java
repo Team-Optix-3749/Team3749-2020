@@ -24,7 +24,7 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  private static RobotContainer map;
+  private static Constants constants;
 
   private static Shooter shoot;
 
@@ -34,7 +34,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    map = new RobotContainer();
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
@@ -125,8 +124,8 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
-  public static RobotContainer getMap()
+  public static Constants getMap()
   {
-    return map;
+    return constants;
   }
 }

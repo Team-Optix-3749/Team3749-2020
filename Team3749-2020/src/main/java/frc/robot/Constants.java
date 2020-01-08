@@ -47,7 +47,7 @@ import java.util.HashMap;
 
         public Constants() {
 
-                // Configure the button bindings
+            // Configure the button bindings
             mapPWM = new HashMap<>();
             mapCAN = new HashMap<>();
             mapDIO = new HashMap<>();
