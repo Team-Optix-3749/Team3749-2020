@@ -35,7 +35,6 @@ public class RobotContainer {
 	private static HashMap <String, Integer> mapDIO; //the DIO port map
 	private static HashMap <String, Integer> mapCTRL; //the controller port map
   private static HashMap <String, Integer> mapSys; // the subsystems mode map
-<<<<<<< HEAD
 
   private XboxController xboxController = new XboxController(0);
 
@@ -49,8 +48,6 @@ public class RobotContainer {
   public static final int xboxControllerYButton = 4;
   public static final int xboxControllerLeftBumper = 5;
   public static final int xboxControllerRightBumper = 6;
-=======
->>>>>>> 95b624d0c9e0e26065d8ebf953976c7044361b12
   
   public RobotContainer() {
     // Configure the button bindings
@@ -92,11 +89,6 @@ public class RobotContainer {
     setSys("wheelio", 1);
     setSys("elevator", 1);
     setSys("climb", 0);
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 95b624d0c9e0e26065d8ebf953976c7044361b12
     configureButtonBindings();
   }
 

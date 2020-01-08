@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 
@@ -16,7 +17,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shoot(double speed) {
-    
+    shooterMotor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
