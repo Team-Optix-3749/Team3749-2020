@@ -33,7 +33,18 @@ public class RobotContainer {
 	private static HashMap <String, Integer> mapCTRL; //the controller port map
   private static HashMap <String, Integer> mapSys; // the subsystems mode map
 
-  private XboxController xboxController;
+  private XboxController xboxController = new XboxController(0);
+
+  public static final int xboxControllerLeftStickX = 0;
+  public static final int xboxControllerLeftStickY = 1;
+  public static final int xboxControllerRightStickX = 4;
+  public static final int xboxControllerRightStickY = 5;
+  public static final int xboxControllerAButton = 1;
+  public static final int xboxControllerBButton = 2;
+  public static final int xboxControllerXButton = 3;
+  public static final int xboxControllerYButton = 4;
+  public static final int xboxControllerLeftBumper = 5;
+  public static final int xboxControllerRightBumper = 6;
   
   public RobotContainer() {
     // Configure the button bindings
@@ -76,8 +87,6 @@ public class RobotContainer {
     setSys("elevator", 1);
     setSys("climb", 0);
 
-    xboxController = new XboxController(0);
-  
     configureButtonBindings();
   }
 
