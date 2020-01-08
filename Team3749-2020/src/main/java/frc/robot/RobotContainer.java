@@ -53,7 +53,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     mapPWM = new HashMap<>();
-	  mapCAN = new HashMap<>();
+	mapCAN = new HashMap<>();
     mapDIO = new HashMap<>();
     mapCTRL = new HashMap<>();
     mapSys = new HashMap<>();
@@ -225,7 +225,9 @@ public class RobotContainer {
 	jsButton10 = new JoystickButton(stick, 10);
 	jsButton11 = new JoystickButton(stick, 11);
 
-	xboxController.getAButtonPressed(Robot.get;
+	if (xboxController.getAButtonPressed() == true){
+		Robot.getShooter().shoot(0.5);
+	}
   }
 
 
