@@ -45,14 +45,15 @@ import java.util.HashMap;
         public static final int xboxControllerLeftBumper = 5;
         public static final int xboxControllerRightBumper = 6;
 
-        // Configure the button bindings
-        mapPWM = new HashMap<>();
-        mapCAN = new HashMap<>();
-        mapDIO = new HashMap<>();
-        mapCTRL = new HashMap<>();
-        mapSys = new HashMap<>();
-
         public Constants() {
+
+                // Configure the button bindings
+            mapPWM = new HashMap<>();
+            mapCAN = new HashMap<>();
+            mapDIO = new HashMap<>();
+            mapCTRL = new HashMap<>();
+            mapSys = new HashMap<>();
+            
             // loading map values for drive
             // first character = left or right
             // second character = front, middle, or back
