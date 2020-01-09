@@ -44,14 +44,12 @@ public class RobotContainer {
    */
 
   private void configureButtonBindings() {
-
-    Button aButton = new JoystickButton(Constants.xboxController, 1);
-
-    aButton.whenPressed(Robot.getShooter().shoot(0.5));
-
-    if (Constants.xboxController.getAButtonPressed() == true) {
-      Robot.getShooter().shoot(0.5);
-    }
+    // Button aButton = new JoystickButton(Constants.xboxController, 1);
+    // aButton.whenPressed(Robot.getShooter().shoot(0.5));
+    // if (Constants.xboxController.getAButtonPressed() == true) {
+    //   Robot.getShooter().shoot(0.5);
+    // }
+    
   }
 
   /**
