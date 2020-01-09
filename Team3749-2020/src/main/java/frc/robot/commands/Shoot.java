@@ -19,4 +19,8 @@ public class Shoot extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
   }
+
+  public void execute() {
+    m_drive.arcadeDrive(m_forward.getAsDouble(), m_rotation.getAsDouble());
+  }
 }
