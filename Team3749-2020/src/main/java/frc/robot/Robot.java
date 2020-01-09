@@ -109,6 +109,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if (Constants.xboxController.getAButtonPressed() == true){
+      Robot.getShooter().shoot(0.5);
+    }
   }
 
   @Override
