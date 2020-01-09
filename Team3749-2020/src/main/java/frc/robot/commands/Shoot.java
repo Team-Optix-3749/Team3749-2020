@@ -21,6 +21,6 @@ public class Shoot extends CommandBase {
   }
 
   public void execute() {
-    m_drive.arcadeDrive(m_forward.getAsDouble(), m_rotation.getAsDouble());
+    
   }
 }
