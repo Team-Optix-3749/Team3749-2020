@@ -28,6 +28,8 @@ public class Robot extends TimedRobot {
 
   private static Constants constants;
 
+  private static Drivetrain drivetrain;
+
   private static Shooter shoot;
 
   /**
@@ -41,6 +43,10 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
+  }
+
+  public static Drivetrain getDrivetrain() {
+    return drivetrain;
   }
 
   public static Shooter getShooter() {
