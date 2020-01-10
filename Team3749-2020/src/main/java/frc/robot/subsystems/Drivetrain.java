@@ -6,7 +6,8 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Robot;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain extends SubsystemBase {
 
@@ -19,6 +20,8 @@ public class Drivetrain extends SubsystemBase {
     public SpeedControllerGroup rightSideMotors = new SpeedControllerGroup(motorRightFront, motorRightBack);
 
     private DifferentialDrive drive = new DifferentialDrive(leftSideMotors, rightSideMotors);
+
+    public AHRS gyro = new AHRS(SPI.Port.kMXP);
 
     public void arcadeDrive() {
         drive.arcadeDrive(Constants.LSX, Constants.LSY);
