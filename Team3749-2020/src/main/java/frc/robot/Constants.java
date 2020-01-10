@@ -68,6 +68,11 @@ public final class Constants {
     public static final int LY = 1;
     public static final int RX = 4;
 
+    public static final int LSX = 0;
+    public static final int LSY = 1;
+    public static final int RSX = 4;
+    public static final int RSY = 5;
+
     public static Joystick joystick = new Joystick(1);
 
     // Motor Map
