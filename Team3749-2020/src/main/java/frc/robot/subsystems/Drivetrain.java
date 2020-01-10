@@ -24,6 +24,10 @@ public class Drivetrain extends SubsystemBase {
         drive.arcadeDrive(Constants.LSX, Constants.LSY);
     }
 
+    public void tankDrive() {
+        drive.tankDrive(Constants.LSY, Constants.RSY);
+    }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
