@@ -33,6 +33,20 @@ public final class Constants {
 
     public static XboxController xboxController = new XboxController(0);
 
+      /*
+     * XBOX BUTTON MAP KEY:
+     * 1 = A
+     * 2 = B
+     * 3 = X
+     * 4 = Y
+     * 5 = left bumper
+     * 6 = right bumper
+     * 7 = select
+     * 8 = menu
+     * 9 = left stick click
+     * 10 = right stick click
+     */
+
     public static final int A = 1;
     public static final int B = 2;
     public static final int X = 3;
