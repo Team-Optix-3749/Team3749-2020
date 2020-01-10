@@ -28,6 +28,16 @@ public class Drivetrain extends SubsystemBase {
         drive.tankDrive(Constants.LSY, Constants.RSY);
     }
 
+    public void speedLeftMotors(double speed) {
+        motorLeftFront.set(ControlMode.PercentOutput, -speed);
+        motorLeftBack.set(ControlMode.PercentOutput, -speed);
+    }
+
+    public void speedRightMotors(double speed) {
+        motorRightFront.set(ControlMode.PercentOutput, speed);
+        motorRightBack.set(ControlMode.PercentOutput, speed);
+    }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
