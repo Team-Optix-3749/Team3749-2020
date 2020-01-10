@@ -47,6 +47,7 @@ public final class Constants {
     10 = right stick click
     */
 
+    // Xbox Map
     public static final int A = 1;
     public static final int B = 2;
     public static final int X = 3;
@@ -68,6 +69,12 @@ public final class Constants {
     public static final int RX = 4;
 
     public static Joystick joystick = new Joystick(1);
+
+    // Motor Map
+    public static final int motorLeftFront = 10;
+    public static final int motorLeftBack = 23;
+    public static final int motorRightFront = 11;
+    public static final int motorRightBack = 22;
 
     public Constants() {
 
