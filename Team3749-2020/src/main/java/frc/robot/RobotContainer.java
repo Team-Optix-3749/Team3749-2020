@@ -43,8 +43,8 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 
-    Button aButton = new JoystickButton(Constants.xboxController, 1);
-    aButton.whenPressed(new Shoot(shooter));
+    // Button aButton = new JoystickButton(Constants.xboxController, 1);
+    // aButton.whenPressed(new Shoot(shooter));
   }
 
   /**
