@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.*;
+
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -38,12 +42,9 @@ public class RobotContainer {
    */
 
   private void configureButtonBindings() {
-    // Button aButton = new JoystickButton(Constants.xboxController, 1);
-    // aButton.whenPressed(Robot.getShooter().shoot(0.5));
-    // if (Constants.xboxController.getAButtonPressed() == true) {
-    //   Robot.getShooter().shoot(0.5);
-    // }
 
+    Button aButton = new JoystickButton(Constants.xboxController, 1);
+    aButton.whenPressed(new Shoot(shooter));
   }
 
   /**
