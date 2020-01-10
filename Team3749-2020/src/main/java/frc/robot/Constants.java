@@ -31,16 +31,25 @@ import java.util.HashMap;
 
         public static XboxController xboxController = new XboxController(0);
 
-        public static final int xboxControllerLeftStickX = 0;
-        public static final int xboxControllerLeftStickY = 1;
-        public static final int xboxControllerRightStickX = 4;
-        public static final int xboxControllerRightStickY = 5;
-        public static final int xboxControllerAButton = 1;
-        public static final int xboxControllerBButton = 2;
-        public static final int xboxControllerXButton = 3;
-        public static final int xboxControllerYButton = 4;
-        public static final int xboxControllerLeftBumper = 5;
-        public static final int xboxControllerRightBumper = 6;
+        public static final int A = 1;
+        public static final int B = 2;
+        public static final int X = 3;
+        public static final int Y = 4;
+        
+        public static final int LB = 5;
+        public static final int RB = 6;
+        
+        public static final int BACK = 7;
+        public static final int START = 8;
+        
+        public static final int LT = 2;
+        public static final int RT = 3;
+        
+        public static final int LS = 9;
+        public static final int RS = 10;
+
+        public static final int LY = 1;
+        public static final int RX = 4;
 
         public static Joystick joystick = new Joystick(1);
 
