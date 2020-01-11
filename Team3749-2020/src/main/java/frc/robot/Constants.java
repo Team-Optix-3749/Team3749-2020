@@ -81,6 +81,8 @@ public final class Constants {
     public static final int motorRightFront = 11;
     public static final int motorRightBack = 22;
 
+    // Other constants
+
     public Constants() {
 
         // Configure the button bindings
