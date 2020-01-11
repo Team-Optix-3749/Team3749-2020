@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -25,14 +26,14 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     // shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
     CANSparkMax[] shooter_motor = new CANSparkMax[] {
-      new CANSparkMax(Constants.SHOOTER_CAN[0], MotorType.kBrushless),
+      new CANSparkMax(Constants.shooterMotor, MotorType.kBrushless),
     };
   
   }
 
-  public void shoot(double speed) {
-    shooterMotor.set(ControlMode.PercentOutput, speed);
-  }
+  // public void shoot(double speed) {
+  //   shooter_motor.set(ControlMode.PercentOutput, speed);
+  // }
 
   public void set(double setpoint) {
     controller.setReference(setpoint, ControlType.kVelocity);
