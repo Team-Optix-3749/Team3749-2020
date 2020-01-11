@@ -30,6 +30,10 @@ public class Shooter extends SubsystemBase {
     controller.setReference(setpoint, ControlType.kVelocity);
   }
 
+  public void stop() {
+    controller.setReference(0, ControlType.kDutyCycle);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
