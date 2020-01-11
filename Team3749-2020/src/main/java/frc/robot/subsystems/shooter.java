@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
+import com.revrobotics.ControlType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -23,6 +24,10 @@ public class Shooter extends SubsystemBase {
 
   public void shoot(double speed) {
     shooterMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void set(double setpoint) {
+    controller.setReference(setpoint, ControlType.kVelocity);
   }
 
   @Override
