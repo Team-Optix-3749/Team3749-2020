@@ -41,8 +41,8 @@ public final class Constants {
     4 = Y
     5 = left bumper
     6 = right bumper
-    7 = select
-    8 = menu
+    7 = back
+    8 = start
     9 = left stick click
     10 = right stick click
     */
