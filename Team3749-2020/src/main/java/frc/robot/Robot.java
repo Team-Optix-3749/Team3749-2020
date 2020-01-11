@@ -126,7 +126,7 @@ public class Robot extends TimedRobot {
     getDrivetrain().arcadeDrive();
 
     if (Constants.xboxController.getRawButton(Constants.A)) {
-      getShooter().shoot(0.7);
+      getShooter().set(Constants.shooterSetpoint);
     }
   }
 
