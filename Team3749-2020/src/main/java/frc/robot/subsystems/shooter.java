@@ -5,14 +5,17 @@ import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.ControlType;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-  private VictorSPX shooterMotor;
+  // private VictorSPX shooterMotor;
+  private CANSparkMax shooterMotor;
 
   CANEncoder encoder;
   CANPIDController controller;
@@ -20,7 +23,11 @@ public class Shooter extends SubsystemBase {
   double setpoint = 0;
 
   public Shooter() {
-    shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
+    // shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
+    CANSparkMax[] shooter_motor = new CANSparkMax[] {
+      new CANSparkMax(Constants.SHOOTER_CAN[0], MotorType.kBrushless),
+    };
+  
   }
 
   public void shoot(double speed) {
