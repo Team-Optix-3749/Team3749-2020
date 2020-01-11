@@ -1,9 +1,14 @@
 package frc.robot.subsystems;
 
+import frc.robot.Robot;
+
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
 
 public class Shooter extends SubsystemBase {
   private VictorSPX shooterMotor;
