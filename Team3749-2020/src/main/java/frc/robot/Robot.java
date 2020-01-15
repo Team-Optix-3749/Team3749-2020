@@ -32,6 +32,8 @@ public class Robot extends TimedRobot {
 
   private static Shooter shoot;
 
+  private static BallCollect collect;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -52,6 +54,11 @@ public class Robot extends TimedRobot {
   public static Shooter getShooter() {
     return shoot;
   }
+
+  public static BallCollect getBallCollect() {
+    return collect;
+  }
+
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
