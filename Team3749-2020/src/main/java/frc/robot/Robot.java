@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
 
   private static BallCollect collect;
   
+  private static Elevator elevator; 
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -60,7 +61,10 @@ public class Robot extends TimedRobot {
     return collect;
   }
 
-
+  public static Elevator getElevator() {
+    return elevator;
+  }
+  
   /**
    * This function is called every robot packet, no matter the mode. Use this for
    * items like diagnostics that you want ran during disabled, autonomous,
