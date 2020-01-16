@@ -2,8 +2,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Elevator;;
+import frc.robot.subsystems.Elevator;
+import frc.robot.Constants;
 
 /**
  * An example command that uses an example subsystem.
@@ -28,11 +30,21 @@ public class ElevatorSetPosition extends CommandBase {
   @Override
   public void initialize() {
       //initialization code here
+      //
+      Robot.getElevator().moveToBottom();
   }
 
   @Override
   public void execute() {
       //add whatever code u wanna execute here
+       //setting it so that if B is pressed the elevator goes up
+    if (Constants.xboxController.getRawButton(Constants.B)) {
+      Robot.getElevator().moveToTop();
+    }
+    //setting it so that if X is pressed the elevator goes down ]
+    if (Constants.xboxController.getRawButton(Constants.X)) {
+      Robot.getElevator().moveToBottom();
+    }
   }
 
   @Override
