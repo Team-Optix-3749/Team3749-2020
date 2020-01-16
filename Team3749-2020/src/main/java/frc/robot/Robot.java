@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
   public static Elevator getElevator() {
     return elevator;
   }
-  
+
   /**
    * This function is called every robot packet, no matter the mode. Use this for
    * items like diagnostics that you want ran during disabled, autonomous,
@@ -140,6 +140,16 @@ public class Robot extends TimedRobot {
     if (Constants.xboxController.getRawButton(Constants.A)) {
       getShooter().set(Constants.shooterSetpoint);
     }
+
+    //setting it so that if B is pressed the elevator goes up
+    if (Constants.xboxController.getRawButton(Constants.B)) {
+      getElevator().moveToTop();
+    }
+    //setting it so that if X is pressed the elevator goes down ]
+    if (Constants.xboxController.getRawButton(Constants.X)) {
+      getElevator().moveToBottom();
+    }
+
   }
 
   @Override
