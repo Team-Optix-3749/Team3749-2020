@@ -22,7 +22,7 @@ public class Shooter extends SubsystemBase {
   CANPIDController controller;
 
   double setpoint = 0;
-
+//checking if this
   public Shooter() {
     // shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
     CANSparkMax[] shooter_motor = new CANSparkMax[] {
