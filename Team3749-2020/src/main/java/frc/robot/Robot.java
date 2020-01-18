@@ -131,11 +131,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    getDrivetrain().arcadeDrive();
-
-    if (Constants.xboxController.getRawButton(Constants.A)) {
-      getShooter().set(Constants.shooterSetpoint);
-    }
   }
 
   @Override
