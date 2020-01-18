@@ -49,7 +49,6 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     initCamera();
-
   }
 
   public void initCamera()
