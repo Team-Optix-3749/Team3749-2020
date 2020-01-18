@@ -9,11 +9,14 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-  private VictorSPX shooterMotor;
+  private VictorSPX shooterMotor = null;
 
 //checking if this
   public Shooter() {
-    shooterMotor = new VictorSPX(Robot.getMap().getCAN("wheel_right"));
+   
+   //this assigns an instance to the motor variable 
+    // shooterMotor = new VictorSPX(Robot.getConstants().getCAN("wheel_right"));
+ 
   }
 
   @Override

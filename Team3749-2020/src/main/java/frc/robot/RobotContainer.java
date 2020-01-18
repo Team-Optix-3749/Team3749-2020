@@ -39,7 +39,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    CommandScheduler.getInstance().setDefaultCommand(m_shooter, c_shoot);
+    // CommandScheduler.getInstance().setDefaultCommand(m_shooter, c_shoot);
   }
 
   /**
