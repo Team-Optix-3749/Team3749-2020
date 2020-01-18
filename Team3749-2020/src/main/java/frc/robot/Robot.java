@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
+
 import frc.robot.subsystems.*;
 import frc.robot.Constants;
 
@@ -33,7 +36,6 @@ public class Robot extends TimedRobot {
   private static Shooter shoot;
 
   // private static BallCollect collect;
-  
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -46,6 +48,17 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
+    initCamera();
+
+  }
+
+  public void initCamera()
+  {
+    // start running camera from roboRIO
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    camera.setBrightness(8);
+    // camera.setExposureManual(5);
+    camera.setExposureAuto();
   }
 
   public static Drivetrain getDrivetrain() {
