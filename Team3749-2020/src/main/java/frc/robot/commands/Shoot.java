@@ -15,7 +15,7 @@ public class Shoot extends CommandBase {
 
     @Override
     public void execute() {
-        Robot.getShooter().set(Constants.shooterSetpoint);
+        // Robot.getShooter().set(Constants.shooterSetpoint);
     }
 
     @Override

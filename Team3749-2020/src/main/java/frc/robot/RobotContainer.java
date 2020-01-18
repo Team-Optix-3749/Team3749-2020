@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
