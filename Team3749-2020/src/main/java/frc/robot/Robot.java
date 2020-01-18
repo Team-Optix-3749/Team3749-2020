@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
 
   private static Shooter shoot;
 
-  private static BallCollect collect;
+  // private static BallCollect collect;
   
 
   /**
@@ -56,9 +56,9 @@ public class Robot extends TimedRobot {
     return shoot;
   }
 
-  public static BallCollect getBallCollect() {
-    return collect;
-  }
+  // public static BallCollect getBallCollect() {
+  //   return collect;
+  // }
 
 
   /**
