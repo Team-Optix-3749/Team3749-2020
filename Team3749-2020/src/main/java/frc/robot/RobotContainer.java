@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
+
 // import edu.wpi.first.wpilibj2.command.button.Button;
 // import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 // import frc.robot.commands.*;
@@ -21,6 +26,8 @@ package frc.robot;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final Shooter m_shooter = new Shooter();
+  private final Shoot c_shoot = new Shoot(new Shooter());
 
   // private final ExampleCommand m_autoCommand = new
   // ExampleCommand(m_exampleSubsystem);
@@ -32,6 +39,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    CommandScheduler.getInstance().setDefaultCommand(m_shooter, c_shoot);
   }
 
   /**
