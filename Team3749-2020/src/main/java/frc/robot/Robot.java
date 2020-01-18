@@ -56,8 +56,8 @@ public class Robot extends TimedRobot {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setBrightness(8);
-    // camera.setExposureManual(5);
-    camera.setExposureAuto();
+    camera.setExposureManual(5);
+    // camera.setExposureAuto();
   }
 
   public static Drivetrain getDrivetrain() {
@@ -158,7 +158,7 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
-  public static Constants getMap() {
+  public static Constants getConstants() {
     return constants;
   }
 }
