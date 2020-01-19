@@ -25,7 +25,7 @@ public class Drivetrain extends SubsystemBase {
     public AHRS gyro = new AHRS(SPI.Port.kMXP);
 
     public void arcadeDrive(double fwd, double rot) {
-        m_drive.arcadeDrive(fwd, rot);
+        m_drive.arcadeDrive(fwd, rot, true);
     }
 
     public void tankDrive(double fwd, double rot) {
