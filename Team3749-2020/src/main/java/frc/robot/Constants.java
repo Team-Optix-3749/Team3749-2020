@@ -74,6 +74,7 @@ public final class Constants {
     public static final int RSX = 4;
     public static final int RSY = 5;
 
+    // Joystick map
     public static Joystick joystick = new Joystick(1);
     public final int kJoystickPort = 1;
 
