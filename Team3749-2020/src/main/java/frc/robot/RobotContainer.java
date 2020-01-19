@@ -48,7 +48,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_drive.setDefaultCommand(
-        new Drive(
+        new ArcadeDrive(
             m_drive,
             () -> m_xboxController.getY(GenericHID.Hand.kLeft),
             () -> m_xboxController.getX(GenericHID.Hand.kLeft)));
