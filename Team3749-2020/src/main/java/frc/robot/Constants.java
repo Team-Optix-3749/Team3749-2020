@@ -31,8 +31,6 @@ public final class Constants {
     private static HashMap<String, Integer> mapCTRL; // the controller port map
     private static HashMap<String, Integer> mapSys; // the subsystems mode map
 
-    public static XboxController xboxController = new XboxController(0);
-
     /*
     XBOX BUTTON MAP KEY:
     1 = A
@@ -48,6 +46,7 @@ public final class Constants {
     */
 
     // Xbox Map
+    public static XboxController xboxController = new XboxController(0);
     public final int kXboxControllerPort = 0;
 
     public static final int A = 1;
@@ -76,7 +75,6 @@ public final class Constants {
     public static final int RSY = 5;
 
     public static Joystick joystick = new Joystick(1);
-
     public final int kJoystickPort = 1;
 
     // Motor Map
