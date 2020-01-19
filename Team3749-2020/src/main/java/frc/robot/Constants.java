@@ -31,7 +31,7 @@ public final class Constants {
     private static HashMap<String, Integer> mapCTRL; // the controller port map
     private static HashMap<String, Integer> mapSys; // the subsystems mode map
 
-    public static XboxController xboxController = new XboxController(0);
+    private static XboxController xboxController = new XboxController(0);
 
     /*
     XBOX BUTTON MAP KEY:
@@ -48,44 +48,44 @@ public final class Constants {
     */
 
     // Xbox Map
-    public static final int xboxControllerPort = 0;
+    private static final int xboxControllerPort = 0;
 
-    public static final int A = 1;
-    public static final int B = 2;
-    public static final int X = 3;
-    public static final int Y = 4;
+    private static final int A = 1;
+    private static final int B = 2;
+    private static final int X = 3;
+    private static final int Y = 4;
 
-    public static final int LB = 5;
-    public static final int RB = 6;
+    private static final int LB = 5;
+    private static final int RB = 6;
 
-    public static final int BACK = 7;
-    public static final int START = 8;
+    private static final int BACK = 7;
+    private static final int START = 8;
 
-    public static final int LT = 2;
-    public static final int RT = 3;
+    private static final int LT = 2;
+    private static final int RT = 3;
 
-    public static final int LS = 9;
-    public static final int RS = 10;
+    private static final int LS = 9;
+    private static final int RS = 10;
 
-    public static final int LY = 1;
-    public static final int RX = 4;
+    private static final int LY = 1;
+    private static final int RX = 4;
 
-    public static final int LSX = 0;
-    public static final int LSY = 1;
-    public static final int RSX = 4;
-    public static final int RSY = 5;
+    private static final int LSX = 0;
+    private static final int LSY = 1;
+    private static final int RSX = 4;
+    private static final int RSY = 5;
 
-    public static Joystick joystick = new Joystick(1);
+    private static Joystick joystick = new Joystick(1);
 
     // Motor Map
-    public static final int motorLeftFront = 10;
-    public static final int motorLeftBack = 23;
-    public static final int motorRightFront = 11;
-    public static final int motorRightBack = 22;
-    public static final int shooterMotor = 15;
+    private static final int motorLeftFront = 10;
+    private static final int motorLeftBack = 23;
+    private static final int motorRightFront = 11;
+    private static final int motorRightBack = 22;
+    private static final int shooterMotor = 15;
 
     // Other constants
-    public final double shooterSpeed = 1;
+    private final double shooterSpeed = 1;
 
     public Constants() {
 
