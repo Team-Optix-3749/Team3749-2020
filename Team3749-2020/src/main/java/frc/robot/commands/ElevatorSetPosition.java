@@ -8,7 +8,7 @@ import frc.robot.subsystems.Elevator;
  */
 public class ElevatorSetPosition extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-    private final Elevator[] m_subsystem;
+    public final Elevator[] m_subsystem;
 
   /**
    * Creates a new ExampleCommand.
