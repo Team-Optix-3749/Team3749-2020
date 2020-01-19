@@ -30,7 +30,7 @@ public class RobotContainer {
 
   private final Shooter m_Shooter = new Shooter();
 
-  XboxController m_xboxController = new XboxController(Robot.getConstants().xboxControllerPort);
+  XboxController m_xboxController = new XboxController(Robot.getConstants().kXboxControllerPort);
 
   // private final ExampleCommand m_autoCommand = new
   // ExampleCommand(m_exampleSubsystem);
