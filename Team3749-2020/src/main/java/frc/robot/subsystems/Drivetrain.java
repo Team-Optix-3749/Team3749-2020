@@ -13,22 +13,22 @@ public class Drivetrain extends SubsystemBase {
 
     private WPI_TalonSRX motorLeftFront = new WPI_TalonSRX(Constants.motorLeftFront);
     private WPI_TalonSRX motorLeftBack = new WPI_TalonSRX(Constants.motorLeftBack);
-    public SpeedControllerGroup leftSideMotors = new SpeedControllerGroup(motorLeftFront, motorLeftBack);
+    public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(motorLeftFront, motorLeftBack);
 
     private WPI_TalonSRX motorRightFront = new WPI_TalonSRX(Constants.motorRightFront);
     private WPI_TalonSRX motorRightBack = new WPI_TalonSRX(Constants.motorRightBack);
-    public SpeedControllerGroup rightSideMotors = new SpeedControllerGroup(motorRightFront, motorRightBack);
+    public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(motorRightFront, motorRightBack);
 
-    private DifferentialDrive drive = new DifferentialDrive(leftSideMotors, rightSideMotors);
+    private DifferentialDrive drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
     public AHRS gyro = new AHRS(SPI.Port.kMXP);
 
-    public void arcadeDrive() {
-        drive.arcadeDrive(Constants.LSX, Constants.LSY);
+    public void arcadeDrive(double fwd, double rot) {
+        drive.arcadeDrive(fwd, rot);
     }
 
-    public void tankDrive() {
-        drive.tankDrive(Constants.LSY, Constants.RSY);
+    public void tankDrive(double fwd, double rot) {
+        drive.tankDrive(fwd, rot);
     }
 
     public void speedLeftMotors(double speed) {
