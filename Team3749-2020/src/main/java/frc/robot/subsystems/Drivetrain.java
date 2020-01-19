@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain extends SubsystemBase {
 
-    private WPI_TalonSRX motorLeftFront = new WPI_TalonSRX(Constants.motorLeftFront);
-    private WPI_TalonSRX motorLeftBack = new WPI_TalonSRX(Constants.motorLeftBack);
+    private WPI_TalonSRX motorLeftFront = new WPI_TalonSRX(Constants.m_leftFrontMotor);
+    private WPI_TalonSRX motorLeftBack = new WPI_TalonSRX(Constants.m_leftBackMotor);
     public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(motorLeftFront, motorLeftBack);
 
-    private WPI_TalonSRX motorRightFront = new WPI_TalonSRX(Constants.motorRightFront);
-    private WPI_TalonSRX motorRightBack = new WPI_TalonSRX(Constants.motorRightBack);
+    private WPI_TalonSRX motorRightFront = new WPI_TalonSRX(Constants.m_rightFrontMotor);
+    private WPI_TalonSRX motorRightBack = new WPI_TalonSRX(Constants.m_rightBackMotor);
     public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(motorRightFront, motorRightBack);
 
     private DifferentialDrive drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
