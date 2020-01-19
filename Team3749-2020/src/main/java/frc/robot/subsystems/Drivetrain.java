@@ -6,18 +6,20 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Robot;
+
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain extends SubsystemBase {
 
-    private WPI_TalonSRX motorLeftFront = new WPI_TalonSRX(Constants.m_leftFrontMotor);
-    private WPI_TalonSRX motorLeftBack = new WPI_TalonSRX(Constants.m_leftBackMotor);
-    public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(motorLeftFront, motorLeftBack);
+    private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
+    private WPI_TalonSRX m_leftBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
+    public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_leftFrontMotor, m_leftBackMotor);
 
-    private WPI_TalonSRX motorRightFront = new WPI_TalonSRX(Constants.m_rightFrontMotor);
-    private WPI_TalonSRX motorRightBack = new WPI_TalonSRX(Constants.m_rightBackMotor);
-    public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(motorRightFront, motorRightBack);
+    private WPI_TalonSRX m_rightFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_rf"));
+    private WPI_TalonSRX m_rightBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_rb"));
+    public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_rightFrontMotor, m_rightBackMotor);
 
     private DifferentialDrive drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
@@ -32,13 +34,13 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void speedLeftMotors(double speed) {
-        motorLeftFront.set(ControlMode.PercentOutput, -speed);
-        motorLeftBack.set(ControlMode.PercentOutput, -speed);
+        m_leftFrontMotor.set(ControlMode.PercentOutput, -speed);
+        m_leftBackMotor.set(ControlMode.PercentOutput, -speed);
     }
 
     public void speedRightMotors(double speed) {
-        motorRightFront.set(ControlMode.PercentOutput, speed);
-        motorRightBack.set(ControlMode.PercentOutput, speed);
+        m_rightFrontMotor.set(ControlMode.PercentOutput, speed);
+        m_rightBackMotor.set(ControlMode.PercentOutput, speed);
     }
 
     @Override
