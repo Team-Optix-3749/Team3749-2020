@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class Shoot extends CommandBase {
     private final Shooter shooter;
 
-    public Shoot(Shooter shoot) {
-        shooter = shoot;
+    public Shoot(Shooter subsystem) {
+        shooter = subsystem;
         addRequirements(shooter);
     }
 
