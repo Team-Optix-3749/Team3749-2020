@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -27,6 +28,8 @@ public class RobotContainer {
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Shooter m_shooter = new Shooter();
   private final Shoot c_shoot = new Shoot(new Shooter());
+
+  XboxController m_xboxController = new XboxController(Constants.xboxControllerPort);
 
   // private final ExampleCommand m_autoCommand = new
   // ExampleCommand(m_exampleSubsystem);
