@@ -24,20 +24,11 @@ import frc.robot.commands.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_Shooter = new Shooter();
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
-
-  // private final ExampleCommand m_autoCommand = new
-  // ExampleCommand(m_exampleSubsystem);
-
-  /**
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
 
   public RobotContainer() {
     // Configure the button bindings
@@ -49,13 +40,6 @@ public class RobotContainer {
             () -> m_xboxController.getY(GenericHID.Hand.kLeft),
             () -> m_xboxController.getX(GenericHID.Hand.kLeft)));
   }
-
-  /**
-   * Use this method to define your button->command mappings. Buttons can be
-   * created by instantiating a {@link GenericHID} or one of its subclasses
-   * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
-   * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
 
   private void configureButtonBindings() {
     // Shoot when the A button is pressed
