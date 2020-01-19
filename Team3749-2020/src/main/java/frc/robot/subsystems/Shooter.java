@@ -20,7 +20,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void Shoot(){
-    setSpeed(1);
+    setSpeed(Robot.getConstants().shooterSpeed);
   }
 
   public void Stop(){
