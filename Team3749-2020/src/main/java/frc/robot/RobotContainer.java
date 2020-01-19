@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -37,8 +37,8 @@ public class RobotContainer {
     m_drive.setDefaultCommand(
         new ArcadeDrive(
             m_drive,
-            () -> m_xboxController.getY(GenericHID.Hand.kLeft),
-            () -> m_xboxController.getX(GenericHID.Hand.kLeft)));
+            () -> m_xboxController.getY(Hand.kLeft),
+            () -> m_xboxController.getX(Hand.kLeft)));
   }
 
   private void configureButtonBindings() {
