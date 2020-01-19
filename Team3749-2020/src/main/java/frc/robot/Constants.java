@@ -78,11 +78,11 @@ public final class Constants {
     public static Joystick joystick = new Joystick(1);
 
     // Motor Map
-    public static final int motorLeftFront = 10;
-    public static final int motorLeftBack = 23;
-    public static final int motorRightFront = 11;
-    public static final int motorRightBack = 22;
-    public static final int shooterMotor = 15;
+    public static final int m_leftFrontMotor = 10;
+    public static final int m_leftBackMotor = 23;
+    public static final int m_rightFrontMotor = 11;
+    public static final int m_rightBackMotor = 22;
+    public static final int m_shooterMotor = 15;
 
     // Other constants
     public final double shooterSpeed = 1;
