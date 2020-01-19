@@ -27,13 +27,13 @@ import frc.robot.Constants;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private RobotContainer m_robotContainer;
+  private static RobotContainer m_robotContainer;
 
-  private static Constants constants;
+  private static Constants m_constants;
 
-  private static Drivetrain drivetrain;
+  private static Drivetrain m_drivetrain;
 
-  private static Shooter shoot;
+  private static Shooter m_shoot;
 
   // private static BallCollect collect;
 
@@ -60,12 +60,20 @@ public class Robot extends TimedRobot {
     // camera.setExposureAuto();
   }
 
+  public static RobotContainer getRobotContainer(){
+    return m_robotContainer;
+  }
+
+  public static Constants getConstants() {
+    return m_constants;
+  }
+
   public static Drivetrain getDrivetrain() {
-    return drivetrain;
+    return m_drivetrain;
   }
 
   public static Shooter getShooter() {
-    return shoot;
+    return m_shoot;
   }
 
   // public static BallCollect getBallCollect() {
@@ -156,9 +164,5 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-  }
-
-  public static Constants getConstants() {
-    return constants;
   }
 }
