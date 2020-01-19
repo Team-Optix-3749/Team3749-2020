@@ -87,7 +87,7 @@ public final class Constants {
     public static final int m_shooterMotor = 15;
 
     // Other constants
-    public final double shooterSpeed = 1;
+    public final double kShooterSpeed = 1;
 
     public Constants() {
 
