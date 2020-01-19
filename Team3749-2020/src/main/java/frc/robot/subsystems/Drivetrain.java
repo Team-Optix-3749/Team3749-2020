@@ -20,16 +20,16 @@ public class Drivetrain extends SubsystemBase {
     private WPI_TalonSRX m_rightBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_rb"));
     public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_rightFrontMotor, m_rightBackMotor);
 
-    private DifferentialDrive drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
+    public DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
     public AHRS gyro = new AHRS(SPI.Port.kMXP);
 
     public void arcadeDrive(double fwd, double rot) {
-        drive.arcadeDrive(fwd, rot);
+        m_drive.arcadeDrive(fwd, rot);
     }
 
     public void tankDrive(double fwd, double rot) {
-        drive.tankDrive(fwd, rot);
+        m_drive.tankDrive(fwd, rot);
     }
 
     public void speedLeftMotors(double speed) {
@@ -40,6 +40,10 @@ public class Drivetrain extends SubsystemBase {
     public void speedRightMotors(double speed) {
         m_rightFrontMotor.set(ControlMode.PercentOutput, speed);
         m_rightBackMotor.set(ControlMode.PercentOutput, speed);
+    }
+
+    public void setMaxOutput(double maxOutput){
+        m_drive.setMaxOutput(maxOutput);
     }
 
     @Override
