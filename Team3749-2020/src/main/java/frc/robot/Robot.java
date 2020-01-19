@@ -51,8 +51,7 @@ public class Robot extends TimedRobot {
     initCamera();
   }
 
-  public void initCamera()
-  {
+  public void initCamera() {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setBrightness(8);
@@ -60,7 +59,7 @@ public class Robot extends TimedRobot {
     // camera.setExposureAuto();
   }
 
-  public static RobotContainer getRobotContainer(){
+  public static RobotContainer getRobotContainer() {
     return m_robotContainer;
   }
 
@@ -77,9 +76,8 @@ public class Robot extends TimedRobot {
   }
 
   // public static BallCollect getBallCollect() {
-  //   return collect;
+  // return collect;
   // }
-
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
