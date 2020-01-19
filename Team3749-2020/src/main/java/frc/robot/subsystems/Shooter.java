@@ -1,24 +1,32 @@
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
 import frc.robot.Robot;
 
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-  private VictorSPX shooterMotor = null;
+  private WPI_TalonSRX shooterMotor = null;
 
 //checking if this
   public Shooter() {
-   
-   //this assigns an instance to the motor variable 
-    // shooterMotor = new VictorSPX(Robot.getConstants().getCAN("wheel_right"));
- 
+    shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("wheel_right"));
   }
 
+  private void setSpeed(double speed){
+    shooterMotor.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void Shoot(){
+    setSpeed(1);
+  }
+
+  public void Stop(){
+    setSpeed(0);
+  }
+  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
