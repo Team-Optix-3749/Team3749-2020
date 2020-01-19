@@ -5,11 +5,11 @@ import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Shoot extends CommandBase {
-    private final Shooter shooter;
+    private final Shooter m_shooter;
 
     public Shoot(Shooter subsystem) {
-        shooter = subsystem;
-        addRequirements(shooter);
+        m_shooter = subsystem;
+        addRequirements(m_shooter);
     }
 
     @Override
