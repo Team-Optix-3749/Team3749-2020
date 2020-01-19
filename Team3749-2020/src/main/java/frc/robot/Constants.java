@@ -46,7 +46,6 @@ public final class Constants {
     */
 
     // Xbox Map
-    public static XboxController m_xboxController = new XboxController(0);
     public final int kXboxControllerPort = 0;
 
     public static final int A = 1;
@@ -75,7 +74,6 @@ public final class Constants {
     public static final int RSY = 5;
 
     // Joystick map
-    public static Joystick m_joystick = new Joystick(1);
     public final int kJoystickPort = 1;
 
     // Motor Map

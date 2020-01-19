@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -29,8 +30,9 @@ public class RobotContainer {
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final Shooter m_Shooter = new Shooter();
-
-  XboxController m_xboxController = new XboxController(Robot.getConstants().kXboxControllerPort);
+  
+  XboxController m_xboxController = new XboxController(0);
+  Joystick m_joystick = new Joystick(1);
 
   // private final ExampleCommand m_autoCommand = new
   // ExampleCommand(m_exampleSubsystem);
