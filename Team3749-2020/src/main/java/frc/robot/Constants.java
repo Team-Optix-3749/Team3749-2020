@@ -83,7 +83,7 @@ public final class Constants {
     public static final int shooterMotor = 15;
 
     // Other constants
-    public static final double shooterSetpoint = 0.8;
+    public final double shooterSpeed = 1;
 
     public Constants() {
 
