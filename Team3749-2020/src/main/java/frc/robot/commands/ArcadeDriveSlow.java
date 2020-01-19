@@ -4,11 +4,11 @@ import frc.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class SlowArcadeDrive extends CommandBase {
+public class ArcadeDriveSlow extends CommandBase {
     private final Drivetrain m_drive;
 
 
-    public SlowArcadeDrive(Drivetrain drive) {
+    public ArcadeDriveSlow(Drivetrain drive) {
         m_drive = drive;
     }
 
