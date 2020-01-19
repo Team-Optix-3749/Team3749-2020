@@ -8,7 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
@@ -26,10 +27,10 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final Shooter m_shooter = new Shooter();
-  private final Shoot c_shoot = new Shoot(new Shooter());
 
-  XboxController m_xboxController = new XboxController(Constants.xboxControllerPort);
+  private final Shooter m_Shooter = new Shooter();
+
+  XboxController m_xboxController = new XboxController(Robot.getConstants().xboxControllerPort);
 
   // private final ExampleCommand m_autoCommand = new
   // ExampleCommand(m_exampleSubsystem);
@@ -53,9 +54,8 @@ public class RobotContainer {
    */
 
   private void configureButtonBindings() {
-
-    // Button aButton = new JoystickButton(Constants.xboxController, 1);
-    // aButton.whenPressed(new Shoot(shooter));
+    // Shoot when the A button is pressed
+    new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new Shoot(m_Shooter));
   }
 
   /**
