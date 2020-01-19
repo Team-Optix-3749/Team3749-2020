@@ -8,15 +8,15 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-  private WPI_TalonSRX shooterMotor = null;
+  private WPI_TalonSRX m_shooterMotor;
 
 //checking if this
   public Shooter() {
-    shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("wheel_right"));
+    m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("wheel_right"));
   }
 
   private void setSpeed(double speed){
-    shooterMotor.set(ControlMode.PercentOutput, speed);
+    m_shooterMotor.set(ControlMode.PercentOutput, speed);
   }
 
   public void Shoot(){
