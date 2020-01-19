@@ -77,6 +77,8 @@ public final class Constants {
 
     public static Joystick joystick = new Joystick(1);
 
+    public final int kJoystickPort = 1;
+
     // Motor Map
     public static final int m_leftFrontMotor = 10;
     public static final int m_leftBackMotor = 23;
