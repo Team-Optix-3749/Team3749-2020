@@ -12,7 +12,7 @@ public class Shooter extends SubsystemBase {
 
 //checking if this
   public Shooter() {
-    m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("wheel_right"));
+    m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
   }
 
   private void setSpeed(double speed){
