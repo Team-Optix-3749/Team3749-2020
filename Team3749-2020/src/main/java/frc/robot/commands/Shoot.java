@@ -21,6 +21,7 @@ public class Shoot extends CommandBase {
     public boolean isFinished() {
         return true;
     }
+
     @Override
     public void end(boolean interrupted) {
         Robot.getRobotContainer().getShooter().Stop();
