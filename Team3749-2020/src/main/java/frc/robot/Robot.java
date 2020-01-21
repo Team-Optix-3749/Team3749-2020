@@ -24,17 +24,15 @@ public class Robot extends TimedRobot {
 
   private static Constants m_constants;
 
-  private static Drivetrain m_drivetrain;
-
-  private static Shooter m_shoot;
-  
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
+    m_constants = new Constants();
     m_robotContainer = new RobotContainer();
+    System.out.print("poopoo: " + m_constants);
 
     initCamera();
   }
@@ -47,20 +45,12 @@ public class Robot extends TimedRobot {
     return m_constants;
   }
 
-  public static Drivetrain getDrivetrain() {
-    return m_drivetrain;
-  }
-
-  public static Shooter getShooter() {
-    return m_shoot;
-  }
-
   public void initCamera() {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setBrightness(8);
-    camera.setExposureManual(5);
-    // camera.setExposureAuto();
+    //camera.setExposureManual(10);
+    camera.setExposureAuto();
   }
 
   /**
@@ -74,6 +64,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
