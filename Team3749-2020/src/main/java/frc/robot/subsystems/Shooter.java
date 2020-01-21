@@ -14,6 +14,7 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
   }
 
+  
   private void setSpeed(double speed){
     m_shooterMotor.set(ControlMode.PercentOutput, speed);
   }
