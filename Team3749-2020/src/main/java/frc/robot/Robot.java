@@ -19,9 +19,8 @@ import frc.robot.Constants;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private static RobotContainer m_robotContainer;
-
   private static Constants m_constants;
+  private static RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -31,7 +30,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_constants = new Constants();
     m_robotContainer = new RobotContainer();
-    System.out.print("poopoo: " + m_constants);
 
     initCamera();
   }
