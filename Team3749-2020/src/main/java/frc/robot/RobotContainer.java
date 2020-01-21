@@ -50,7 +50,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenPressed(new ArcadeDriveSlow(m_drive));
     // Shoot when the A button is pressed
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Robot.getConstants().RT)
       .whileHeld(new Shoot(m_shooter));
   }
 
