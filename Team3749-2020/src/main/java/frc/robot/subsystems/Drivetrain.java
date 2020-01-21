@@ -28,8 +28,8 @@ public class Drivetrain extends SubsystemBase {
         m_drive.arcadeDrive(fwd, rot, true);
     }
 
-    public void tankDrive(double fwd, double rot) {
-        m_drive.tankDrive(fwd, rot);
+    public void tankDrive(double leftSpeed, double rightSpeed) {
+        m_drive.tankDrive(leftSpeed, rightSpeed);
     }
 
     public void speedLeftMotors(double speed) {
