@@ -13,7 +13,16 @@ public class Shoot extends CommandBase {
     }
 
     @Override
-    public void execute() {
-        Robot.getShooter().Shoot();
+    public void initialize() {
+        Robot.getRobotContainer().getShooter().Shoot();
+    }
+
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
+    @Override
+    public void end(boolean interrupted) {
+        Robot.getRobotContainer().getShooter().Stop();
     }
 }

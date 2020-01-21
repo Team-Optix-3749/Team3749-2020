@@ -24,8 +24,9 @@ import frc.robot.commands.*;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+
   private final Drivetrain m_drive = new Drivetrain();
-  private final Shooter m_Shooter = new Shooter();
+  private final Shooter m_shooter = new Shooter();
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
@@ -50,7 +51,23 @@ public class RobotContainer {
       .whenPressed(new ArcadeDriveSlow(m_drive));
     // Shoot when the A button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenPressed(new Shoot(m_Shooter));
+      .whileHeld(new Shoot(m_shooter), false);
+  }
+
+  /**
+   * A simple getter method for the drivetrain system
+   * @return m_drive
+   */
+  public Drivetrain getDrivetrain() {
+    return m_drive;
+  }
+
+  /**
+   * A simple getter method for the shooter system
+   * @return m_
+   */
+  public Shooter getShooter() {
+    return m_shooter;
   }
 
   /**
