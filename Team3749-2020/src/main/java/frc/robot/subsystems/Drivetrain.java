@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.SPI;
 
 public class Drivetrain extends SubsystemBase {
 
-    private WPI_TalonSRX m_leftFrontMotor;
+    private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
     private WPI_TalonSRX m_leftBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lb"));
     public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_leftFrontMotor, m_leftBackMotor);
 
@@ -24,14 +24,6 @@ public class Drivetrain extends SubsystemBase {
     public DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
     public AHRS gyro = new AHRS(SPI.Port.kMXP);
-
-    public Drivetrain() {
-        Constants c = Robot.getConstants();
-        if (c == null) {
-            System.out.println("oof");
-        }
-        m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
-    }
 
     public void arcadeDrive(double fwd, double rot) {
         m_drive.arcadeDrive(fwd, rot, true);
