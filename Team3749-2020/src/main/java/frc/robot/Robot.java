@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 
-import frc.robot.subsystems.*;
 import frc.robot.Constants;
 
 public class Robot extends TimedRobot {
