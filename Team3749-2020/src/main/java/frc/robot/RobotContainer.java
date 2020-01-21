@@ -51,7 +51,7 @@ public class RobotContainer {
       .whenPressed(new ArcadeDriveSlow(m_drive));
     // Shoot when the A button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whileHeld(new Shoot(m_shooter), false);
+      .whileHeld(new Shoot(m_shooter));
   }
 
   /**
