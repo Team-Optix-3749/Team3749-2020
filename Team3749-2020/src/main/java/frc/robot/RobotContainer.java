@@ -64,7 +64,7 @@ public class RobotContainer {
 
   /**
    * A simple getter method for the shooter system
-   * @return m_
+   * @return m_shooter
    */
   public Shooter getShooter() {
     return m_shooter;

@@ -34,10 +34,18 @@ public class Robot extends TimedRobot {
     initCamera();
   }
 
+  /**
+   * A simple getter method for RobotContainer.java
+   * @return m_robotContainer
+   */
   public static RobotContainer getRobotContainer() {
     return m_robotContainer;
   }
 
+  /**
+   * A simple getter method for Constants.java
+   * @return m_constants
+   */
   public static Constants getConstants() {
     return m_constants;
   }
