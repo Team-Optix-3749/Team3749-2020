@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
   private WPI_TalonSRX m_shooterMotor;
 
-//checking if this
   public Shooter() {
     m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
   }
