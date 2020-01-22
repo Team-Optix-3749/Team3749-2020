@@ -27,12 +27,15 @@ public class RobotContainer {
 
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
+  private final Elevator m_elevator_left = new Elevator();
+  private final Elevator m_elevator_right = new Elevator();
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
 
   public RobotContainer() {
     // Configure the button bindings
+
     configureButtonBindings();
 
     m_drive.setDefaultCommand(
@@ -52,6 +55,7 @@ public class RobotContainer {
     // Shoot when the A button is pressed
     new JoystickButton(m_xboxController, Robot.getConstants().RT)
       .whileHeld(new Shoot(m_shooter));
+    
   }
 
   /**
@@ -70,6 +74,13 @@ public class RobotContainer {
     return m_shooter;
   }
 
+  public Elevator getElevatorLeft() {
+    return m_elevator_left;
+  }
+
+  public Elevator getElevatorRight() {
+    return m_elevator_right;
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
