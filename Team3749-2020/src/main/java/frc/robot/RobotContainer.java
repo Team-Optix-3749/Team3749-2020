@@ -12,6 +12,15 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.Command;
+
+import frc.robot.commands.ColorSensorCommand;
+import frc.robot.subsystems.ColorSensor;
+
+import frc.robot.commands.ControlPanelStart;
+import frc.robot.commands.ControlPanelStop;
+import frc.robot.subsystems.ControlPanelSubsystem;
+
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
@@ -32,6 +41,16 @@ public class RobotContainer {
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
+  
+  //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+
+  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
+  private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
+
+  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
+  private final ControlPanelStart m_ControlPanelStart = new ControlPanelStart(m_ControlPanelSubsystem);
+  private final ControlPanelStop m_ControlPanelStop = new ControlPanelStop(m_ControlPanelSubsystem);
 
   public RobotContainer() {
     // Configure the button bindings
@@ -56,6 +75,12 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Robot.getConstants().RT)
       .whileHeld(new Shoot(m_shooter));
     
+    XboxController controller = new XboxController(0);
+    JoystickButton aButton = new JoystickButton(controller, 1);
+    aButton.whileHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
+    aButton.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
+
+    aButton.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
   }
 
   /**
