@@ -36,10 +36,10 @@ public class RobotContainer {
 
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
-  private final Elevator m_elevator_left = new Elevator();
-  private final Elevator m_elevator_right = new Elevator();
-  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
-  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
+  private final Elevator m_elevatorLeft = new Elevator();
+  private final Elevator m_elevatorRight = new Elevator();
+  private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
+  private final ControlPanelSubsystem m_controlPanelSubsystem = new ControlPanelSubsystem();
 
 
 
@@ -74,10 +74,10 @@ public class RobotContainer {
     
     XboxController controller = new XboxController(0);
     JoystickButton aButton = new JoystickButton(controller, 1);
-    aButton.whileHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
-    aButton.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
+    aButton.whileHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
+    aButton.whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
 
-    aButton.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
+    aButton.whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
   }
 
   /**
@@ -97,11 +97,11 @@ public class RobotContainer {
   }
 
   public Elevator getElevatorLeft() {
-    return m_elevator_left;
+    return m_elevatorLeft;
   }
 
   public Elevator getElevatorRight() {
-    return m_elevator_right;
+    return m_elevatorRight;
   }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
