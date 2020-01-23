@@ -38,19 +38,16 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator_left = new Elevator();
   private final Elevator m_elevator_right = new Elevator();
+  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
+  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
+
+
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
   
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
-  private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
-
-  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
-  private final ControlPanelStart m_ControlPanelStart = new ControlPanelStart(m_ControlPanelSubsystem);
-  private final ControlPanelStop m_ControlPanelStop = new ControlPanelStop(m_ControlPanelSubsystem);
 
   public RobotContainer() {
     // Configure the button bindings
