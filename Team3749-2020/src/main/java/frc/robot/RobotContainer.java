@@ -33,10 +33,10 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
-  private final Drivetrain m_drive = new Drivetrain();
-  private final Shooter m_shooter = new Shooter();
-  private final Elevator m_elevatorLeft = new Elevator();
-  private final Elevator m_elevatorRight = new Elevator();
+  private final Drivetrain m_driveSubsystem = new Drivetrain();
+  private final Shooter m_shooterSubsystem = new Shooter();
+  private final Elevator m_elevatorLeftSubsystem = new Elevator();
+  private final Elevator m_elevatorRightSubsystem = new Elevator();
   private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
   private final ControlPanelSubsystem m_controlPanelSubsystem = new ControlPanelSubsystem();
 
@@ -51,9 +51,9 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    m_drive.setDefaultCommand(
+    m_driveSubsystem.setDefaultCommand(
         new ArcadeDrive(
-            m_drive,
+            m_driveSubsystem,
             () -> m_xboxController.getY(Hand.kLeft),
             () -> m_xboxController.getX(Hand.kLeft)));
   }
@@ -61,13 +61,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Increase drive speed when right bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
-      .whenPressed(new ArcadeDriveFast(m_drive));
+      .whenPressed(new ArcadeDriveFast(m_driveSubsystem));
     // Decrease drive speed when left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenPressed(new ArcadeDriveSlow(m_drive));
+      .whenPressed(new ArcadeDriveSlow(m_driveSubsystem));
     // Shoot when the A button is pressed
     new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whileHeld(new Shoot(m_shooter));
+      .whileHeld(new Shoot(m_shooterSubsystem));
     
     XboxController controller = new XboxController(0);
     JoystickButton aButton = new JoystickButton(controller, 1);
@@ -82,7 +82,7 @@ public class RobotContainer {
    * @return m_drive
    */
   public Drivetrain getDrivetrain() {
-    return m_drive;
+    return m_driveSubsystem;
   }
 
   /**
@@ -90,7 +90,7 @@ public class RobotContainer {
    * @return m_shooter
    */
   public Shooter getShooter() {
-    return m_shooter;
+    return m_shooterSubsystem;
   }
 
   /**
@@ -98,7 +98,7 @@ public class RobotContainer {
    * @return m_elevatorLeft
    */
   public Elevator getElevatorLeft() {
-    return m_elevatorLeft;
+    return m_elevatorLeftSubsystem;
   }
 
   /**
@@ -106,7 +106,7 @@ public class RobotContainer {
    * @return m_elevatorRight
    */
   public Elevator getElevatorRight() {
-    return m_elevatorRight;
+    return m_elevatorRightSubsystem;
   }
 
   /**
