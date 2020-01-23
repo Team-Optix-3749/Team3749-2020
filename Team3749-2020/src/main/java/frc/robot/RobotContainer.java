@@ -95,10 +95,18 @@ public class RobotContainer {
     return m_shooter;
   }
 
+  /**
+   * A simple getter method for the shooter system
+   * @return m_elevatorLeft
+   */
   public Elevator getElevatorLeft() {
     return m_elevatorLeft;
   }
 
+  /**
+   * A simple getter method for the shooter system
+   * @return m_elevatorRight
+   */
   public Elevator getElevatorRight() {
     return m_elevatorRight;
   }
