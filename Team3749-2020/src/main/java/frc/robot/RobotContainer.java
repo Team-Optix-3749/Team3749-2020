@@ -40,8 +40,6 @@ public class RobotContainer {
   private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
   private final ControlPanelSubsystem m_controlPanelSubsystem = new ControlPanelSubsystem();
 
-
-
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
   
@@ -110,6 +108,23 @@ public class RobotContainer {
   public Elevator getElevatorRight() {
     return m_elevatorRight;
   }
+
+  /**
+   * A simple getter method for the shooter system
+   * @return m_colorSensorSubsystem
+   */
+  public ColorSensor getColorSensor() {
+    return m_colorSensorSubsystem;
+  }
+
+  /**
+   * A simple getter method for the shooter system
+   * @return m_controlPanelSubsystem
+   */
+  public ControlPanelSubsystem gControlPanelSubsystem() {
+    return m_controlPanelSubsystem;
+  }
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
