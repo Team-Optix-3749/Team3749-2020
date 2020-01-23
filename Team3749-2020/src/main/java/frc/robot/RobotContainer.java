@@ -67,9 +67,9 @@ public class RobotContainer {
 
     // Shoot when right trigger is pressed
     new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whenHeld(new ShootStart(m_shooterSubsystem));
+      .whenHeld(new ShootStart(m_shooterSubsystem), false);
     new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whenReleased(new ShootStart(m_shooterSubsystem));
+      .whenReleased(new ShootStart(m_shooterSubsystem), false);
 
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
