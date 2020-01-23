@@ -79,7 +79,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenReleased(new ControlPanelStart(m_controlPanelSubsystem), false);
+      .whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
     
 
     // old code (go back to it if something breaks):
