@@ -42,9 +42,6 @@ public class RobotContainer {
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
-  
-  //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   public RobotContainer() {
     configureButtonBindings();
