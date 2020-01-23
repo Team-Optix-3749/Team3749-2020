@@ -47,8 +47,6 @@ public class RobotContainer {
   //private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   public RobotContainer() {
-    // Configure the button bindings
-
     configureButtonBindings();
 
     m_driveSubsystem.setDefaultCommand(
@@ -62,19 +60,35 @@ public class RobotContainer {
     // Increase drive speed when right bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenPressed(new ArcadeDriveFast(m_driveSubsystem));
+
     // Decrease drive speed when left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenPressed(new ArcadeDriveSlow(m_driveSubsystem));
-    // Shoot when the A button is pressed
-    new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whileHeld(new Shoot(m_shooterSubsystem));
-    
-    XboxController controller = new XboxController(0);
-    JoystickButton aButton = new JoystickButton(controller, 1);
-    aButton.whileHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
-    aButton.whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
 
-    aButton.whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
+    // Shoot when right trigger is pressed
+    new JoystickButton(m_xboxController, Robot.getConstants().RT)
+      .whenHeld(new ShootStart(m_shooterSubsystem));
+    new JoystickButton(m_xboxController, Robot.getConstants().RT)
+      .whenReleased(new ShootStart(m_shooterSubsystem));
+
+    // Start color sensor while a button is pressed
+    new JoystickButton(m_xboxController, Button.kA.value)
+      .whenHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
+
+    // Start control panel motor while a button is pressed
+    new JoystickButton(m_xboxController, Button.kA.value)
+      .whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
+    new JoystickButton(m_xboxController, Button.kA.value)
+      .whenReleased(new ControlPanelStart(m_controlPanelSubsystem), false);
+    
+
+    // old code (go back to it if something breaks):
+    // XboxController controller = new XboxController(0);
+    // JoystickButton aButton = new JoystickButton(controller, 1);
+    // aButton.whileHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
+    // aButton.whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
+
+    // aButton.whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
   }
 
   /**
