@@ -19,11 +19,11 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor.set(ControlMode.PercentOutput, speed);
   }
 
-  public void Shoot(){
+  public void shoot(){
     setSpeed(Robot.getConstants().kShooterSpeed);
   }
 
-  public void Stop(){
+  public void stop(){
     setSpeed(0);
   }
   
