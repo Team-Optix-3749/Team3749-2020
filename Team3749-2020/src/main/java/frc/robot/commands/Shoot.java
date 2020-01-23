@@ -14,7 +14,7 @@ public class Shoot extends CommandBase {
 
     @Override
     public void initialize() {
-        Robot.getRobotContainer().getShooter().Shoot();
+        Robot.getRobotContainer().getShooter().shoot();
     }
 
     @Override
@@ -24,6 +24,6 @@ public class Shoot extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
-        Robot.getRobotContainer().getShooter().Stop();
+        Robot.getRobotContainer().getShooter().stop();
     }
 }
