@@ -16,6 +16,7 @@ import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
+import com.kauailabs.navx.frc;
 import it.polito.elite.teaching.cv.utils.Utils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -281,7 +282,7 @@ public class ObjRecognitionController
 			xavg = xtotal / contourPoints.length;
 			yavg = ytotal / contourPoints.length;
 			
-			double distance = 333.82 * 39.25 * (Math.asin(/*Gyro angle*/)) / /*pixelwidth*/
+			double distance = 333.82 * 39.25 * (Math.sin(/*Gyro angle*/)) / /*pixelwidth*/
 			
 			System.out.println("Center of larget blob: (" + xavg + "," + yavg + ")");
 			System.out.println("Distance to largest blob: " + distance);
