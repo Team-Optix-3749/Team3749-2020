@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.lang.Math;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -280,7 +281,7 @@ public class ObjRecognitionController
 			xavg = xtotal / contourPoints.length;
 			yavg = ytotal / contourPoints.length;
 			
-			double distance = (248.1072 * 2501.9 * 720)/(yavg * 1168.4);
+			double distance = 333.82 * 39.25 * (Math.asin(/*Gyro angle*/)) / /*pixelwidth*/
 			
 			System.out.println("Center of larget blob: (" + xavg + "," + yavg + ")");
 			System.out.println("Distance to largest blob: " + distance);
