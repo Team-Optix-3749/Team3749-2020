@@ -14,7 +14,6 @@ public class Elevator extends SubsystemBase {
     private WPI_TalonSRX m_left = new WPI_TalonSRX(Robot.getConstants().getCAN("m_left"));
     private WPI_TalonSRX m_right = new WPI_TalonSRX(Robot.getConstants().getCAN("m_right"));
 
-
     @Override
     public void periodic() { 
       // This method will be called once per scheduler run

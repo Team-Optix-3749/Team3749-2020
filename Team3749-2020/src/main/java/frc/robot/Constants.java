@@ -314,18 +314,18 @@ public final class Constants {
         // loading map values for drive
         // first character = left or right
         // second character = front, middle, or back
-        setCAN("drive_lf", 10);
+        setCAN("drive_lf", 12);
         // setCAN("drive_lm", 21);
         setCAN("drive_lb", 23);
-        setCAN("drive_rf", 11);
+        setCAN("drive_rf", 10);
         // setCAN("drive_rm", 20);
         setCAN("drive_rb", 22);
 
         // intake/grabber wheel map
-        setCAN("shooter_motor", 12);
+        setCAN("shooter_motor", 11);
         setCAN("wheel_right", 1);
-        setCAN("m_left", 1);
-        setCAN("m_right", 1);
+        setCAN("m_left", 15);
+        setCAN("m_right", 16);
 
         // main subsystem srx motor ports
         setCAN("tilt", 1);
