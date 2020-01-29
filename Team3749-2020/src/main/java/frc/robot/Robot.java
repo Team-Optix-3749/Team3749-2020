@@ -10,30 +10,19 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
-import frc.robot.subsystems.*;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
+
 import frc.robot.Constants;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
- * project.
- */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+  private WaitCommand wait;
 
-  private RobotContainer m_robotContainer;
-
-  private static Constants constants;
-
-  private static Drivetrain drivetrain;
-
-  private static Shooter shoot;
-
-  private static BallCollect collect;
-  
+  private static Constants m_constants;
+  private static RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -41,25 +30,35 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer. This will perform all our button bindings,
-    // and put our
-    // autonomous chooser on the dashboard.
+    m_constants = new Constants();
     m_robotContainer = new RobotContainer();
 
+    initCamera();
   }
 
-  public static Drivetrain getDrivetrain() {
-    return drivetrain;
+  /**
+   * A simple getter method for RobotContainer.java
+   * @return m_robotContainer
+   */
+  public static RobotContainer getRobotContainer() {
+    return m_robotContainer;
   }
 
-  public static Shooter getShooter() {
-    return shoot;
+  /**
+   * A simple getter method for Constants.java
+   * @return m_constants
+   */
+  public static Constants getConstants() {
+    return m_constants;
   }
 
-  public static BallCollect getBallCollect() {
-    return collect;
+  public void initCamera() {
+    // start running camera from roboRIO
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    camera.setBrightness(8);
+    //camera.setExposureManual(10);
+    camera.setExposureAuto();
   }
-
 
   /**
    * This function is called every robot packet, no matter the mode. Use this for
@@ -72,6 +71,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
@@ -100,10 +100,10 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
+    wait = new WaitCommand(3.0);
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
+      m_autonomousCommand.schedule(ArcadeDrive(-1, 0), wait(), ArcadeDrive(0, 0));
     }
   }
 
@@ -131,11 +131,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    getDrivetrain().arcadeDrive();
-
-    if (Constants.xboxController.getRawButton(Constants.A)) {
-      getShooter().set(Constants.shooterSetpoint);
-    }
   }
 
   @Override
@@ -150,8 +145,5 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
-
-  public static Constants getMap() {
-    return constants;
-  }
 }
+>>>>>>> Stashed changes
