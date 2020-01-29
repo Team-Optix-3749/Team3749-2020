@@ -97,6 +97,8 @@ public final class Constants {
         // intake/grabber wheel map
         setCAN("shooter_motor", 12);
         setCAN("wheel_right", 1);
+        setCAN("m_left", 1);
+        setCAN("m_right", 1);
 
         // main subsystem srx motor ports
         setCAN("tilt", 1);
