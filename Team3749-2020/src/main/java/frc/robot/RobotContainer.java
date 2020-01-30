@@ -76,15 +76,6 @@ public class RobotContainer {
       .whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
-    
-
-    // old code (go back to it if something breaks):
-    // XboxController controller = new XboxController(0);
-    // JoystickButton aButton = new JoystickButton(controller, 1);
-    // aButton.whileHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
-    // aButton.whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
-
-    // aButton.whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
   }
 
   /**
