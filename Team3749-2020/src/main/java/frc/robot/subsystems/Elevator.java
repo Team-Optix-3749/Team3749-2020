@@ -14,7 +14,7 @@ public class Elevator extends SubsystemBase {
     //include more specific code and stuff, setting up the stuff for the lifting mechanism team-skywalker
     private WPI_TalonSRX m_left = new WPI_TalonSRX(Robot.getConstants().getCAN("elevatorLeft"));
     private WPI_TalonSRX m_right = new WPI_TalonSRX(Robot.getConstants().getCAN("elevatorRight"));
-    public SpeedControllerGroup m_Elevator = new SpeedControllerGroup(m_left, m_right);
+    
 
 
     @Override
