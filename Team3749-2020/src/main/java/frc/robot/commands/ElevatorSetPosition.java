@@ -7,22 +7,13 @@ import frc.robot.subsystems.Elevator;
  * An example command that uses an example subsystem.
  */
 public class ElevatorSetPosition extends CommandBase {
-    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-    public final Elevator[] m_subsystem;
+    public final Elevator m_subsystem;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-
-  public ElevatorSetPosition(Elevator[] subsystem) {
+  public ElevatorSetPosition(Elevator subsystem) {
     m_subsystem = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    //addRequirements(subsystem);
+  
   }
-  // want to see which branch this pushes to 
-
+  
   @Override
   public void initialize() {
       //initialization code here

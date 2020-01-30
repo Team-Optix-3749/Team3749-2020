@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
@@ -23,27 +23,13 @@ public class Elevator extends SubsystemBase {
 
     }
 
-    public void moveToTop() {
-      //using time right now to implement this, will later move to using limit switches 
-      startMotor(0.4);
-      Timer.delay(1);
-      stopMotor();
-    }
-    
-    public void moveToBottom() {
-  //using time right now to implement this, will later move to using limit switches 
-  startMotor(-0.4);
-  Timer.delay(1);
-  stopMotor();
-    }
-
-    private void startMotor(double speed) {
+    public void startMotor(double speed) {
 
       m_left.set(ControlMode.PercentOutput, speed);
       m_right.set(ControlMode.PercentOutput,speed);
     }
 
-    private void stopMotor() {
+    public void stopMotor() {
 
       
       m_left.set(ControlMode.PercentOutput, 0);
