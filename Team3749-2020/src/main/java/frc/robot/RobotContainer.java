@@ -35,8 +35,7 @@ public class RobotContainer {
 
   private final Drivetrain m_driveSubsystem = new Drivetrain();
   private final Shooter m_shooterSubsystem = new Shooter();
-  private final Elevator m_elevatorLeftSubsystem = new Elevator();
-  private final Elevator m_elevatorRightSubsystem = new Elevator();
+  private final Elevator m_elevatorSubsystem = new Elevator();
   private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
   private final ControlPanelSubsystem m_controlPanelSubsystem = new ControlPanelSubsystem();
 
@@ -108,17 +107,14 @@ public class RobotContainer {
    * A simple getter method for the shooter system
    * @return m_elevatorLeft
    */
-  public Elevator getElevatorLeft() {
-    return m_elevatorLeftSubsystem;
+  public Elevator getElevator() {
+    return m_elevatorSubsystem;
   }
 
   /**
    * A simple getter method for the shooter system
    * @return m_elevatorRight
    */
-  public Elevator getElevatorRight() {
-    return m_elevatorRightSubsystem;
-  }
 
   /**
    * A simple getter method for the shooter system
