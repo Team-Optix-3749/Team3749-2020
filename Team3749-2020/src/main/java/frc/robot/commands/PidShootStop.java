@@ -28,7 +28,7 @@ public class PidShootStop extends CommandBase {
   @Override
   public void execute() {
     // m_shooter.stop();
-    m_shooter.pidSpeed(0);
+    m_shooter.setVelocity(0);
   }
 
   // Called once the command ends or is interrupted.
