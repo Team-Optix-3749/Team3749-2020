@@ -58,11 +58,6 @@ public class Shooter extends SubsystemBase {
     }
     update();
   }
-
-  // public void pidSpeed(double feedforward){
-  //   double targetPos = 1;
-  //   m_shooterMotor.set(ControlMode.MotionMagic, targetPos, DemandType.ArbitraryFeedForward, feedforward);
-  // }
   
   private void rawSpeed(double speed){
     m_shooterMotor.set(ControlMode.PercentOutput, speed);
