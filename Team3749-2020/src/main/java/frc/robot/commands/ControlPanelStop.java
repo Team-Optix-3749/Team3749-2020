@@ -9,14 +9,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.subsystems.ControlPanelSubsystem;
+import frc.robot.subsystems.ControlPanel;
 
 public class ControlPanelStop extends CommandBase {
-  private final ControlPanelSubsystem m_sControlPanelSubsystem;
+  private final ControlPanel m_controlPanel;
 
-  public ControlPanelStop(ControlPanelSubsystem subsystem) {
-    m_sControlPanelSubsystem = subsystem;
-    addRequirements(m_sControlPanelSubsystem);
+  public ControlPanelStop(ControlPanel subsystem) {
+    m_controlPanel = subsystem;
+    addRequirements(m_controlPanel);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +27,7 @@ public class ControlPanelStop extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_sControlPanelSubsystem.stopMotor();
+    m_controlPanel.stopMotor();
   }
 
   // Called once the command ends or is interrupted.
