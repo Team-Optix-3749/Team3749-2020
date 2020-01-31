@@ -26,10 +26,10 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
-  private final Drivetrain m_driveSubsystem = new Drivetrain();
-  private final Shooter m_shooterSubsystem = new Shooter();
-  private final Elevator m_elevatorSubsystem = new Elevator();
-  private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
+  private final Drivetrain m_drive = new Drivetrain();
+  private final Shooter m_shooter = new Shooter();
+  private final Elevator m_elevator = new Elevator();
+  private final ColorSensor m_colorSensor = new ColorSensor();
   private final ControlPanel m_controlPanel = new ControlPanel();
 
   XboxController m_xboxController = new XboxController(0);
@@ -38,9 +38,9 @@ public class RobotContainer {
   public RobotContainer() {
     configureButtonBindings();
 
-    m_driveSubsystem.setDefaultCommand(
+    m_drive.setDefaultCommand(
         new ArcadeDrive(
-            m_driveSubsystem,
+            m_drive,
             () -> m_xboxController.getY(Hand.kLeft),
             () -> m_xboxController.getX(Hand.kRight)));
   }
@@ -48,27 +48,27 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Increase drive speed when right bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
-      .whenHeld(new ArcadeDriveFast(m_driveSubsystem), true);
+      .whenHeld(new ArcadeDriveFast(m_drive), true);
 
     // Decrease drive speed when left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenHeld(new ArcadeDriveSlow(m_driveSubsystem), true);
+      .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
     // Shoot when right trigger is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenHeld(new PidShootStart(m_shooterSubsystem, 1), false);
+      .whenHeld(new PidShootStart(m_shooter, 1), false);
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenReleased(new PidShootStop(m_shooterSubsystem), false);
+      .whenReleased(new PidShootStop(m_shooter), false);
 
     // Shoot when right trigger is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
-      .whenHeld(new ShootStart(m_shooterSubsystem), false);
+      .whenHeld(new ShootStart(m_shooter), false);
     new JoystickButton(m_xboxController, Button.kB.value)
-      .whenReleased(new ShootStop(m_shooterSubsystem), false);
+      .whenReleased(new ShootStop(m_shooter), false);
 
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ColorSensorCommand(m_colorSensorSubsystem), false);
+      .whenHeld(new ColorSensorCommand(m_colorSensor), false);
 
     // Start control panel motor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
@@ -78,7 +78,7 @@ public class RobotContainer {
 
     //move elevator motors to the top or the bottom 
     new JoystickButton(m_xboxController, Button.kY.value)
-    .whenHeld(new ElevatorTopPosition(m_elevatorSubsystem), true);
+    .whenHeld(new ElevatorTopPosition(m_elevator), true);
     
   }
 
@@ -87,7 +87,7 @@ public class RobotContainer {
    * @return m_drive
    */
   public Drivetrain getDrivetrain() {
-    return m_driveSubsystem;
+    return m_drive;
   }
 
   /**
@@ -95,7 +95,7 @@ public class RobotContainer {
    * @return m_shooter
    */
   public Shooter getShooter() {
-    return m_shooterSubsystem;
+    return m_shooter;
   }
 
   /**
@@ -103,7 +103,7 @@ public class RobotContainer {
    * @return m_elevatorLeft
    */
   public Elevator getElevator() {
-    return m_elevatorSubsystem;
+    return m_elevator;
   }
 
   /**
@@ -116,7 +116,7 @@ public class RobotContainer {
    * @return m_colorSensorSubsystem
    */
   public ColorSensor getColorSensor() {
-    return m_colorSensorSubsystem;
+    return m_colorSensor;
   }
 
   /**
