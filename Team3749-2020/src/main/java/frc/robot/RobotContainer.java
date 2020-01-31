@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.ColorSensor;
-import frc.robot.subsystems.ControlPanelSubsystem;
+import frc.robot.subsystems.ControlPanel;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -32,7 +32,7 @@ public class RobotContainer {
   private final Shooter m_shooterSubsystem = new Shooter();
   private final Elevator m_elevatorSubsystem = new Elevator();
   private final ColorSensor m_colorSensorSubsystem = new ColorSensor();
-  private final ControlPanelSubsystem m_controlPanelSubsystem = new ControlPanelSubsystem();
+  private final ControlPanel m_controlPanel = new ControlPanel();
 
   XboxController m_xboxController = new XboxController(0);
   Joystick m_joystick = new Joystick(1);
@@ -68,9 +68,9 @@ public class RobotContainer {
 
     // Start control panel motor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ControlPanelStart(m_controlPanelSubsystem), false);
+      .whenHeld(new ControlPanelStart(m_controlPanel), false);
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
+      .whenReleased(new ControlPanelStop(m_controlPanel), false);
 
     //move elevator motors to the top or the bottom 
     new JoystickButton(m_xboxController, Button.kY.value)
@@ -117,10 +117,10 @@ public class RobotContainer {
 
   /**
    * A simple getter method for the shooter system
-   * @return m_controlPanelSubsystem
+   * @return m_controlPanel
    */
-  public ControlPanelSubsystem gControlPanelSubsystem() {
-    return m_controlPanelSubsystem;
+  public ControlPanel ControlPanelSubsystem() {
+    return m_controlPanel;
   }
 
   /**
