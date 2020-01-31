@@ -23,11 +23,12 @@ public class ShootStop extends CommandBase {
   @Override
   public void initialize() {
   }
-
+  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.stop();
+    // m_shooter.stop();
+    m_shooter.pidSpeed(0);
   }
 
   // Called once the command ends or is interrupted.
