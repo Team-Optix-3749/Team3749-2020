@@ -44,7 +44,7 @@ public class RobotContainer {
         new ArcadeDrive(
             m_driveSubsystem,
             () -> m_xboxController.getY(Hand.kLeft),
-            () -> m_xboxController.getX(Hand.kLeft)));
+            () -> m_xboxController.getX(Hand.kRight)));
   }
 
   private void configureButtonBindings() {
