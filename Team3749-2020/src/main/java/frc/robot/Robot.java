@@ -15,12 +15,15 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.Constants;
+import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private static Constants m_constants;
   private static RobotContainer m_robotContainer;
+
+  private final Drivetrain m_drive = new Drivetrain();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -110,6 +113,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    m_drive.updateOdometry();
   }
 
   @Override
