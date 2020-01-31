@@ -27,7 +27,6 @@ public class PidShootStop extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // m_shooter.stop();
     m_shooter.setVelocity(0);
   }
 
