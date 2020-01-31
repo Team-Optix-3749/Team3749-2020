@@ -62,10 +62,10 @@ public class RobotContainer {
       .whenHeld(new ArcadeDriveSlow(m_driveSubsystem), true);
 
     // Shoot when right trigger is pressed
-    new JoystickButton(m_xboxController, Robot.getConstants().RT)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenHeld(new ShootStart(m_shooterSubsystem), false);
-    new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whenReleased(new ShootStart(m_shooterSubsystem), false);
+    new JoystickButton(m_xboxController, Button.kB.value)
+      .whenReleased(new ShootStop(m_shooterSubsystem), false);
 
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
