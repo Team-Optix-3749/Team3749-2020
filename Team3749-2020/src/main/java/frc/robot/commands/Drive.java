@@ -30,7 +30,6 @@ public class Drive extends CommandBase {
     public Drive(Drivetrain drive, double xSpeed, double rot) {
         m_drive = drive;
 
-
         addRequirements(m_drive);
     }
 
