@@ -74,6 +74,11 @@ public final class Constants {
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1;
+    public final double kMaxSpeed = 3.0; // meters per second
+    public final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
+    public final double kTrackWidth = 0.381 * 2; // meters
+    public final double kWheelRadius = 0.0508; // meters
+    public final int kEncoderResolution = 4096;
 
     public Constants() {
 
