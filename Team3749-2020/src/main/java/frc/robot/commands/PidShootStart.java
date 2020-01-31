@@ -13,10 +13,13 @@ import frc.robot.subsystems.Shooter;
 
 public class PidShootStart extends CommandBase {
   private final Shooter m_shooter;
+  private double velocity;
 
-  public PidShootStart(Shooter subsystem) {
+  public PidShootStart(Shooter subsystem, double vel) {
     m_shooter = subsystem;
     addRequirements(m_shooter);
+
+    velocity = vel;
   }
 
   // Called when the command is initially scheduled.
@@ -28,7 +31,7 @@ public class PidShootStart extends CommandBase {
   @Override
   public void execute() {
     // m_shooter.shoot();
-    m_shooter.pidSpeed(0.4);
+    m_shooter.setVelocity(velocity);
   }
 
   // Called once the command ends or is interrupted.
