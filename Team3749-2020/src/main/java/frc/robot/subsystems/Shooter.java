@@ -46,15 +46,15 @@ public class Shooter extends SubsystemBase {
     reset();
   }
 
-  public void setVelocity(double pos)
+  public void setVelocity(double velocity)
   {
     if (pidEnabled)
     {
-      velocity  += toEncoder(pos);
+      velocity  += toEncoder(velocity);
     }
     else
     {
-      motorOut = kAF + pos * 0.4;
+      motorOut = kAF + velocity * 0.4;
     }
     update();
   }
