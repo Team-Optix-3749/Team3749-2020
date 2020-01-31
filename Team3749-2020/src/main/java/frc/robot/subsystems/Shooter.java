@@ -81,7 +81,7 @@ public class Shooter extends SubsystemBase {
     return fromEncoder(m_shooterMotor.getSelectedSensorPosition());
   }
 
-  public double getSetpoint ()
+  public double getSetpoint()
   {
     return fromEncoder(velocity);
   }
@@ -119,13 +119,13 @@ public class Shooter extends SubsystemBase {
     pidEnabled = bool;
   }
 
-  private double fromEncoder (double in)
+  private double fromEncoder(double in)
   {
     // become bigger
     return in * ENCODER_OUT / ENCODER_IN;
   }
 
-  private double toEncoder (double in)
+  private double toEncoder(double in)
   {
     // become smaller
     return in * ENCODER_IN / ENCODER_OUT;
