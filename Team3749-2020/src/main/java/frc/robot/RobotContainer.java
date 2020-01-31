@@ -12,12 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-
-import frc.robot.commands.ColorSensorCommand;
 import frc.robot.subsystems.ColorSensor;
-
-import frc.robot.commands.ControlPanelStart;
-import frc.robot.commands.ControlPanelStop;
 import frc.robot.subsystems.ControlPanelSubsystem;
 
 import frc.robot.subsystems.*;
@@ -77,6 +72,9 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new ControlPanelStop(m_controlPanelSubsystem), false);
 
+    //move elevator motors to the top or the bottom 
+    new JoystickButton(m_xboxController, Button.kY.value)
+    .whenHeld(new ElevatorTopPosition(m_elevatorSubsystem), true);
     
   }
 
