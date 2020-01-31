@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.ColorSensor;
-import frc.robot.subsystems.ControlPanel;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -55,6 +53,12 @@ public class RobotContainer {
     // Decrease drive speed when left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new ArcadeDriveSlow(m_driveSubsystem), true);
+
+    // Shoot when right trigger is pressed
+    new JoystickButton(m_xboxController, Button.kX.value)
+      .whenHeld(new PidShootStart(m_shooterSubsystem, 1), false);
+    new JoystickButton(m_xboxController, Button.kX.value)
+      .whenReleased(new PidShootStop(m_shooterSubsystem), false);
 
     // Shoot when right trigger is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
