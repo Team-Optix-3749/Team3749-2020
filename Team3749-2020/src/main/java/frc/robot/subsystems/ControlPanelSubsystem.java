@@ -15,7 +15,7 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class ControlPanelSubsystem extends SubsystemBase {
   VictorSPX _motor = new VictorSPX(20);
-  TalonSRX _motor1 = new TalonSRX(10);
+  TalonSRX _motor1 = new TalonSRX(11);
 
   public void activateMotor() {
     _motor.set(ControlMode.PercentOutput, -1);
