@@ -32,8 +32,8 @@ public class RobotContainer {
   private final ColorSensor m_colorSensor = new ColorSensor();
   private final ControlPanel m_controlPanel = new ControlPanel();
 
-  XboxController m_xboxController = new XboxController(0);
-  Joystick m_joystick = new Joystick(1);
+  public XboxController m_xboxController = new XboxController(0);
+  public Joystick m_joystick = new Joystick(1);
 
   public RobotContainer() {
     configureButtonBindings();
