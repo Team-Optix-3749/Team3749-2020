@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.Shooter;
 
-public class ShootStart extends CommandBase {
+public class PidShootStart extends CommandBase {
   private final Shooter m_shooter;
 
-  public ShootStart(Shooter subsystem) {
+  public PidShootStart(Shooter subsystem) {
     m_shooter = subsystem;
     addRequirements(m_shooter);
   }
