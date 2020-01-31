@@ -15,6 +15,7 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
   }
 
+  // fix this:
   public void pidSpeed(double feedforward){
     double targetPos = 1;
     m_shooterMotor.set(ControlMode.MotionMagic, targetPos, DemandType.ArbitraryFeedForward, feedforward);
