@@ -123,6 +123,13 @@ public class Drivetrain extends SubsystemBase {
     }
 
     /**
+    * Resets gyro
+    */
+    public void resetGyro() {
+        m_gyro.reset();
+    }
+
+    /**
     * Updates the field-relative position.
     */
     public void updateOdometry() {
