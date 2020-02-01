@@ -23,7 +23,7 @@ public class Robot extends TimedRobot {
   private static Constants m_constants;
   private static RobotContainer m_robotContainer;
 
-  private final Drivetrain m_drive = new Drivetrain();
+  private static Drivetrain m_drive;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_constants = new Constants();
     m_robotContainer = new RobotContainer();
+    m_drive = new Drivetrain();
 
     initCamera();
   }
@@ -113,7 +114,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    m_drive.updateOdometry();
+    // m_drive.updateOdometry();
   }
 
   @Override
