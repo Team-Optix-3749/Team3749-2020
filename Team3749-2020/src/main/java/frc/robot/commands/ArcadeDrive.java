@@ -12,6 +12,12 @@ public class ArcadeDrive extends CommandBase {
     private final DoubleSupplier m_forward;
     private final DoubleSupplier m_rotation;
 
+    /**
+     * 
+     * @param drive
+     * @param forward
+     * @param rotation
+     */
     public ArcadeDrive(Drivetrain drive, DoubleSupplier forward, DoubleSupplier rotation) {
         m_drive = drive;
         m_forward = forward;

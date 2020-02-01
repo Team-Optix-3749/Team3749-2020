@@ -14,6 +14,10 @@ import frc.robot.subsystems.Shooter;
 public class PidShootStop extends CommandBase {
   private final Shooter m_shooter;
 
+  /**
+   * 
+   * @param subsystem
+   */
   public PidShootStop(Shooter subsystem) {
     m_shooter = subsystem;
     addRequirements(m_shooter);
