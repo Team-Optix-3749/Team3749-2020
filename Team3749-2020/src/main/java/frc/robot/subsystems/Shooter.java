@@ -29,12 +29,12 @@ public class Shooter extends SubsystemBase {
 
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
     
-    m_shooterMotor.config_kP(0, 0.003);
+    m_shooterMotor.config_kP(0, 1);
     m_shooterMotor.config_kI(0, 0);
-    m_shooterMotor.config_kD(0, 0.00003);
+    m_shooterMotor.config_kD(0, 0);
     m_shooterMotor.config_kF(0, 0);
 
-    m_shooterMotor.setSensorPhase(true);
+    m_shooterMotor.setSensorPhase(false);
     m_shooterMotor.setInverted(true);
 
     m_shooterMotor.configClosedloopRamp(1);
@@ -71,10 +71,10 @@ public class Shooter extends SubsystemBase {
     rawSpeed(0);
   }
 
-  public double getPosition()
-  {
-    return fromEncoder(m_shooterMotor.getSelectedSensorPosition());
-  }
+  // public double getPosition()
+  // {
+  //   // return fromEncoder(m_shooterMotor.getSelectedSensorPosition());
+  // }
 
   public double getSetpoint()
   {
@@ -83,7 +83,6 @@ public class Shooter extends SubsystemBase {
 
   public void reset()
   {
-    m_shooterMotor.setSelectedSensorPosition(0);
     rawSpeed(0);
   }
   
