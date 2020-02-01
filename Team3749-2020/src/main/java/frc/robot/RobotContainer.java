@@ -75,13 +75,13 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
-    // Shoot when right trigger is pressed
+    // Shoot when x button is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenHeld(new PidShootStart(m_shooter, 1), false);
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
-    // Shoot when right trigger is pressed
+    // Shoot when b button is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
       .whenHeld(new ShootStart(m_shooter), false);
     new JoystickButton(m_xboxController, Button.kB.value)
@@ -97,7 +97,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new ControlPanelStop(m_controlPanel), false);
 
-    //move elevator motors to the top or the bottom 
+    //move elevator motors to the top or the bottom when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
     .whenHeld(new ElevatorTopPosition(m_elevator), true);
     
