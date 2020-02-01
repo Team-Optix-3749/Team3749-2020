@@ -54,6 +54,14 @@ public class Robot extends TimedRobot {
     return m_constants;
   }
 
+  /** 
+  * A simple getter method for Constants.java
+  * @return m_drive
+  */
+  public static Drivetrain getDrivetrain(){
+    return m_drive;
+  }
+
   public void initCamera() {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
