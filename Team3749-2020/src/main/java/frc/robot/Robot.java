@@ -23,6 +23,7 @@ public class Robot extends TimedRobot {
 
   private static Constants m_constants;
   private static RobotContainer m_robotContainer;
+  private final Drivetrain m_drive = new Drivetrain();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -103,7 +104,7 @@ public class Robot extends TimedRobot {
     wait = new WaitCommand(3.0);
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule(ArcadeDrive(-1, 0), wait(), ArcadeDrive(0, 0));
+      m_autonomousCommand.schedule(ArcadeDrive(m_drive, -1, 0), wait(), ArcadeDrive(m_drive, 0, 0));
     }
   }
 
