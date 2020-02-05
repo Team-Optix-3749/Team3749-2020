@@ -16,7 +16,6 @@ public class Shooter extends SubsystemBase {
   private TalonSRX m_shooterMotor;
 
   public Shooter() {
-
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
     
     /* Factory Default all hardware to prevent unexpected behaviour */
