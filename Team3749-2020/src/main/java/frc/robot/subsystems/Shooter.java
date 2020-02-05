@@ -4,7 +4,6 @@ import frc.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.DemandType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -50,7 +49,7 @@ public class Shooter extends SubsystemBase {
   {
     if (pidEnabled)
     {
-      velocity  += toEncoder(velocity);
+      velocity  = toEncoder(velocity);
     }
     else
     {
@@ -85,12 +84,12 @@ public class Shooter extends SubsystemBase {
   {
     if (pidEnabled)
     {
-      if (velocity > ENCODER_IN)
-      velocity = ENCODER_IN;
-      if (velocity < toEncoder(0))
-      velocity = toEncoder(0);
-      
-      m_shooterMotor.set(ControlMode.Velocity, velocity, DemandType.ArbitraryFeedForward, kAF);
+      // if (velocity > ENCODER_IN)
+      //   velocity = ENCODER_IN;
+      // if (velocity < toEncoder(0))
+      //   velocity = toEncoder(0);
+      m_shooterMotor.set(ControlMode.Velocity, velocity);
+      System.out.print(m_shooterMotor.getSelectedSensorVelocity());
     }
 
     else

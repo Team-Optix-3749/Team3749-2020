@@ -15,7 +15,7 @@ public class PidShootStop extends CommandBase {
   private final Shooter m_shooter;
 
   /**
-   * 
+   *   
    * @param subsystem
    */
   public PidShootStop(Shooter subsystem) {
