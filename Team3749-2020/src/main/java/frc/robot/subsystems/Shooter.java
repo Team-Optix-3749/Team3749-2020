@@ -1,126 +1,86 @@
 package frc.robot.subsystems;
 
-import frc.robot.Robot;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 
 /**
  * class Shooter
+ * 
  * @author Raadwan Masum
  */
 public class Shooter extends SubsystemBase {
 
-  private final double ENCODER_IN = 1100000;
-  private final double ENCODER_OUT = 100;
-
   private TalonSRX m_shooterMotor;
 
-  private double velocity;
-  private double motorOut;
-  private boolean pidEnabled;
-
-  private final double kAF = 0.08;
-
   public Shooter() {
-
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
-    
-    m_shooterMotor.config_kP(0, 0.9);
-    m_shooterMotor.config_kI(0, 0);
-    m_shooterMotor.config_kD(0, 0.3);
-    m_shooterMotor.config_kF(0, 0);
 
-    m_shooterMotor.setSensorPhase(false);
-    m_shooterMotor.setInverted(true);
+    /* Factory Default all hardware to prevent unexpected behaviour */
+    m_shooterMotor.configFactoryDefault();
 
-    m_shooterMotor.configClosedloopRamp(1);
+    /**
+     * Phase sensor accordingly. Positive Sensor Reading should match Green
+     * (blinking) Leds on Talon
+     */
+    m_shooterMotor.setSensorPhase(true);
 
-    velocity = 0;
-    motorOut = 0;
-    pidEnabled =  true;
+    /* Config the peak and nominal outputs */
+    m_shooterMotor.configNominalOutputForward(0, Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.configNominalOutputReverse(0, Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.configPeakOutputForward(1, Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.configPeakOutputReverse(-1, Robot.getConstants().kTimeoutMs);
+
+    /* Config the Velocity closed loop gains in slot0 */
+    m_shooterMotor.config_kF(Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kGains_Velocit.kF,
+        Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.config_kP(Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kGains_Velocit.kP,
+        Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.config_kI(Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kGains_Velocit.kI,
+        Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.config_kD(Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kGains_Velocit.kD,
+        Robot.getConstants().kTimeoutMs);
 
     reset();
   }
 
-  public void setVelocity(double velocity)
-  {
-    if (pidEnabled)
-    {
-      velocity  += toEncoder(velocity);
-    }
-    else
-    {
-      motorOut = kAF + velocity * 0.4;
-    }
-    update();
-  }
-  
-  private void rawSpeed(double speed){
+  private void rawSpeed(double speed) {
     m_shooterMotor.set(ControlMode.PercentOutput, speed);
   }
 
-  public void shoot(){
+  public void shoot() {
     rawSpeed(Robot.getConstants().kShooterSpeed);
   }
 
-  public void stop(){
+  /**
+   * Set desired shooter velocity
+   * 
+   * @param velocity desired veloci
+   */
+  public void setVelocity(double velocity) {
+    /* Velocity Closed Loop */
+
+    /**
+     * Convert 500 RPM to units / 100ms. 4096 Units/Rev * 500 RPM / 600 100ms/min in
+     * either direction: velocity setpoint is in units/100ms
+     */
+
+    // double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096 / 600;
+
+    /* 500 RPM in either direction */
+    m_shooterMotor.set(ControlMode.Velocity, velocity);
+  }
+
+  public void stop() {
     rawSpeed(0);
   }
 
-  public double getSetpoint()
-  {
-    return fromEncoder(velocity);
-  }
-
-  public void reset()
-  {
+  public void reset() {
     rawSpeed(0);
   }
-  
-  private void update()
-  {
-    if (pidEnabled)
-    {
-      if (velocity > ENCODER_IN)
-      velocity = ENCODER_IN;
-      if (velocity < toEncoder(0))
-      velocity = toEncoder(0);
-      
-      m_shooterMotor.set(ControlMode.Velocity, velocity, DemandType.ArbitraryFeedForward, kAF);
-    }
 
-    else
-    {
-      rawSpeed(motorOut);
-    }
-  }
-
-  public boolean usingPid()
-  {
-    return pidEnabled;
-  }
-
-  public void setPidEnabled(boolean bool)
-  {
-    pidEnabled = bool;
-  }
-
-  private double fromEncoder(double in)
-  {
-    // become bigger
-    return in * ENCODER_OUT / ENCODER_IN;
-  }
-
-  private double toEncoder(double in)
-  {
-    // become smaller
-    return in * ENCODER_IN / ENCODER_OUT;
-  }
-  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

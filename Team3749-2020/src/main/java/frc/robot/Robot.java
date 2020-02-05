@@ -21,6 +21,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private static Constants m_constants;
+  private static Gains m_gains;
   private static RobotContainer m_robotContainer;
 
   private static Drivetrain m_drive;
@@ -52,6 +53,14 @@ public class Robot extends TimedRobot {
    */
   public static Constants getConstants() {
     return m_constants;
+  }
+
+  /**
+   * A simple getter method for Gains.java
+   * @return m_constants
+   */
+  public static Gains getGains() {
+    return m_gains;
   }
 
   /** 
@@ -141,7 +150,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-
+    
   }
 
   @Override

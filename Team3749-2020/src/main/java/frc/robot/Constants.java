@@ -80,6 +80,11 @@ public final class Constants {
     public final double kWheelRadius = 0.0508; // meters
     public final int kEncoderResolution = 4096;
 
+	public final int kSlotIdx = 0;
+    public final int kPIDLoopIdx = 0;
+    public final int kTimeoutMs = 30;
+    public final Gains kGains_Velocit = new Gains( 0.25, 0.001, 20, 1023.0/7200.0,  300,  1.00);
+
     public Constants() {
 
         // Configure the button bindings

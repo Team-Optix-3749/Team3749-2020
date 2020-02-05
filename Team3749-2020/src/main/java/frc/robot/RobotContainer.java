@@ -36,28 +36,9 @@ public class RobotContainer {
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
 
-  // private final SlewRateLimiter m_speedLimiter = new SlewRateLimiter(3);
-  // private final SlewRateLimiter m_rotLimiter = new SlewRateLimiter(3);
-
 
   public RobotContainer() {
     configureButtonBindings();
-
-    // // Get the x speed. We are inverting this because Xbox controllers return
-    // // negative values when we push forward.
-    // final var xSpeed =
-    //   -m_speedLimiter.calculate(m_xboxController.getY(Hand.kLeft))
-    //     * Robot.getConstants().kMaxSpeed;
-
-    // // Get the rate of angular rotation. We are inverting this because we want a
-    // // positive value when we pull to the left (remember, CCW is positive in
-    // // mathematics). Xbox controllers return positive values when you pull to
-    // // the right by default.
-    // final var rot =
-    //   -m_rotLimiter.calculate(m_xboxController.getX(Hand.kRight))
-    //     * Robot.getConstants().kMaxAngularSpeed;
-
-    // m_drive.setDefaultCommand(new Drive(m_drive, xSpeed, rot));
 
     m_drive.setDefaultCommand(
        new ArcadeDrive(
@@ -76,9 +57,9 @@ public class RobotContainer {
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
     // Shoot when x button is pressed
-    new JoystickButton(m_xboxController, Button.kX.value)
-      .whenHeld(new PidShootStart(m_shooter, 100000), false);
-    new JoystickButton(m_xboxController, Button.kX.value)
+    new JoystickButton(m_xboxController, Robot.getConstants().RT)
+      .whenHeld(new PidShootStart(m_shooter, Robot.getConstants().kShooterSpeed), false);
+    new JoystickButton(m_xboxController, Robot.getConstants().RT)
       .whenReleased(new PidShootStop(m_shooter), false);
 
       /*
