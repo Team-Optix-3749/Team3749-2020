@@ -56,6 +56,10 @@ public class Shooter extends SubsystemBase {
     rawSpeed(Robot.getConstants().kShooterSpeed);
   }
 
+  /**
+   * Set desired shooter velocity
+   * @param velocity desired velocity
+   */
   public void setVelocity(double velocity) {
     	/* Velocity Closed Loop */
 
