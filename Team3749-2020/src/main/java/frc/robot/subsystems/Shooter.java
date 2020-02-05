@@ -14,12 +14,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
 
   private TalonSRX m_shooterMotor;
-
-  private final double kAF = 0.08;
+  private StringBuilder m_StringBuilder;
 
   public Shooter() {
 
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
+
+    m_StringBuilder = new StringBuilder();
+
 
     reset();
   }
