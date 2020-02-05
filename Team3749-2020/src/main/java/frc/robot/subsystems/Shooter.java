@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,10 +20,6 @@ public class Shooter extends SubsystemBase {
 
     /* Factory Default all hardware to prevent unexpected behaviour */
     m_shooterMotor.configFactoryDefault();
-
-    /* Config sensor used for Primary PID [Velocity] */
-    m_shooterMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
-        Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kTimeoutMs);
 
     /**
      * Phase sensor accordingly. Positive Sensor Reading should match Green
