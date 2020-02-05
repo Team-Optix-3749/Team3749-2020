@@ -10,11 +10,10 @@ import io.github.pseudoresonance.pixy2api.links.SPILink;
  */
 public class Vision extends Subsystem {
 
-    public Pixy2 pixy = Pixy2.createInstance(new SPILink());
+    private static Pixy2 pixy;
 
     @Override
     protected void initDefaultCommand() {
-        // TODO Auto-generated method stub
-
+        pixy = Pixy2.createInstance(new SPILink());
     }
 }
