@@ -33,6 +33,18 @@ public class Vision extends SubsystemBase {
     return distanceEntry.getDouble();
   }
 
+  public void setX(double entry) {
+    xEntry.forceSetDouble(entry);
+  }
+
+  public void setY(double entry) {
+    yEntry.forceSetDouble(entry);
+  }
+
+  public void setDist(double entry) {
+    distanceEntry.forceSetDouble(entry);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
