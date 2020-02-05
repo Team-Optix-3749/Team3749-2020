@@ -14,26 +14,24 @@ import frc.robot.Robot;
 public class Shooter extends SubsystemBase {
 
   private TalonSRX m_shooterMotor;
-  private StringBuilder m_StringBuilder;
-  private int kloops = 0;
 
   public Shooter() {
 
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
-    m_StringBuilder = new StringBuilder();
     
     /* Factory Default all hardware to prevent unexpected behaviour */
     m_shooterMotor.configFactoryDefault();
 
 		/* Config sensor used for Primary PID [Velocity] */
-        m_shooterMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,
-                                            Robot.getConstants().kPIDLoopIdx, 
-                                            Robot.getConstants().kTimeoutMs);
+    m_shooterMotor.configSelectedFeedbackSensor(
+      FeedbackDevice.CTRE_MagEncoder_Relative, 
+      Robot.getConstants().kPIDLoopIdx, 
+      Robot.getConstants().kTimeoutMs);
 
-        /**
-		 * Phase sensor accordingly. 
-         * Positive Sensor Reading should match Green (blinking) Leds on Talon
-         */
+    /**
+     * Phase sensor accordingly. 
+     * Positive Sensor Reading should match Green (blinking) Leds on Talon
+     */
 		m_shooterMotor.setSensorPhase(true);
 
 		/* Config the peak and nominal outputs */
@@ -57,6 +55,21 @@ public class Shooter extends SubsystemBase {
 
   public void shoot(){
     rawSpeed(Robot.getConstants().kShooterSpeed);
+  }
+
+  public void pidShoot(double velocity) {
+    	/* Velocity Closed Loop */
+
+			/**
+			 * Convert 500 RPM to units / 100ms.
+			 * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+			 * velocity setpoint is in units/100ms
+			 */
+
+      // double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096 / 600;
+      
+			/* 500 RPM in either direction */
+			m_shooterMotor.set(ControlMode.Velocity, velocity);
   }
 
   public void stop(){
