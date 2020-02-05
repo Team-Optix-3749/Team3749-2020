@@ -56,7 +56,7 @@ public class Shooter extends SubsystemBase {
     rawSpeed(Robot.getConstants().kShooterSpeed);
   }
 
-  public void pidShoot(double velocity) {
+  public void setVelocity(double velocity) {
     	/* Velocity Closed Loop */
 
 			/**
