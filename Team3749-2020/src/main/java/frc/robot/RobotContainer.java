@@ -58,7 +58,7 @@ public class RobotContainer {
 
     // Shoot when x button is pressed
     new JoystickButton(m_xboxController, Button.kStickRight.value)
-      .whenHeld(new PidShootStart(m_shooter, 10000000), false);
+      .whenHeld(new PidShootStart(m_shooter, 100000), false);
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
