@@ -8,7 +8,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ArcadeDriveSlow extends CommandBase {
     private final Drivetrain m_drive;
 
-
+    /**
+     * 
+     * @param drive
+     */
     public ArcadeDriveSlow(Drivetrain drive) {
         m_drive = drive;
     }

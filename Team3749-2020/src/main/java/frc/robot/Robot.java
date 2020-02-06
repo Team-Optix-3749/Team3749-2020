@@ -14,53 +14,60 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 
-import frc.robot.subsystems.*;
 import frc.robot.Constants;
+import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
+  private static Constants m_constants;
   private static RobotContainer m_robotContainer;
 
-  private static Constants m_constants;
+  private static Drivetrain m_drive;
 
-  private static Drivetrain m_drivetrain;
-
-  private static Low_Shooter m_shoot;
-  
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
+    m_constants = new Constants();
     m_robotContainer = new RobotContainer();
+    m_drive = new Drivetrain();
 
     initCamera();
   }
 
+  /**
+   * A simple getter method for RobotContainer.java
+   * @return m_robotContainer
+   */
   public static RobotContainer getRobotContainer() {
     return m_robotContainer;
   }
 
+  /**
+   * A simple getter method for Constants.java
+   * @return m_constants
+   */
   public static Constants getConstants() {
     return m_constants;
   }
 
-  public static Drivetrain getDrivetrain() {
-    return m_drivetrain;
-  }
-
-  public static Low_Shooter getShooter() {
-    return m_shoot;
+  /** 
+  * A simple getter method for Constants.java
+  * @return m_drive
+  */
+  public static Drivetrain getDrivetrain(){
+    return m_drive;
   }
 
   public void initCamera() {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setBrightness(8);
-    camera.setExposureManual(5);
-    // camera.setExposureAuto();
+    //camera.setExposureManual(10);
+    camera.setExposureAuto();
   }
 
   /**
@@ -74,6 +81,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
@@ -114,6 +122,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    // m_drive.updateOdometry();
   }
 
   @Override
@@ -125,7 +134,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    
   }
 
   /**

@@ -34,30 +34,30 @@ public final class Constants {
     // Xbox Map
     public final int kXboxControllerPort = 0;
 
-    public static final int A = 1;
-    public static final int B = 2;
-    public static final int X = 3;
-    public static final int Y = 4;
+    public final int A = 1;
+    public final int B = 2;
+    public final int X = 3;
+    public final int Y = 4;
 
-    public static final int LB = 5;
-    public static final int RB = 6;
+    public final int LB = 5;
+    public final int RB = 6;
 
-    public static final int BACK = 7;
-    public static final int START = 8;
+    public final int BACK = 7;
+    public final int START = 8;
 
-    public static final int LT = 2;
-    public static final int RT = 3;
+    public final int LT = 2;
+    public final int RT = 3;
 
-    public static final int LS = 9;
-    public static final int RS = 10;
+    public final int LS = 9;
+    public final int RS = 10;
 
-    public static final int LY = 1;
-    public static final int RX = 4;
+    public final int LY = 1;
+    public final int RX = 4;
 
-    public static final int LSX = 0;
-    public static final int LSY = 1;
-    public static final int RSX = 4;
-    public static final int RSY = 5;
+    public final int LSX = 0;
+    public final int LSY = 1;
+    public final int RSX = 4;
+    public final int RSY = 5;
 
     // Joystick map
     public final int kJoystickPort = 1;
@@ -74,6 +74,11 @@ public final class Constants {
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1;
+    public final double kMaxSpeed = 3.0; // meters per second
+    public final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
+    public final double kTrackWidth = 0.381 * 2; // meters
+    public final double kWheelRadius = 0.0508; // meters
+    public final int kEncoderResolution = 4096;
 
     public Constants() {
 
@@ -87,16 +92,18 @@ public final class Constants {
         // loading map values for drive
         // first character = left or right
         // second character = front, middle, or back
-        setCAN("drive_lf", 10);
+        setCAN("drive_lf", 12);
         // setCAN("drive_lm", 21);
         setCAN("drive_lb", 23);
-        setCAN("drive_rf", 11);
+        setCAN("drive_rf", 13);
         // setCAN("drive_rm", 20);
         setCAN("drive_rb", 22);
 
         // intake/grabber wheel map
-        setCAN("wheel_left", 3);
+        setCAN("shooter_motor", 10);
         setCAN("wheel_right", 1);
+        setCAN("elevatorLeft", 15);
+        setCAN("elevatorRight", 16);
 
         // main subsystem srx motor ports
         setCAN("tilt", 1);
