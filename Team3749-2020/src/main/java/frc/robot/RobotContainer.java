@@ -62,13 +62,6 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
-      /*
-    // Shoot when b button is pressed
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenHeld(new ShootStart(m_shooter), false);
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenReleased(new ShootStop(m_shooter), false);
-*/
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ColorSensorCommand(m_colorSensor), false);
