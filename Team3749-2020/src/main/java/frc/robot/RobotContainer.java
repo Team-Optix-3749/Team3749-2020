@@ -57,9 +57,9 @@ public class RobotContainer {
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
     // Shoot when x button is pressed
-    new JoystickButton(m_xboxController, Robot.getConstants().RT)
-      .whenHeld(new PidShootStart(m_shooter, Robot.getConstants().kShooterSpeed), false);
-    new JoystickButton(m_xboxController, Robot.getConstants().RT)
+    new JoystickButton(m_xboxController, Button.kStickRight.value)
+      .whenHeld(new PidShootStart(m_shooter, 10000000), false);
+    new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
       /*
