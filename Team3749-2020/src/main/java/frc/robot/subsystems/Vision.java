@@ -1,22 +1,23 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import io.github.pseudoresonance.pixy2api.Pixy2;
-import io.github.pseudoresonance.pixy2api.links.SPILink;
 
 /**
  *
  */
 public class Vision extends Subsystem {
 
-    private static Pixy2 pixy;
+    private SerialPort serialport;
 
-    @Override
-    protected void initDefaultCommand() {
-        pixy = Pixy2.createInstance(new SPILink());
-        pixy.init();
-        pixy.setCameraBrightness(10);
-        pixy.getVideo();
+    public Vision() {
+        serialport = new SerialPort(115200, SerialPort.Port.kUSB);
     }
+
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
