@@ -102,6 +102,11 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kY.value)
     .whenHeld(new ElevatorTopPosition(m_elevator), true);
     
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenHeld(new LowShootStart(m_lowshooter), true);
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenReleased(new LowShootStop(m_lowshooter), true);
+    
   }
 
   /**
