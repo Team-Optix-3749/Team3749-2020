@@ -36,7 +36,7 @@ public class ExampleCommand extends Command {
       if (THEmotorState == 1){
         THEmotorState = 0;
       }
-      if(THEmotorState == 0){
+      else if(THEmotorState == 0){
         THEmotorState = 1;
       }
     }

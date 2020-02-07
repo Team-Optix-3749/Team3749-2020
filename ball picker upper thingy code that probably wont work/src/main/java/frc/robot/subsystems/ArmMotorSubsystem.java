@@ -7,17 +7,20 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Spark;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+
+
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
-public class motorSubsystem extends Subsystem {
+public class ArmMotorSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private Spark THEmotor = new Spark(RobotMap.THEmotor);
+  private VictorSPX IntakeMotor = new VictorSPX(RobotMap.THEmotor);
 
   @Override
   public void initDefaultCommand() {
@@ -25,6 +28,6 @@ public class motorSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void setMotor(double speed){
-    THEmotor.setSpeed(1);
+    IntakeMotor.set(ControlMode.PercentOutput, 0.7);
   }
 }
