@@ -26,7 +26,7 @@ import frc.robot.subsystems.ColorSensor;
 
 import frc.robot.commands.ControlPanelStart;
 import frc.robot.commands.ControlPanelStop;
-import frc.robot.subsystems.ControlPanelSubsystem;
+import frc.robot.subsystems.ControlPanel;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -49,7 +49,7 @@ public class RobotContainer {
   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
 
-  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
+  private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
@@ -88,13 +88,13 @@ public class RobotContainer {
 
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ColorSensorCommand(m_colorSensor), false);
+      .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
     // Start control panel motor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ControlPanelStart(m_controlPanel), false);
+      .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenReleased(new ControlPanelStop(m_controlPanel), false);
+      .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
 
     //move elevator motors to the top  when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
