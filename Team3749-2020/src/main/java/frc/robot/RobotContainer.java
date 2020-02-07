@@ -170,7 +170,7 @@ public class RobotContainer {
    * @return m_colorSensorSubsystem
    */
   public ColorSensor getColorSensor() {
-    return m_colorSensor;
+    return m_ColorSensorSubsystem;
   }
 
   /**
@@ -178,7 +178,7 @@ public class RobotContainer {
    * @return m_controlPanel
    */
   public ControlPanel ControlPanelSubsystem() {
-    return m_controlPanel;
+    return m_ControlPanelSubsystem;
   }
 
   /**
