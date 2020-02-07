@@ -17,6 +17,17 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
+import frc.robot.commands.ColorSensorCommand;
+import frc.robot.commands.ColorSensorRed;
+import frc.robot.commands.ColorSensorYellow;
+import frc.robot.commands.ColorSensorGreen;
+import frc.robot.commands.ColorSensorBlue;
+import frc.robot.subsystems.ColorSensor;
+
+import frc.robot.commands.ControlPanelStart;
+import frc.robot.commands.ControlPanelStop;
+import frc.robot.subsystems.ControlPanelSubsystem;
+
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -30,11 +41,24 @@ public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
-  private final ColorSensor m_colorSensor = new ColorSensor();
-  private final ControlPanel m_controlPanel = new ControlPanel();
+  
+  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
+  private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
+  private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
+  private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
+  private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
+  private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
+
+  private final ControlPanelSubsystem m_ControlPanelSubsystem = new ControlPanelSubsystem();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
+  
+  JoystickButton rJoy = new JoystickButton(m_xboxController, 10);
+  JoystickButton a = new JoystickButton(m_xboxController, 1);
+  JoystickButton b = new JoystickButton(m_xboxController, 2);
+  JoystickButton x = new JoystickButton(m_xboxController, 3);
+  JoystickButton y = new JoystickButton(m_xboxController, 4);
 
 
   public RobotContainer() {
@@ -80,6 +104,36 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kB.value)
     .whenHeld(new ElevatorBottom(m_elevator), true);
     
+    //Big nut control panel code
+    rJoy.whileHeld(m_ColorSensorCommand, true);
+    if(m_ColorSensorCommand.isFinished() == false){
+      rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      rJoy.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    a.whileHeld(m_ColorSensorGreen, true);
+    if(m_ColorSensorGreen.isFinished() == false){
+      a.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      a.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    b.whileHeld(m_ColorSensorRed, true);
+    if(m_ColorSensorRed.isFinished() == false){
+      b.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      b.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    x.whileHeld(m_ColorSensorBlue, true);
+    if(m_ColorSensorBlue.isFinished() == false){
+      x.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      x.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    y.whileHeld(m_ColorSensorYellow, true);
+    if(m_ColorSensorYellow.isFinished() == false){
+      y.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      y.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
   }
 
   /**
