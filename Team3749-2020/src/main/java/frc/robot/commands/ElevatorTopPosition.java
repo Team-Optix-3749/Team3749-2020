@@ -19,7 +19,7 @@ public class ElevatorTopPosition extends CommandBase {
 
   private void moveToTop() {
     //using time right now to implement this, will later move to using limit switches 
-    m_subsystem.startMotor(0.4);
+    m_subsystem.startMotor(0.2);
     Timer.delay(1);
     m_subsystem.stopMotor();
   }

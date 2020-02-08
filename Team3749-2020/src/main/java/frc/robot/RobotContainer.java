@@ -17,6 +17,17 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
+import frc.robot.commands.ColorSensorCommand;
+import frc.robot.commands.ColorSensorRed;
+import frc.robot.commands.ColorSensorYellow;
+import frc.robot.commands.ColorSensorGreen;
+import frc.robot.commands.ColorSensorBlue;
+import frc.robot.subsystems.ColorSensor;
+
+import frc.robot.commands.ControlPanelStart;
+import frc.robot.commands.ControlPanelStop;
+import frc.robot.subsystems.ControlPanel;
+
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -30,35 +41,29 @@ public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
-  private final ColorSensor m_colorSensor = new ColorSensor();
-  private final ControlPanel m_controlPanel = new ControlPanel();
   private final LowShooter m_lowshooter = new LowShooter();
+  
+  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
+  private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
+  private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
+  private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
+  private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
+  private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
+
+  private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
-
-  // private final SlewRateLimiter m_speedLimiter = new SlewRateLimiter(3);
-  // private final SlewRateLimiter m_rotLimiter = new SlewRateLimiter(3);
+  
+  JoystickButton rJoy = new JoystickButton(m_xboxController, 10);
+  JoystickButton a = new JoystickButton(m_xboxController, 1);
+  JoystickButton b = new JoystickButton(m_xboxController, 2);
+  JoystickButton x = new JoystickButton(m_xboxController, 3);
+  JoystickButton y = new JoystickButton(m_xboxController, 4);
 
 
   public RobotContainer() {
     configureButtonBindings();
-
-    // // Get the x speed. We are inverting this because Xbox controllers return
-    // // negative values when we push forward.
-    // final var xSpeed =
-    //   -m_speedLimiter.calculate(m_xboxController.getY(Hand.kLeft))
-    //     * Robot.getConstants().kMaxSpeed;
-
-    // // Get the rate of angular rotation. We are inverting this because we want a
-    // // positive value when we pull to the left (remember, CCW is positive in
-    // // mathematics). Xbox controllers return positive values when you pull to
-    // // the right by default.
-    // final var rot =
-    //   -m_rotLimiter.calculate(m_xboxController.getX(Hand.kRight))
-    //     * Robot.getConstants().kMaxAngularSpeed;
-
-    // m_drive.setDefaultCommand(new Drive(m_drive, xSpeed, rot));
 
     m_drive.setDefaultCommand(
        new ArcadeDrive(
@@ -77,36 +82,59 @@ public class RobotContainer {
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
     // Shoot when x button is pressed
-    new JoystickButton(m_xboxController, Button.kX.value)
+    new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenHeld(new PidShootStart(m_shooter, 100000), false);
-    new JoystickButton(m_xboxController, Button.kX.value)
+    new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
-
-    // Shoot when b button is pressed
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenHeld(new ShootStart(m_shooter), false);
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenReleased(new ShootStop(m_shooter), false);
 
     // Start color sensor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ColorSensorCommand(m_colorSensor), false);
+      .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
     // Start control panel motor while a button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new ControlPanelStart(m_controlPanel), false);
+      .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenReleased(new ControlPanelStop(m_controlPanel), false);
+      .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
 
-    //move elevator motors to the top or the bottom when y is pressed
+    //move elevator motors to the top  when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
     .whenHeld(new ElevatorTopPosition(m_elevator), true);
 
-    new JoystickButton(m_xboxController, Button.kStart.value)
-    .whenHeld(new LowShootStart(m_lowshooter), true);
-    new JoystickButton(m_xboxController, Button.kStart.value)
-    .whenReleased(new LowShootStop(m_lowshooter), true);
+    //move elevator motors to the top  when y is pressed
+    new JoystickButton(m_xboxController, Button.kB.value)
+    .whenHeld(new ElevatorBottom(m_elevator), true);
     
+    //Big nut control panel code
+    rJoy.whileHeld(m_ColorSensorCommand, true);
+    if(m_ColorSensorCommand.isFinished() == false){
+      rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      rJoy.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    a.whileHeld(m_ColorSensorGreen, true);
+    if(m_ColorSensorGreen.isFinished() == false){
+      a.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      a.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    b.whileHeld(m_ColorSensorRed, true);
+    if(m_ColorSensorRed.isFinished() == false){
+      b.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      b.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    x.whileHeld(m_ColorSensorBlue, true);
+    if(m_ColorSensorBlue.isFinished() == false){
+      x.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      x.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
+
+    y.whileHeld(m_ColorSensorYellow, true);
+    if(m_ColorSensorYellow.isFinished() == false){
+      y.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+      y.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+    }
   }
 
   /**
@@ -143,7 +171,7 @@ public class RobotContainer {
    * @return m_colorSensorSubsystem
    */
   public ColorSensor getColorSensor() {
-    return m_colorSensor;
+    return m_ColorSensorSubsystem;
   }
 
   /**
@@ -151,17 +179,17 @@ public class RobotContainer {
    * @return m_controlPanel
    */
   public ControlPanel ControlPanelSubsystem() {
-    return m_controlPanel;
+    return m_ControlPanelSubsystem;
   }
 
   public LowShooter getLowShooter() {
-    return m_lowshooter;   
+    return m_lowshooter;
   }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
-   * @return the command to run in autonomous
+   * @return the command to run in autonom  ous
    */
   // public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
