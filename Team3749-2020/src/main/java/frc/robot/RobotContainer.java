@@ -48,6 +48,7 @@ public class RobotContainer {
   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
+  private final AutonomousCommand m_autoCommand = new AutonomousCommand();
 
   private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
@@ -186,8 +187,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  // public Command getAutonomousCommand() {
+   public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
-  // return m_autoCommand;
-  // }
+   return m_autoCommand;
+  }
 }
