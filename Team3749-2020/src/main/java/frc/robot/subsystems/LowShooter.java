@@ -24,13 +24,17 @@ public class LowShooter extends SubsystemBase {
   }
 
   public void LowShoot(){
-    setSpeed(Robot.getConstants().kShooterSpeed);
+    setSpeed(Robot.getConstants().kLowshooterSpeed);
   }
 
   public void Stop(){
     setSpeed(0);
   }
-  
+
+  // public void Reset() {
+
+  // }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
