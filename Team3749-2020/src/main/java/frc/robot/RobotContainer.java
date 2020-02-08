@@ -32,6 +32,7 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final ColorSensor m_colorSensor = new ColorSensor();
   private final ControlPanel m_controlPanel = new ControlPanel();
+  private final LowShooter m_lowshooter = new LowShooter();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
@@ -100,6 +101,11 @@ public class RobotContainer {
     //move elevator motors to the top or the bottom when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
     .whenHeld(new ElevatorTopPosition(m_elevator), true);
+
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenHeld(new LowShootStart(m_lowshooter), true);
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenReleased(new LowShootStop(m_lowshooter), true);
     
   }
 
@@ -146,6 +152,10 @@ public class RobotContainer {
    */
   public ControlPanel ControlPanelSubsystem() {
     return m_controlPanel;
+  }
+
+  public LowShooter getLowShooter() {
+    return m_lowshooter;   
   }
 
   /**
