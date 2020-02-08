@@ -105,6 +105,12 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kB.value)
     .whenHeld(new ElevatorBottom(m_elevator), true);
     
+    // Low Shooter when start button is pressed 
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenHeld(new LowShootStart(m_lowshooter), true);
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenReleased(new LowShootStop(m_lowshooter), true);
+
     //Big nut control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
     if(m_ColorSensorCommand.isFinished() == false){
