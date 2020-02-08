@@ -90,11 +90,11 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
-    // Start color sensor while a button is pressed
+    // Start color sensor while a button is held
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
-    // Start control panel motor while a button is pressed
+    // Start control panel motor while a button is held
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
