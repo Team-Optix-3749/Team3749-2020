@@ -43,6 +43,7 @@ public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
+  private final LowShooter m_lowshooter = new LowShooter();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -107,6 +108,12 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kB.value)
     .whenHeld(new ElevatorBottom(m_elevator), true);
     
+    // Low Shooter when start button is pressed 
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenHeld(new LowShootStart(m_lowshooter), true);
+    new JoystickButton(m_xboxController, Button.kStart.value)
+    .whenReleased(new LowShootStop(m_lowshooter), true);
+
     //Big nut control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
     if(m_ColorSensorCommand.isFinished() == false){
@@ -184,10 +191,14 @@ public class RobotContainer {
     return m_ControlPanelSubsystem;
   }
 
+  public LowShooter getLowShooter() {
+    return m_lowshooter;
+  }
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
-   * @return the command to run in autonomous
+   * @return the command to run in autonom  ous
    */
    public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
