@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.Joystick;
 // import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
@@ -49,6 +51,7 @@ public class RobotContainer {
   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
+  private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
 
   private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
@@ -171,7 +174,7 @@ public class RobotContainer {
    * A simple getter method for the shooter system
    * @return m_elevatorRight
    */
-
+ 
   /**
    * A simple getter method for the shooter system
    * @return m_colorSensorSubsystem
@@ -197,8 +200,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonom  ous
    */
-  // public Command getAutonomousCommand() {
+   public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
-  // return m_autoCommand;
-  // }
+return null; 
+  }
 }
