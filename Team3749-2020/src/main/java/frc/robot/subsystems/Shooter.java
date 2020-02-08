@@ -15,8 +15,17 @@ public class Shooter extends SubsystemBase {
 
   private TalonSRX m_shooterMotor;
 
+  /* String for output */
+  private StringBuilder m_stringBuilder;
+
+  /* Loop tracker for prints */
+	int kLoops = 0;
+
+  private double motorOutput;
+
   public Shooter() {
     m_shooterMotor = new TalonSRX(Robot.getConstants().getCAN("shooter_motor"));
+    m_stringBuilder= new StringBuilder();
 
     /* Factory Default all hardware to prevent unexpected behaviour */
     m_shooterMotor.configFactoryDefault();
@@ -43,6 +52,8 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor.config_kD(Robot.getConstants().kPIDLoopIdx, Robot.getConstants().kGains_Velocit.kD,
         Robot.getConstants().kTimeoutMs);
 
+    motorOutput = m_shooterMotor.getMotorOutputPercent();
+
     reset();
   }
 
@@ -52,6 +63,18 @@ public class Shooter extends SubsystemBase {
 
   public void shoot() {
     rawSpeed(Robot.getConstants().kShooterSpeed);
+  }
+
+  public void strings() {
+    /* Prepare line to print */
+    m_stringBuilder.append("\tout:");
+		/* Cast to int to remove decimal places */
+		m_stringBuilder.append((int) (motorOutput * 100));
+		m_stringBuilder.append("%");	// Percent
+
+		m_stringBuilder.append("\tspd:");
+		m_stringBuilder.append(m_shooterMotor.getSelectedSensorVelocity(Robot.getConstants().kPIDLoopIdx));
+		m_stringBuilder.append("u"); 	// Native units
   }
 
   /**
@@ -71,6 +94,12 @@ public class Shooter extends SubsystemBase {
 
     /* 500 RPM in either direction */
     m_shooterMotor.set(ControlMode.Velocity, velocity);
+
+    /* Append more signals to print when in speed mode. */
+    m_stringBuilder.append("\terr:");
+    m_stringBuilder.append(m_shooterMotor.getClosedLoopError(Robot.getConstants().kPIDLoopIdx));
+    m_stringBuilder.append("\ttrg:");
+    m_stringBuilder.append(velocity); 
   }
 
   public void stop() {
@@ -83,6 +112,14 @@ public class Shooter extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    strings();
+
+    /* Print built string every 10 loops */
+		if (++kLoops >= 10) {
+			kLoops = 0;
+			System.out.println(m_stringBuilder.toString());
+        }
+        /* Reset built string */
+    m_stringBuilder.setLength(0);
   }
 }

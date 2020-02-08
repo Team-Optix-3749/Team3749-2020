@@ -25,7 +25,7 @@ public class ColorSensor extends SubsystemBase {
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-  private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+  private final Color kYellowTarget = ColorMatch.makeColor(0.361083984375, 0.52392578125, 0.113037109375);
 
   public String DetectColor() {
     m_colorMatcher.addColorMatch(kBlueTarget);
@@ -35,21 +35,25 @@ public class ColorSensor extends SubsystemBase {
 
     Color detectedColor = m_colorSensor.getColor();
 
-    String colorString;
+    String colorString; 
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+    
+    System.out.println(match.color.red);
+    System.out.println(match.color.green);
+    System.out.println(match.color.blue);
+    System.out.println(match.confidence);
 
-    if (match.color == kBlueTarget) {
+    if (match.color == kBlueTarget && match.confidence > 0.94) {
       colorString = "Blue";
-    } else if (match.color == kRedTarget) {
+    } else if (match.color == kRedTarget && match.confidence > 0.94) {
       colorString = "Red";
-    } else if (match.color == kGreenTarget) {
+    } else if (match.color == kGreenTarget && match.confidence > 0.94) {
       colorString = "Green";
-    } else if (match.color == kYellowTarget) {
+    } else if (match.color == kYellowTarget && match.confidence > 0.94) {
       colorString = "Yellow";
     } else {
       colorString = "Unknown";
     }
-
     return colorString;
   }
 

@@ -14,6 +14,13 @@ import frc.robot.subsystems.ColorSensor;
 public class ColorSensorCommand extends CommandBase {
   
   private final ColorSensor m_sColorSensor;
+  private String initialColor = "Unknown";
+  private boolean isDone = false;
+  private int timesSeen = 0;
+  private int amountSeen = 0;
+  private String currentColor = "Unknown";
+  private int rotations = 0;
+
   /**
    * Creates a new ColorSensorCommand.
    */
@@ -25,13 +32,38 @@ public class ColorSensorCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    initialColor = m_sColorSensor.DetectColor();
+    currentColor = m_sColorSensor.DetectColor();
+    System.out.println("Initial color is: " + initialColor);
+    timesSeen = 0;
+    amountSeen = 0;
+    rotations = 0;
+    isDone = false;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    amountSeen++;
     String color = m_sColorSensor.DetectColor();
     System.out.println(color);
+    if(currentColor != color && amountSeen > 40){
+      if(color == initialColor){
+        timesSeen++;
+        System.out.println("Times Seen: " + timesSeen);
+      }
+      currentColor = color;
+      System.out.println(currentColor);
+      amountSeen = 0;
+    }
+    if(timesSeen == 2){
+      rotations++;
+      timesSeen = 0;
+    }
+
+    if(rotations == 4){
+      isDone = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +74,6 @@ public class ColorSensorCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return isDone;
   }
 }
