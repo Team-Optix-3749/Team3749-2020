@@ -102,11 +102,11 @@ public class RobotContainer {
 
     //move elevator motors to the top  when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
-    .whenHeld(new ElevatorTopPosition(m_elevator), true);
+    .whenPressed(new ElevatorTopPosition(m_elevator), true);
 
-    //move elevator motors to the top  when y is pressed
+    //move elevator motors back down when b is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
-    .whenHeld(new ElevatorBottom(m_elevator), true);
+    .whenPressed( new ElevatorBottom(m_elevator), true);
     
     // Low Shooter when start button is pressed 
     new JoystickButton(m_xboxController, Button.kStart.value)
@@ -114,7 +114,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStart.value)
     .whenReleased(new LowShootStop(m_lowshooter), true);
 
-    //Big nut control panel code
+    // control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
     if(m_ColorSensorCommand.isFinished() == false){
       rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
