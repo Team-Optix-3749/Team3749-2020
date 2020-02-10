@@ -73,7 +73,8 @@ public final class Constants {
     public final double kDriveSpeed = 0.5;
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
-    public final double kShooterSpeed = 1;
+    public final double kShooterSpeed = 1; 
+    public final double kLowshooterSpeed = 0.6;
     public final double kMaxSpeed = 3.0; // meters per second
     public final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
     public final double kTrackWidth = 0.381 * 2; // meters
@@ -107,8 +108,7 @@ public final class Constants {
         // intake/grabber wheel map
         setCAN("shooter_motor", 10);
         setCAN("wheel_right", 1);
-        setCAN("elevatorLeft", 15);
-        setCAN("elevatorRight", 16);
+        setCAN("elevatorMotor", 15);
 
         // main subsystem srx motor ports
         setCAN("tilt", 1);

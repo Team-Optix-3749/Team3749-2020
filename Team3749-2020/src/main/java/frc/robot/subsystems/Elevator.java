@@ -12,9 +12,8 @@ import frc.robot.Robot;
 
 public class Elevator extends SubsystemBase {
     //include more specific code and stuff, setting up the stuff for the lifting mechanism team-skywalker
-    private WPI_TalonSRX m_left = new WPI_TalonSRX(Robot.getConstants().getCAN("elevatorLeft"));
-    private WPI_TalonSRX m_right = new WPI_TalonSRX(Robot.getConstants().getCAN("elevatorRight"));
-    
+    private WPI_TalonSRX m_elevator = new WPI_TalonSRX(Robot.getConstants().getCAN("elevatorMotor"));
+   
 
 
     @Override
@@ -25,15 +24,15 @@ public class Elevator extends SubsystemBase {
 
     public void startMotor(double speed) {
 
-      m_left.set(ControlMode.PercentOutput, speed);
-      m_right.set(ControlMode.PercentOutput,speed);
+      m_elevator.set(ControlMode.PercentOutput, speed);
+     
     }
 
     public void stopMotor() {
 
       
-      m_left.set(ControlMode.PercentOutput, 0);
-      m_right.set(ControlMode.PercentOutput, 0);
+      m_elevator.set(ControlMode.PercentOutput, 0);
+     
     }
     //Do we need a set position??
 }

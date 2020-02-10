@@ -90,11 +90,11 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
-    // Start color sensor while a button is pressed
+    // Start color sensor while a button is held
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
-    // Start control panel motor while a button is pressed
+    // Start control panel motor while a button is held
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
     new JoystickButton(m_xboxController, Button.kA.value)
@@ -102,11 +102,11 @@ public class RobotContainer {
 
     //move elevator motors to the top  when y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
-    .whenHeld(new ElevatorTopPosition(m_elevator), true);
+    .whenPressed(new ElevatorTopPosition(m_elevator), true);
 
-    //move elevator motors to the top  when y is pressed
+    //move elevator motors back down when b is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
-    .whenHeld(new ElevatorBottom(m_elevator), true);
+    .whenPressed( new ElevatorBottom(m_elevator), true);
     
     // Low Shooter when start button is pressed 
     new JoystickButton(m_xboxController, Button.kStart.value)
@@ -114,7 +114,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStart.value)
     .whenReleased(new LowShootStop(m_lowshooter), true);
 
-    //Big nut control panel code
+    // control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
     if(m_ColorSensorCommand.isFinished() == false){
       rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
@@ -202,6 +202,6 @@ public class RobotContainer {
    */
    public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
-return null; 
+    return null; 
   }
 }
