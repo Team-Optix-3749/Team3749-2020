@@ -74,6 +74,9 @@ public class Vision extends Subsystem {
     public String getMessage() {
         return message;
     }
+    public void stop() {
+        
+    }
 
     public void setMessage(String message) {
         this.message = message;

@@ -15,6 +15,7 @@ public class RotateToTarget extends Command {
     private final Vision m_vision;
     private final DoubleSupplier m_forward;
     private final DoubleSupplier m_rotation;
+    private boolean continueRotating;
 
     public RotateToTarget(Drivetrain drive, DoubleSupplier forward, DoubleSupplier rotation, Vision vision) {
            m_rotation = rotation;
@@ -31,13 +32,23 @@ public class RotateToTarget extends Command {
            return networkTable.getEntry("x").getDouble(-1);
     }
 
-   private void rotate() {
+    //continueRotating = true;
+    //if(continueRotating==true){
+    //   rotate();
+        
+     //   }
+
+
+   
+    private void rotate() {
        Object table;
        double error = getx()-1;
        if (getx() != -1) {
            ((Drivetrain) m_rotation).arcadeDrive(0, 0.3 * error);
         }
     }
+
+   
 
    @Override
     protected boolean isFinished() {
