@@ -1,18 +1,26 @@
 package frc.robot.commands;
+
 import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Vision;
 import frc.robot.commands.ArcadeDrive;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
-public class RotatetoTarget extends Command {
-   private DoubleSupplier m_rotation;
+public class RotateToTarget extends Command {
+    private final Drivetrain m_drive;
+    private final Vision m_vision;
+    private final DoubleSupplier m_forward;
+    private final DoubleSupplier m_rotation;
 
-   public void ArcadeDrive(Drivetrain drive, DoubleSupplier forward, DoubleSupplier rotation) {
+    public RotateToTarget(Drivetrain drive, DoubleSupplier forward, DoubleSupplier rotation, Vision vision) {
            m_rotation = rotation;
+           m_drive = drive;
+           m_forward = forward;
+           m_vision = vision;
     }
 
    public double getx() {
