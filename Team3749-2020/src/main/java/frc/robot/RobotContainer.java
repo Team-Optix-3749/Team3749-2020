@@ -18,16 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-
-import frc.robot.commands.ColorSensorCommand;
-import frc.robot.commands.ColorSensorRed;
-import frc.robot.commands.ColorSensorYellow;
-import frc.robot.commands.ColorSensorGreen;
-import frc.robot.commands.ColorSensorBlue;
 import frc.robot.subsystems.ColorSensor;
-
-import frc.robot.commands.ControlPanelStart;
-import frc.robot.commands.ControlPanelStop;
 import frc.robot.subsystems.ControlPanel;
 
 /**
@@ -115,9 +106,9 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStart.value)
     .whenReleased(new LowShootStop(m_lowshooter), true);
 
-    //Vision to read data when x is pressed
+    //Vision to read data, adjust to target, and shoot when x is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
-    .whenPressed(new ReadTargetData(m_vision), true);
+    .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
 
     // control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
