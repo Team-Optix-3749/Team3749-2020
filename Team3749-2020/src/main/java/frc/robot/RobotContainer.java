@@ -83,14 +83,14 @@ public class RobotContainer {
       .whenReleased(new PidShootStop(m_shooter), false);
 
     // Start color sensor while a button is held
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
     // Start control panel motor while a button is held
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
     
-      new JoystickButton(m_xboxController, Button.kA.value)
+      new JoystickButton(m_xboxController, Button.kB.value)
       .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
 
     //move elevator motors to the top  when y is pressed
@@ -98,7 +98,7 @@ public class RobotContainer {
     .whenPressed(new ElevatorTopPosition(m_elevator), true);
 
     //move elevator motors back down when b is pressed
-    new JoystickButton(m_xboxController, Button.kB.value)
+    new JoystickButton(m_xboxController, Button.kA.value)
     .whenPressed( new ElevatorBottom(m_elevator), true);
     
     // Low Shooter when start button is pressed 
