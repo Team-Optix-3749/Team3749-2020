@@ -71,7 +71,6 @@ public class RobotContainer {
     // Increase drive speed when right bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenHeld(new ArcadeDriveFast(m_drive), true);
-
     // Decrease drive speed when left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
