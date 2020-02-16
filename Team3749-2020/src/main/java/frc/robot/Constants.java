@@ -98,36 +98,23 @@ public final class Constants {
         // loading map values for drive
         // first character = left or right
         // second character = front, middle, or back
-        setCAN("drive_lf", 12);
-        // setCAN("drive_lm", 21);
-        setCAN("drive_lb", 23);
+        setCAN("drive_lf", 11);
+        setCAN("drive_lb", 20);
         setCAN("drive_rf", 13);
-        // setCAN("drive_rm", 20);
-        setCAN("drive_rb", 22);
+        setCAN("drive_rb", 23);
 
-        // intake/grabber wheel map
+        // shooter and elevator map
         setCAN("shooter_motor", 10);
-        setCAN("wheel_right", 1);
-        setCAN("elevatorMotor", 15);
-
-        // main subsystem srx motor ports
-        setCAN("tilt", 1);
-        setCAN("elevator", 2);
-
-        // victor spx
-        setCAN("climb", 2);
-
-        // limit switches
-        setDIO("intake_switch", 0);
-        setDIO("climb_switch", 1);
+        setCAN("intake_motor", 21);
+        setCAN("elevator_motor", 24);
 
         // whether a subsystem is installed and in use
         // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
-        setSys("tilt", 2);
-        setSys("drive", 1);
-        setSys("wheelio", 1);
-        setSys("elevator", 1);
-        setSys("climb", 0);
+        // setSys("tilt", 2);
+        // setSys("drive", 1);
+        // setSys("wheelio", 1);
+        // setSys("elevator", 1);
+        // setSys("climb", 0);
     }
 
     /**
