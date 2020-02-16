@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+// import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
@@ -34,16 +34,16 @@ public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
-  private final LowShooter m_lowshooter = new LowShooter();
+  // private final LowShooter m_lowshooter = new LowShooter();
   private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
-  private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
-  private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
-  private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
-  private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
-  private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
- // private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
+  // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
+//   private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
+//   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
+//   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
+//   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
+// private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
 
   private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
@@ -75,7 +75,6 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
-    
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenHeld(new PidShootStart(m_shooter, 100000), false);
     new JoystickButton(m_xboxController, Button.kStickLeft.value)
@@ -99,46 +98,46 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
     .whenPressed( new ElevatorBottom(m_elevator), true);
     
-   //Vision to read data, adjust to target, and shoot when X is pressed
-   new JoystickButton(m_xboxController, Button.kX.value)
-   .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
+  //  //Vision to read data, adjust to target, and shoot when X is pressed
+  //  new JoystickButton(m_xboxController, Button.kX.value)
+  //  .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
 
-    // Low Shooter when start button is pressed 
-    // new JoystickButton(m_xboxController, Button.kStart.value)
-    // .whenHeld(new LowShootStart(m_lowshooter), true);
-    // new JoystickButton(m_xboxController, Button.kStart.value)
-    // .whenReleased(new LowShootStop(m_lowshooter), true);
+  //   // Low Shooter when start button is pressed 
+  //   // new JoystickButton(m_xboxController, Button.kStart.value)
+  //   // .whenHeld(new LowShootStart(m_lowshooter), true);
+  //   // new JoystickButton(m_xboxController, Button.kStart.value)
+  //   // .whenReleased(new LowShootStop(m_lowshooter), true);
 
-    // control panel code
-    rJoy.whileHeld(m_ColorSensorCommand, true);
-    if(m_ColorSensorCommand.isFinished() == false){
-      rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-      rJoy.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-    }
+  //   // control panel code
+  //   rJoy.whileHeld(m_ColorSensorCommand, true);
+  //   if(m_ColorSensorCommand.isFinished() == false){
+  //     rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+  //     rJoy.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+  //   }
 
-    a.whileHeld(m_ColorSensorGreen, true);
-    if(m_ColorSensorGreen.isFinished() == false){
-      a.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-      a.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-    }
+  //   a.whileHeld(m_ColorSensorGreen, true);
+  //   if(m_ColorSensorGreen.isFinished() == false){
+  //     a.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+  //     a.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+  //   }
 
-    b.whileHeld(m_ColorSensorRed, true);
-    if(m_ColorSensorRed.isFinished() == false){
-      b.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-      b.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-    }
+  //   b.whileHeld(m_ColorSensorRed, true);
+  //   if(m_ColorSensorRed.isFinished() == false){
+  //     b.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+  //     b.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+  //   }
 
-    x.whileHeld(m_ColorSensorBlue, true);
-    if(m_ColorSensorBlue.isFinished() == false){
-      x.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-      x.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-    }
+  //   x.whileHeld(m_ColorSensorBlue, true);
+  //   if(m_ColorSensorBlue.isFinished() == false){
+  //     x.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+  //     x.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+  //   }
 
-    y.whileHeld(m_ColorSensorYellow, true);
-    if(m_ColorSensorYellow.isFinished() == false){
-      y.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-      y.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-    }
+  //   y.whileHeld(m_ColorSensorYellow, true);
+  //   if(m_ColorSensorYellow.isFinished() == false){
+  //     y.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
+  //     y.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
+  //   }
   }
 
   /**
@@ -194,9 +193,9 @@ public class RobotContainer {
     return m_ControlPanelSubsystem;
   }
 
-  public LowShooter getLowShooter() {
-    return m_lowshooter;
-  }
+  // public LowShooter getLowShooter() {
+  //   return m_lowshooter;
+  // }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
