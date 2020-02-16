@@ -18,16 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-
-import frc.robot.commands.ColorSensorCommand;
-import frc.robot.commands.ColorSensorRed;
-import frc.robot.commands.ColorSensorYellow;
-import frc.robot.commands.ColorSensorGreen;
-import frc.robot.commands.ColorSensorBlue;
 import frc.robot.subsystems.ColorSensor;
-
-import frc.robot.commands.ControlPanelStart;
-import frc.robot.commands.ControlPanelStop;
 import frc.robot.subsystems.ControlPanel;
 
 /**
@@ -44,6 +35,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   private final LowShooter m_lowshooter = new LowShooter();
+  private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -115,6 +107,10 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kStart.value)
     .whenReleased(new LowShootStop(m_lowshooter), true);
 
+    //Vision to read data, adjust to target, and shoot when x is pressed
+    new JoystickButton(m_xboxController, Button.kX.value)
+    .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
+
     // control panel code
     rJoy.whileHeld(m_ColorSensorCommand, true);
     if(m_ColorSensorCommand.isFinished() == false){
@@ -173,6 +169,14 @@ public class RobotContainer {
 
   /**
    * A simple getter method for the shooter system
+   * @return m_vision
+   */
+  public Vision getVision() {
+    return m_vision;
+  }
+
+  /**
+   * A simple getter method for the shooter system
    * @return m_elevatorRight
    */
  
@@ -203,6 +207,6 @@ public class RobotContainer {
    */
    public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
-return null; 
+    return null; 
   }
 }

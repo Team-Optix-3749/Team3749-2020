@@ -26,8 +26,8 @@ public class Vision extends Subsystem {
     public Vision() {
         m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB);
         message = new String("");
-        m_x = 0;
-        m_y = 0;
+        m_x = m_y = 0;
+        m_distance = 0;
 
         inst = NetworkTableInstance.getDefault();
         table = inst.getTable("example");
@@ -73,6 +73,9 @@ public class Vision extends Subsystem {
 
     public String getMessage() {
         return message;
+    }
+    public void stop() {
+        
     }
 
     public void setMessage(String message) {
