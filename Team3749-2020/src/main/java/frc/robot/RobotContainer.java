@@ -51,7 +51,7 @@ public class RobotContainer {
   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
-  private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
+ // private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
 
   private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
 
@@ -84,7 +84,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
-    // Shoot when x button is pressed
+    
     new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenHeld(new PidShootStart(m_shooter, 100000), false);
     new JoystickButton(m_xboxController, Button.kStickRight.value)
@@ -97,7 +97,8 @@ public class RobotContainer {
     // Start control panel motor while a button is held
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false);
-    new JoystickButton(m_xboxController, Button.kA.value)
+    
+      new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
 
     //move elevator motors to the top  when y is pressed

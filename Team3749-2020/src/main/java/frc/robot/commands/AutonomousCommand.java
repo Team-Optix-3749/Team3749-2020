@@ -1,13 +1,13 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 
 /**
  * An example command that uses an example subsystem.
  */
-public class AutonomousCommand extends SequentialCommandGroup {
+public class AutonomousCommand extends Command {
 
     /**
      * Creates a new ExampleCommand.
