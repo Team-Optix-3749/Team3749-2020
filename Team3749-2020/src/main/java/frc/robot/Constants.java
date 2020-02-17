@@ -110,11 +110,11 @@ public final class Constants {
 
         // whether a subsystem is installed and in use
         // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
-        // setSys("tilt", 2);
-        // setSys("drive", 1);
-        // setSys("wheelio", 1);
-        // setSys("elevator", 1);
-        // setSys("climb", 0);
+        setSys("drive", 1);
+        setSys("shooter", 1);
+        setSys("intake", 1);
+        setSys("elevator", 1);
+        setSys("control_panel", 0);
     }
 
     /**
