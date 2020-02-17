@@ -13,17 +13,17 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-    public TalonSRX m_frontCollectMotor;
-    public TalonSRX m_backCollectMotor;
+    public TalonSRX m_frontIndexMotor;
+    public TalonSRX m_backIndexMotor;
 
     public Intake() {
-        m_frontCollectMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_f"));
-        m_backCollectMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_b"));
+        m_frontIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_f"));
+        m_backIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_b"));
     }
 
-    public void set(double speed) {
-        m_frontCollectMotor.set(ControlMode.PercentOutput, speed);
-        m_backCollectMotor.set(ControlMode.PercentOutput, -speed);
+    public void setIndex(double speed) {
+        m_frontIndexMotor.set(ControlMode.PercentOutput, speed);
+        m_backIndexMotor.set(ControlMode.PercentOutput, -speed);
     }
 
     @Override

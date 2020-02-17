@@ -105,8 +105,8 @@ public final class Constants {
 
         // shooter and elevator map
         setCAN("shooter_motor", 10);
-        setCAN("intake_motor_f", 21);
-        setCAN("intake_motor_b", 22);
+        setCAN("index_motor_f", 21);
+        setCAN("index_motor_b", 22);
         setCAN("elevator_motor", 24);
 
         // whether a subsystem is installed and in use
