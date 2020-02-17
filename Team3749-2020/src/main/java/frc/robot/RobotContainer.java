@@ -9,11 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
-// import edu.wpi.first.wpilibj.SlewRateLimiter;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.command.Command;
-// import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
@@ -34,7 +32,7 @@ public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
-  // private final LowShooter m_lowshooter = new LowShooter();
+  private final Intake m_intake = new Intake();
   // private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
@@ -67,7 +65,11 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
-    
+    // Start intake when right bumper is pressed
+    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+      .whenHeld(new IntakeStart(m_intake, 0.6), true);
+    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+      .whenHeld(new IntakeStop(m_intake), true);
 
     // Start color sensor while B button is held
     new JoystickButton(m_xboxController, Button.kB.value)
