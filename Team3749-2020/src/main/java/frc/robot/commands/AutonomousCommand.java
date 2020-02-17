@@ -1,8 +1,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-
 
 /**
  * An example command that uses an example subsystem.
