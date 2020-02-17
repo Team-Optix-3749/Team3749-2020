@@ -17,7 +17,7 @@ public class IntakeStop extends CommandBase {
     /**
      * 
      * @param subsystem subsystem
-     * @param velocity  setpoint velocity
+     * @param speed set speed
      */
     public IntakeStop(Intake subsystem) {
         m_intake = subsystem;
