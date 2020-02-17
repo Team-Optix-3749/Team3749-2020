@@ -105,8 +105,8 @@ public final class Constants {
 
         // shooter and elevator map
         setCAN("shooter_motor", 10);
-        setCAN("intake_motor_f", 21);
-        setCAN("intake_motor_b", 22);
+        setCAN("intake_motor_r", 21);
+        setCAN("intake_motor_l", 22);
         setCAN("index_motor_f", 23);
         setCAN("index_motor_b", 25);
         setCAN("elevator_motor", 24);

@@ -13,26 +13,26 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-    public TalonSRX m_frontIntakeMotor;
-    public TalonSRX m_backIntakeMotor;
+    public TalonSRX m_rightIntakeMotor;
+    public TalonSRX m_leftIntakeMotor;
     public TalonSRX m_frontIndexMotor;
     public TalonSRX m_backIndexMotor;
 
     public Intake() {
-        m_frontIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_f"));
-        m_backIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_b"));
+        m_rightIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_r"));
+        m_leftIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_l"));
         m_frontIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_f"));
         m_backIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_b"));
     }
 
     public void setIntake(double speed) {
-        m_frontIntakeMotor.set(ControlMode.PercentOutput, speed);
-        m_backIntakeMotor.set(ControlMode.PercentOutput, speed);
+        m_rightIntakeMotor.set(ControlMode.PercentOutput, speed);
+        m_leftIntakeMotor.set(ControlMode.PercentOutput, speed);
     }
     
     public void stopIntake() {
-        m_frontIntakeMotor.set(ControlMode.PercentOutput, 0);
-        m_backIntakeMotor.set(ControlMode.PercentOutput, 0);
+        m_rightIntakeMotor.set(ControlMode.PercentOutput, 0);
+        m_leftIntakeMotor.set(ControlMode.PercentOutput, 0);
     }
 
     public void setIndex(double speed) {
