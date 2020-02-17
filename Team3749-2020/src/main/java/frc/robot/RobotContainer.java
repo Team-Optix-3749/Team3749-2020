@@ -35,7 +35,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   // private final LowShooter m_lowshooter = new LowShooter();
-  private final Vision m_vision = new Vision();
+  // private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -63,21 +63,21 @@ public class RobotContainer {
     m_drive.setDefaultCommand(
        new ArcadeDrive(
          m_drive,
-         () -> m_xboxController.getY(Hand.kLeft),
+         () -> -m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
   }
 
   private void configureButtonBindings() {
-    // Increase drive speed when right bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperRight.value)
-      .whenHeld(new ArcadeDriveFast(m_drive), true);
-    // Decrease drive speed when left bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenHeld(new ArcadeDriveSlow(m_drive), true);
+    // // Increase drive speed when right bumper is pressed
+    // new JoystickButton(m_xboxController, Button.kBumperRight.value)
+    //   .whenHeld(new ArcadeDriveFast(m_drive), true);
+    // // Decrease drive speed when left bumper is pressed
+    // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+    //   .whenHeld(new ArcadeDriveSlow(m_drive), true);
 
-    new JoystickButton(m_xboxController, Button.kStickRight.value)
+    new JoystickButton(m_xboxController, Button.kX.value)
       .whenHeld(new PidShootStart(m_shooter, 100000), false);
-    new JoystickButton(m_xboxController, Button.kStickLeft.value)
+    new JoystickButton(m_xboxController, Button.kX.value)
       .whenReleased(new PidShootStop(m_shooter), false);
 
     // Start color sensor while B button is held
@@ -168,9 +168,9 @@ public class RobotContainer {
    * A simple getter method for the shooter system
    * @return m_vision
    */
-  public Vision getVision() {
-    return m_vision;
-  }
+  // public Vision getVision() {
+  //   return m_vision;
+  // }
 
   /**
    * A simple getter method for the shooter system
