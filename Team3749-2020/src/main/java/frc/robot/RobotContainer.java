@@ -63,7 +63,7 @@ public class RobotContainer {
     m_drive.setDefaultCommand(
        new ArcadeDrive(
          m_drive,
-         () -> -m_xboxController.getY(Hand.kLeft),
+         () -> m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
   }
 
