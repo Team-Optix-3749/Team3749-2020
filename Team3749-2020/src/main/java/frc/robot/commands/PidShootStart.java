@@ -18,7 +18,7 @@ public class PidShootStart extends CommandBase {
   /**
    * 
    * @param subsystem subsystem
-   * @param velocity setpoint velocity
+   * @param velocity  setpoint velocity
    */
   public PidShootStart(Shooter subsystem, double velocity) {
     m_shooter = subsystem;

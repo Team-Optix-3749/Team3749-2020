@@ -15,7 +15,7 @@ public class PidShootStop extends CommandBase {
   private final Shooter m_shooter;
 
   /**
-   *   
+   * 
    * @param subsystem
    */
   public PidShootStop(Shooter subsystem) {
@@ -27,7 +27,7 @@ public class PidShootStop extends CommandBase {
   @Override
   public void initialize() {
   }
-  
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {

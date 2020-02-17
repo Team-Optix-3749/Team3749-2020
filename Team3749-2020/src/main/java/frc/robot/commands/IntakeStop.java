@@ -12,37 +12,37 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;;
 
 public class IntakeStop extends CommandBase {
-  private final Intake m_intake;
+    private final Intake m_intake;
 
-  /**
-   * 
-   * @param subsystem subsystem
-   * @param velocity setpoint velocity
-   */
-  public IntakeStop(Intake subsystem) {
-    m_intake = subsystem;
-    addRequirements(m_intake);
-  }
+    /**
+     * 
+     * @param subsystem subsystem
+     * @param velocity  setpoint velocity
+     */
+    public IntakeStop(Intake subsystem) {
+        m_intake = subsystem;
+        addRequirements(m_intake);
+    }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-  }
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    m_intake.setIntake(0);
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        m_intake.setIntake(0);
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return true;
-  }
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
 }
