@@ -5,38 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//package frc.robot.subsystems;
+package frc.robot.subsystems;
 
-//import frc.robot.Robot;
-//import edu.wpi.first.wpilibj.Spark;
-//import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-//public class BallCollect extends SubsystemBase {
+public class BallCollect extends SubsystemBase {
+    public TalonSRX m_frontCollectMotor;
+    public TalonSRX m_backCollectMotor;
 
-//  public m_leftCollectMotor = new Spark(Robot.getConstants().getCAN("collect_l"));
-//  public m_rightCollectMotor = new Spark(Robot.getConstants().getCAN("collect_r")); //need to set these later lol
+    public BallCollect() {
+        m_frontCollectMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_f"));
+        m_backCollectMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_b"));
+    }
 
-//  public BallCollect() {
-//    stopCollect();
-//  }
-  
-//  public void collect(double speed) {
-//    m_leftCollectMotor.set(speed);
-//    m_rightCollectMotor.set(-speed);
-//  }
+    public void set(double speed) {
+        m_frontCollectMotor.set(ControlMode.PercentOutput, speed);
+        m_backCollectMotor.set(ControlMode.PercentOutput, -speed);
+    }
 
-//  public void eject(double speed) {
-//    m_leftCollectMotor.set(-speed);
-//    m_rightCollectMotor.set(speed);
-// }
-  
-//  public void stopCollectMotors() {
-//    m_leftCollectMotor.stopMotor();
-//    m_rightCollectMotor.stopMotor();
-//  }
-
-//  @Override
-//  public void periodic() {
-    // This method will be called once per scheduler run
-//  }
-//}
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
+}
