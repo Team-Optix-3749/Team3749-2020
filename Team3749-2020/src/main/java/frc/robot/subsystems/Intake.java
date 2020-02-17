@@ -9,20 +9,20 @@ package frc.robot.subsystems;
 
 import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-    public TalonSRX m_rightIntakeMotor;
-    public TalonSRX m_leftIntakeMotor;
-    public TalonSRX m_frontIndexMotor;
-    public TalonSRX m_backIndexMotor;
+    public VictorSPX m_rightIntakeMotor;
+    public VictorSPX m_leftIntakeMotor;
+    public VictorSPX m_frontIndexMotor;
+    public VictorSPX m_backIndexMotor;
 
     public Intake() {
-        m_rightIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_r"));
-        m_leftIntakeMotor = new TalonSRX(Robot.getConstants().getCAN("intake_motor_l"));
-        m_frontIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_f"));
-        m_backIndexMotor = new TalonSRX(Robot.getConstants().getCAN("index_motor_b"));
+        m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
+        m_leftIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_l"));
+        m_frontIndexMotor = new VictorSPX(Robot.getConstants().getCAN("index_motor_f"));
+        m_backIndexMotor = new VictorSPX(Robot.getConstants().getCAN("index_motor_b"));
     }
 
     public void setIntake(double speed) {
