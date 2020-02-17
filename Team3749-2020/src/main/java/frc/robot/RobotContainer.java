@@ -71,6 +71,12 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenHeld(new IntakeStop(m_intake), true);
 
+    // Start index when left bumper is pressed
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+      .whenHeld(new IndexStart(m_intake, 0.6), true);
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+      .whenHeld(new IndexStop(m_intake), true);
+
     // Start color sensor while B button is held
     new JoystickButton(m_xboxController, Button.kB.value)
       .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
