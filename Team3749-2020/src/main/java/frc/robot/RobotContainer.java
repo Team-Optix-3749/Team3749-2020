@@ -49,13 +49,6 @@ public class RobotContainer {
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
-  
-  JoystickButton rJoy = new JoystickButton(m_xboxController, 10);
-  JoystickButton a = new JoystickButton(m_xboxController, 1);
-  JoystickButton b = new JoystickButton(m_xboxController, 2);
-  JoystickButton x = new JoystickButton(m_xboxController, 3);
-  JoystickButton y = new JoystickButton(m_xboxController, 4);
-
 
   public RobotContainer() {
     configureButtonBindings();
@@ -68,10 +61,13 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+    // Start shooter when X button is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenHeld(new PidShootStart(m_shooter, 100000), false);
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenReleased(new PidShootStop(m_shooter), false);
+    
+    
 
     // Start color sensor while B button is held
     new JoystickButton(m_xboxController, Button.kB.value)
