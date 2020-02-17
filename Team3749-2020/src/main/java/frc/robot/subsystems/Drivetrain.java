@@ -33,7 +33,7 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void arcadeDrive(double fwd, double rot) {
-        m_drive.arcadeDrive(fwd, rot, true);
+        m_drive.arcadeDrive(fwd * Robot.getConstants().kDriveSpeed, rot, true);
     }
 
     public void tankDrive(double leftSpeed, double rightSpeed) {

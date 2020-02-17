@@ -1,6 +1,5 @@
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import frc.robot.subsystems.Drivetrain;
 
 import java.util.function.DoubleSupplier;
@@ -27,6 +26,6 @@ public class ArcadeDrive extends CommandBase {
 
     @Override
     public void execute() {
-        m_drive.arcadeDrive(m_forward.getAsDouble() * Robot.getConstants().kDriveSpeed, m_rotation.getAsDouble());
+        m_drive.arcadeDrive(m_forward.getAsDouble(), m_rotation.getAsDouble());
     }
 }
