@@ -33,7 +33,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
-  // private final Vision m_vision = new Vision();
+  private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -95,9 +95,9 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
     .whenPressed( new ElevatorBottom(m_elevator), true);
     
-  //  //Vision to read data, adjust to target, and shoot when X is pressed
-  //  new JoystickButton(m_xboxController, Button.kX.value)
-  //  .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
+   //Vision to read data, adjust to target, and shoot when X is pressed
+   new JoystickButton(m_xboxController, Button.kX.value)
+   .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
 
   //   // Low Shooter when start button is pressed 
   //   // new JoystickButton(m_xboxController, Button.kStart.value)
