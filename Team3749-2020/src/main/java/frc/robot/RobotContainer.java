@@ -90,7 +90,6 @@ public class RobotContainer {
     //move elevator motors to the top  when Y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
-
     //move elevator motors back down when A is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
