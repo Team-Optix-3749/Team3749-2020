@@ -34,7 +34,7 @@ public class TargetAdjustment extends CommandBase {
        while(getx() != -1) {
            m_drive.arcadeDrive(0, 0.3 * error);
         }
-        while (getdistance() != 10) {
+        while (getdistance() >= 10) {
             m_drive.arcadeDrive(0.3, 0);
         }
         // data.end(false);
