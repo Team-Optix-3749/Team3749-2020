@@ -19,7 +19,6 @@ public class TargetDataStart extends CommandBase {
    */
   public TargetDataStart(Vision subsystem) {
     m_vision = subsystem;
-    system = true;
   }
 
   // Called when the command is initially scheduled.
