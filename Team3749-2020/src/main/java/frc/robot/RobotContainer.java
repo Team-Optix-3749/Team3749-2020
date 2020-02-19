@@ -96,7 +96,7 @@ public class RobotContainer {
     
     //Vision to read data, adjust to target, and shoot when X is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenPressed((new TargetDataStart(m_vision), true)
+      .whenPressed(new TargetDataStart(m_vision), true)
       .andThen(new AdjustToTarget(m_drive), new TargetDataStop(m_vision))
       .andThen(new PidShootStart(m_shooter, 100000), new PidShootStop(m_shooter));
 
