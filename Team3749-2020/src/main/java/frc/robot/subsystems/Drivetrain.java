@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import frc.robot.Robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.SPI;
@@ -16,11 +17,11 @@ import com.kauailabs.navx.frc.AHRS;
 public class Drivetrain extends SubsystemBase {
 
     private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
-    private WPI_TalonSRX m_leftBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lb"));
+    private WPI_VictorSPX m_leftBackMotor = new WPI_VictorSPX(Robot.getConstants().getCAN("drive_lb"));
     public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_leftFrontMotor, m_leftBackMotor);
 
     private WPI_TalonSRX m_rightFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_rf"));
-    private WPI_TalonSRX m_rightBackMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_rb"));
+    private WPI_VictorSPX m_rightBackMotor = new WPI_VictorSPX(Robot.getConstants().getCAN("drive_rb"));
     public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_rightFrontMotor, m_rightBackMotor);
 
     public DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
