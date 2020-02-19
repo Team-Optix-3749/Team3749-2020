@@ -10,15 +10,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Vision;
 
-public class ReadTargetData extends CommandBase {
+public class TargetDataStart extends CommandBase {
   private final Vision m_vision;
-  private boolean system;
 
   /**
    *   
    * @param subsystem
    */
-  public ReadTargetData(Vision subsystem) {
+  public TargetDataStart(Vision subsystem) {
     m_vision = subsystem;
     system = true;
   }
@@ -32,15 +31,13 @@ public class ReadTargetData extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    while(system == true) {
-      m_vision.readData();
-    }
+    m_vision.readData();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    system = interrupted;
+
   }
 
   // Returns true when the command should end.
