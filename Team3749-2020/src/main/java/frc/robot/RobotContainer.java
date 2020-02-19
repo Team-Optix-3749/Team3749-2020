@@ -33,7 +33,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
-  private final Vision m_vision = new Vision();
+  // private final Vision m_vision = new Vision();
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -61,7 +61,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Start shooter when X button is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenHeld(new PidShootStart(m_shooter, 100000), false);
+      .whenHeld(new PidShootStart(m_shooter, 4000), false);
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
@@ -77,15 +77,15 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new IndexStop(m_intake), true);
 
-    // Start color sensor while B button is held
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
+    // // Start color sensor while B button is held
+    // new JoystickButton(m_xboxController, Button.kB.value)
+    //   .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
 
-    // Start control panel motor while B button is held
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false); 
-    new JoystickButton(m_xboxController, Button.kB.value)
-      .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
+    // // Start control panel motor while B button is held
+    // new JoystickButton(m_xboxController, Button.kB.value)
+    //   .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false); 
+    // new JoystickButton(m_xboxController, Button.kB.value)
+    //   .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
 
     //move elevator motors to the top  when Y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
@@ -95,9 +95,9 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
     
-   //Vision to read data, adjust to target, and shoot when X is pressed
-   new JoystickButton(m_xboxController, Button.kX.value)
-   .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
+  //  //Vision to read data, adjust to target, and shoot when X is pressed
+  //  new JoystickButton(m_xboxController, Button.kX.value)
+  //  .whenPressed(new AdjustToTarget(m_drive, m_vision), true);
 
   //   // Low Shooter when start button is pressed 
   //   // new JoystickButton(m_xboxController, Button.kStart.value)
