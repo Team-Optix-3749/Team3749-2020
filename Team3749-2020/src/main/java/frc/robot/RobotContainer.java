@@ -60,9 +60,9 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // Start shooter when X button is pressed
-    new JoystickButton(m_xboxController, Button.kX.value)
+    new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new PidShootStart(m_shooter, 4000), false);
-    new JoystickButton(m_xboxController, Button.kX.value)
+    new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
     // Start intake when right bumper is pressed
