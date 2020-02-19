@@ -11,12 +11,18 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class AdjustToTarget extends CommandBase {
     private final Drivetrain m_drive;
     private final Vision m_vision;
+    private final Shooter m_shooter;
     private final ReadTargetData data;
+    private final PidShootStart shootStart;
+    private final PidShootStop shootStop;
 
-    public AdjustToTarget(Drivetrain drive, Vision vision) {
+    public AdjustToTarget(Drivetrain drive, Shooter shooter, Vision vision) {
            m_drive = drive;
+           m_shooter = shooter;
            m_vision = vision;
            data = new ReadTargetData(m_vision);
+           shootStart = new PidShootStart(m_shooter, 100000);
+           shootStop = new PidShootStop(m_shooter);
     }
 
    public double getx() {
@@ -45,12 +51,14 @@ public class AdjustToTarget extends CommandBase {
     @Override
     public void execute() {
        double error = getx()-1;
-       if (getx() != -1) {
+       while(getx() != -1) {
            m_drive.arcadeDrive(0, 0.3 * error);
         }
-        if (getdistance() != 10) {
+        while (getdistance() != 10) {
             m_drive.arcadeDrive(0.3, 0);
         }
+        shootStart.execute();
+        shootStop.execute();
         data.end(false);
 
     }
