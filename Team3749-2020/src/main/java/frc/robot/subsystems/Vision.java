@@ -23,6 +23,8 @@ public class Vision extends Subsystem {
     private NetworkTableEntry yEntry;
     private NetworkTableEntry distanceEntry;
 
+    private boolean system;
+
     public Vision() {
         m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB);
         message = new String("");
@@ -30,21 +32,26 @@ public class Vision extends Subsystem {
         m_distance = 0;
 
         inst = NetworkTableInstance.getDefault();
-        table = inst.getTable("example");
+        table = inst.getTable("Pixy2");
         xEntry = table.getEntry("X");
         yEntry = table.getEntry("Y");
         distanceEntry = table.getEntry("Distance");
+
+        system = true;
     }
 
     public void readData() {
-        message = m_arduinoPort.readString();
-        m_x = Integer.parseInt(message.substring(0, 1));
-        m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
-        m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
-        
-        setX(m_x);
-        setY(m_y);
-        setDist(m_distance);
+        while(system == true)
+        {
+          message = m_arduinoPort.readString();
+          m_x = Integer.parseInt(message.substring(0, 1));
+          m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
+          m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
+          
+          setX(m_x);
+          setY(m_y);
+          setDist(m_distance);
+        }
     }
 
     public double getX() {
@@ -75,7 +82,7 @@ public class Vision extends Subsystem {
         return message;
     }
     public void stop() {
-        
+        system = false;
     }
 
     public void setMessage(String message) {
