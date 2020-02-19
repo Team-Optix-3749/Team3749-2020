@@ -70,7 +70,7 @@ public final class Constants {
     public static final int m_shooterMotor = 15;
 
     // Other constants
-    public final double kDriveSpeed = 0.5;
+    public final double kDriveSpeed = 0.7;
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1; 
@@ -84,7 +84,7 @@ public final class Constants {
 	public final int kSlotIdx = 0;
     public final int kPIDLoopIdx = 0;
     public final int kTimeoutMs = 30;
-    public final Gains kGains_Velocit = new Gains( 0.25, 0.001, 20, 1023.0/7200.0,  300,  1.00);
+    public final Gains kGains_Velocit = new Gains( 0.03, 0, 0, 1023.0/7200.0,  300,  1.00);
 
     public Constants() {
 
