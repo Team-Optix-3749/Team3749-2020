@@ -41,6 +41,11 @@ public class Drivetrain extends SubsystemBase {
         m_drive.tankDrive(leftSpeed, rightSpeed);
     }
 
+    public void setMotors(double leftSpeed, double rightSpeed) {
+        speedLeftMotors(leftSpeed);
+        speedRightMotors(rightSpeed);
+      }    
+
     public void speedLeftMotors(double speed) {
         m_leftFrontMotor.set(ControlMode.PercentOutput, -speed);
         m_leftBackMotor.set(ControlMode.PercentOutput, -speed);
