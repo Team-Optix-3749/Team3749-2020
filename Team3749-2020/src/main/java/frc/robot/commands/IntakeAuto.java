@@ -36,6 +36,7 @@ public class IntakeAuto extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        Timer.delay(5.00);
         m_intake.setIntake(speed);
         Timer.delay(5.00);
         m_intake.stopIntake();

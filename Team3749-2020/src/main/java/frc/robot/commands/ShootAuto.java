@@ -31,7 +31,7 @@ public class ShootAuto extends CommandBase {
   @Override
   public void execute() {
     m_shooter.shoot();
-    Timer.delay(5.00);
+    Timer.delay(10.00);
     m_shooter.stop();
   }
 

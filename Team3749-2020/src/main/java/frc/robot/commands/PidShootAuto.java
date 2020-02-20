@@ -32,7 +32,7 @@ public class PidShootAuto extends CommandBase {
   @Override
   public void execute() {
     m_shooter.setVelocity(40000);
-    Timer.delay(5.00);
+    Timer.delay(10.00);
     m_shooter.stop();
   }
 
