@@ -8,8 +8,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class TargetAdjustment extends CommandBase {
     private final Drivetrain m_drive;
 
-    public TargetAdjustment(Drivetrain drive) {
-           m_drive = drive;
+    public TargetAdjustment(Drivetrain subsystem) {
+           m_drive = subsystem;
     }
 
    public double getx() {
