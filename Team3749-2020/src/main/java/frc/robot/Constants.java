@@ -82,6 +82,7 @@ public final class Constants {
     public final double kTrackWidth = 0.381 * 2; // meters
     public final double kWheelRadius = 0.0508; // meters
     public final int kEncoderResolution = 4096;
+    public final double kControlSpeed = 0.5;
 
     public final double kTargetHeight = 2.49; //meters
 
