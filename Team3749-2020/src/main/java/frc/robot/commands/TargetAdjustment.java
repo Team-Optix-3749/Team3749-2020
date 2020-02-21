@@ -24,7 +24,7 @@ public class TargetAdjustment extends CommandBase {
         NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
         NetworkTable networkTable;
         networkTableInstance.startServer();
-        networkTable = networkTableInstance.getTable("networkTable");
+        networkTable = networkTableInstance.getTable("Pixy2");
             return networkTable.getEntry("distance").getDouble(10);
      }
 
@@ -37,8 +37,6 @@ public class TargetAdjustment extends CommandBase {
         while (getdistance() >= 10) {
             m_drive.arcadeDrive(0.3, 0);
         }
-        // data.end(false);
-
     }
 
 }
