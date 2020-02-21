@@ -21,12 +21,10 @@ public class ControlPanel extends SubsystemBase {
 
   public void stopMotor(){
     _motor.set(ControlMode.PercentOutput, 0);
-    _motor1.set(ControlMode.PercentOutput, 0);
   }
 
   public void RotationControl(){
-    _motor.set(ControlMode.PercentOutput, -1);
-    _motor1.set(ControlMode.PercentOutput, 1);
+    _motor.set(ControlMode.PercentOutput, 1);
   }
 
   public void PositionControl(){
@@ -59,8 +57,7 @@ public class ControlPanel extends SubsystemBase {
   public void rotateMotor(String color) {
     ColorSensor colorSensor = new ColorSensor();
     while ( !colorSensor.DetectColor().equals(color)) {
-      _motor.set(ControlMode.PercentOutput, -1);
-      _motor1.set(ControlMode.PercentOutput, 1);  
+      _motor.set(ControlMode.PercentOutput, 1);
     }
   }
 
