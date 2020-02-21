@@ -163,7 +163,7 @@ public class RobotContainer {
   }
 
   /**
-   * A simple getter method for the shooter system
+   * A simple getter method for the vision system
    * @return m_vision
    */
   public Vision getVision() {

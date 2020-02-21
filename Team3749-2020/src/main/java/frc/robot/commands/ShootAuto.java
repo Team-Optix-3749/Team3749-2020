@@ -16,6 +16,7 @@ public class ShootAuto extends CommandBase {
 
   /**
    * Creates a new ShootAuto.
+   * @param subsystem
    */
   public ShootAuto(Shooter subsystem) {
     m_shooter = subsystem;

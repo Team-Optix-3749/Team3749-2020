@@ -19,7 +19,7 @@ public class PidShootAuto extends CommandBase {
   //private double vel;
 
   /**
-   * Creates a new PidShootAuto.
+   * @param subsystem
    */
   public PidShootAuto(Shooter subsystem) {
     m_shooter = subsystem;
@@ -31,6 +31,7 @@ public class PidShootAuto extends CommandBase {
   public void initialize() {
   }
 
+  //Gets the distance variable from Pixy2 table
   public double getdistance() {
     NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
     NetworkTable networkTable;
@@ -39,6 +40,7 @@ public class PidShootAuto extends CommandBase {
         return networkTable.getEntry("distance").getDouble(10);
  }
 
+ //Calculates and returns the angular velocity needed based on distance away from target
  public double getVelocity() {
    double xDisplacement = getdistance() + .207;
    double yDisplacement = 2.49 - Robot.getConstants().kShooterHeight;
