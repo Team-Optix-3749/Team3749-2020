@@ -121,7 +121,7 @@ public final class Constants {
         setSys("shooter", 1);
         setSys("intake", 1);
         setSys("elevator", 1);
-        setSys("control_panel", 0);
+        setSys("control_panel", 1);
     }
 
     /**
