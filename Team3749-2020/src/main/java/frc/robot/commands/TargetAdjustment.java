@@ -14,30 +14,24 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class TargetAdjustment extends CommandBase {
     private final Drivetrain m_drive;
+    private final Vision m_vision
 
     /**
      * @param subsystem
      */
-    public TargetAdjustment(Drivetrain subsystem) {
-           m_drive = subsystem;
+    public TargetAdjustment(Drivetrain subsystem1, Vision subsystem2) {
+           m_drive = subsystem1;
+           m_vision = subsystem2;
     }
 
     //Gets the current x value from the Pixy2 table
    public double getx() {
-       NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
-       NetworkTable networkTable;
-       networkTableInstance.startServer();
-       networkTable = networkTableInstance.getTable("Pixy2");
-           return networkTable.getEntry("x").getDouble(-1);
+       return m_vision.getx();
     }
 
     //Gets the current distance value from the Pixy2 table
     public double getdistance() {
-        NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
-        NetworkTable networkTable;
-        networkTableInstance.startServer();
-        networkTable = networkTableInstance.getTable("Pixy2");
-            return networkTable.getEntry("distance").getDouble(10);
+        return m_vision.getdistance();
      }
 
      // Called every time the scheduler runs while the command is scheduled.
