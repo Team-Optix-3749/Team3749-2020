@@ -75,10 +75,10 @@ public class Robot extends TimedRobot {
   }
 
   /** 
-  * A simple getter method for Visiion.java
+  * A simple getter method for Vision.java
   * @return m_drive
   */
-  public static Drivetrain getVision(){
+  public static Vision getVision(){
     return m_vision;
   }
 
