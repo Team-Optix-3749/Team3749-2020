@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Vision;
 
 public class TargetGetData extends CommandBase {
   private final Vision m_vision;
@@ -19,7 +20,6 @@ public class TargetGetData extends CommandBase {
    */
   public TargetGetData(Vision subsystem) {
     m_vision = subsystem;
-    addRequirements(m_vision);
   }
 
   // Called when the command is initially scheduled.

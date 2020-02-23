@@ -11,10 +11,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.Drivetrain;
 
 public class TargetAdjustment extends CommandBase {
     private final Drivetrain m_drive;
     private final Vision m_vision;
+    
+    private double error;
 
     /**
      * @param subsystem1
@@ -23,21 +27,30 @@ public class TargetAdjustment extends CommandBase {
     public TargetAdjustment(Drivetrain subsystem1, Vision subsystem2) {
            m_drive = subsystem1;
            m_vision = subsystem2;
+           error = 0;
 
            addRequirements(m_drive);
-           addRequirements(m_vision);
     }
     
      // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-       double error = getx()-1;
-       while(m_vision.getx() != -1) {
-           m_drive.arcadeDrive(0, 0.3 * error);
-        }
-        while (m_vision.getdistance() >= 10) {
-            m_drive.arcadeDrive(0.3, 0);
-        }
+       double error = m_vision.getX()-1;
+       m_drive.arcadeDrive(0, 0.3 * error);
+       m_drive.arcadeDrive(0.3, 0);
     }
 
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        if(error < -1)
+            return true;
+        return false;
+    }
 }

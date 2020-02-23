@@ -30,7 +30,7 @@ public class Vision extends Subsystem {
         message = new String("");
         m_x = m_y = 0;
         m_distance = 0;
-        enabled = null;
+        enabled = false;
 
         inst = NetworkTableInstance.getDefault();
         table = inst.getTable("Pixy2");
@@ -85,11 +85,11 @@ public class Vision extends Subsystem {
     }
 
     public void start() {
-      system = true;
+      enabled = true;
     }
 
     public void stop() {
-        system = false;
+        enabled = false;
     }
 
     public void setMessage(String message) {

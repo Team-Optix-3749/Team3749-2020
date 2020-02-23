@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Vision;
 
-public class TargetData extends CommandBase {
+public class TargetDataStart extends CommandBase {
   private final Vision m_vision;
 
   /**
@@ -19,7 +19,6 @@ public class TargetData extends CommandBase {
    */
   public TargetDataStart(Vision subsystem) {
     m_vision = subsystem;
-    addRequirements(m_vision);
   }
 
   // Called when the command is initially scheduled.

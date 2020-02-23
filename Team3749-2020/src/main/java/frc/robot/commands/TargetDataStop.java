@@ -19,7 +19,6 @@ public class TargetDataStop extends CommandBase {
    */
   public TargetDataStop(Vision subsystem) {
     m_vision = subsystem;
-    addRequirements(m_vision);
   }
 
   // Called when the command is initially scheduled.
