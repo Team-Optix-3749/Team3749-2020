@@ -9,10 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.subsystems.Vision;
-import frc.robot.subsystems.Drivetrain;
 
 public class TargetAdjustment extends CommandBase {
     private final Drivetrain m_drive;
