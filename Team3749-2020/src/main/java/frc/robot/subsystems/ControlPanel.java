@@ -1,18 +1,20 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class ControlPanel extends SubsystemBase {
   
   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
-  VictorSPX _motor = new VictorSPX(20);
-  TalonSRX _motor1 = new TalonSRX(11);
+  private WPI_VictorSPX m_ControlPanelSubsystem = new WPI_VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
+
 
   // public void activateMotor() {
   //   _motor.set(ControlMode.PercentOutput, -1);
@@ -20,11 +22,11 @@ public class ControlPanel extends SubsystemBase {
   // }
 
   public void stopMotor(){
-    _motor.set(ControlMode.PercentOutput, 0);
+    m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 0);
   }
 
   public void RotationControl(){
-    _motor.set(ControlMode.PercentOutput, 1);
+    m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 1);
   }
 
   public void PositionControl(){
@@ -57,7 +59,7 @@ public class ControlPanel extends SubsystemBase {
   public void rotateMotor(String color) {
     ColorSensor colorSensor = new ColorSensor();
     while ( !colorSensor.DetectColor().equals(color)) {
-      _motor.set(ControlMode.PercentOutput, 1);
+      m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 1);
     }
   }
 
