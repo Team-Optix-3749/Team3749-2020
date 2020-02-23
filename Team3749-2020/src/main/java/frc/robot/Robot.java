@@ -16,6 +16,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
@@ -25,6 +26,7 @@ public class Robot extends TimedRobot {
   private static RobotContainer m_robotContainer;
 
   private static Drivetrain m_drive;
+  private static Vision m_vision;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -33,7 +35,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_constants = new Constants();
-    m_robotContainer = new RobotContainer();
+    m_vision = new Vision();
+    m_robotContainer = new RobotContainer(m_vision);
     m_drive = new Drivetrain();
 
     initCamera();
@@ -133,7 +136,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
+    //CommandScheduler.getInstance().setDefaultCommand(m_vision, new TargetGetData(m_vision));
+    //m_vision.setDefaultCommand(new TargetGetData(m_vision));
+    m_vision.readData();
   }
 
   @Override
@@ -152,13 +157,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-
+    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new TargetGetData(m_vision));
+    //m_vision.setDefaultCommand(new TargetGetData(m_vision));
+    m_vision.readData();
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
+    //CommandScheduler.getInstance().cancelAll();
   }
 
   /**

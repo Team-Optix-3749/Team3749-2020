@@ -33,7 +33,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
-  private final Vision m_vision = new Vision();
+  private final Vision m_vision;
   
   private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
@@ -48,7 +48,7 @@ public class RobotContainer {
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
 
-  public RobotContainer() {
+  public RobotContainer(Vision vision) {
     configureButtonBindings();
 
     m_drive.setDefaultCommand(
@@ -57,8 +57,9 @@ public class RobotContainer {
          () -> m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
 
-    m_vision.setDefaultCommand(
-        new TargetGetData(m_vision));
+    // m_vision.setDefaultCommand(
+    //     new TargetGetData(m_vision));
+    m_vision = vision;
   }
 
   private void configureButtonBindings() {
@@ -206,9 +207,5 @@ public class RobotContainer {
    public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
     return null; 
-  }
-
-  public Command TargetData() {
-    
   }
 }
