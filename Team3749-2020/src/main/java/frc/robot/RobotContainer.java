@@ -56,6 +56,9 @@ public class RobotContainer {
          m_drive,
          () -> m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
+
+    m_vision.setDefaultCommand(new TargetGetData(m_vision));
+    )
   }
 
   private void configureButtonBindings() {

@@ -23,6 +23,9 @@ public class TargetAdjustment extends CommandBase {
     public TargetAdjustment(Drivetrain subsystem1, Vision subsystem2) {
            m_drive = subsystem1;
            m_vision = subsystem2;
+
+           addRequirements(m_drive);
+           addRequirements(m_vision);
     }
     
      // Called every time the scheduler runs while the command is scheduled.

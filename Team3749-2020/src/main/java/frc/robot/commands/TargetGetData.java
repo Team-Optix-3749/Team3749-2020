@@ -10,11 +10,16 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class TargetGetData extends CommandBase {
+  private final Vision m_vision;
+
   /**
    * Creates a new TargetGetData.
+   *
+   * @param subsystem
    */
-  public TargetGetData() {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public TargetGetData(Vision subsystem) {
+    m_vision = subsystem;
+    addRequirements(m_vision);
   }
 
   // Called when the command is initially scheduled.
@@ -25,6 +30,9 @@ public class TargetGetData extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if(m_vision.getStatus() == true) {
+      m_vision.readData();
+    }
   }
 
   // Called once the command ends or is interrupted.
