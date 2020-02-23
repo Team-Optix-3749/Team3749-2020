@@ -91,6 +91,8 @@ public final class Constants {
     public final int kTimeoutMs = 30;
     public final Gains kGains_Velocit = new Gains( 0.03, 0, 0, 1023.0/7200.0,  300,  1.00);
 
+    public final boolean kActivateData = true;
+
     public Constants() {
 
         // Configure the button bindings

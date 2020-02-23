@@ -41,17 +41,14 @@ public class Vision extends Subsystem {
     }
 
     public void readData() {
-        while(system == true)
-        {
-          message = m_arduinoPort.readString();
-          m_x = Integer.parseInt(message.substring(0, 1));
-          m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
-          m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
+        message = m_arduinoPort.readString();
+        m_x = Integer.parseInt(message.substring(0, 1));
+        m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
+        m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
           
-          setX(m_x);
-          setY(m_y);
-          setDist(m_distance);
-        }
+        setX(m_x);
+        setY(m_y);
+        setDist(m_distance);
     }
 
     public double getX() {

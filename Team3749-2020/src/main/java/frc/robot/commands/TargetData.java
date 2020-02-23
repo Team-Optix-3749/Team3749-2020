@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Vision;
 
-public class TargetDataStart extends CommandBase {
+public class TargetData extends CommandBase {
   private final Vision m_vision;
 
   /**
@@ -30,7 +30,9 @@ public class TargetDataStart extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_vision.readData();
+    while(Robot.getConstants().kAkActivateData == true) {
+      m_vision.readData();
+    }
   }
 
   // Called once the command ends or is interrupted.
