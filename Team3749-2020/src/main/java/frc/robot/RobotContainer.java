@@ -43,7 +43,7 @@ public class RobotContainer {
 //   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
 // private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
 
-  private final ControlPanel m_ControlPanelSubsystem = new ControlPanel();
+  private final ControlPanel m_controlPanel = new ControlPanel();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
@@ -80,6 +80,18 @@ public class RobotContainer {
       .whenHeld(new IndexStart(m_intake, 0.6), true);
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new IndexStop(m_intake), true);
+
+    // Start Rotation Control When start button is pressed
+    new JoystickButton(m_xboxController, Button.kStart.value)
+      .whenHeld(new RotationControlStart(m_controlPanel), true);
+    new JoystickButton(m_xboxController, Button.kStart.value)
+      .whenReleased(new RotationControlStop(m_controlPanel), true);
+
+    // Start Control Panel When back button is pressed
+    new JoystickButton(m_xboxController, Button.kBack.value)
+      .whenHeld(new PositionControl(m_controlPanel), true);
+    new JoystickButton(m_xboxController, Button.kBack.value)
+      .whenReleased(new PositionControl(m_controlPanel), true);
 
     // // Start color sensor while B button is held
     // new JoystickButton(m_xboxController, Button.kB.value)
@@ -191,8 +203,8 @@ public class RobotContainer {
    * A simple getter method for the shooter system
    * @return m_controlPanel
    */
-  public ControlPanel ControlPanelSubsystem() {
-    return m_ControlPanelSubsystem;
+  public ControlPanel getControlPanel() {
+    return m_controlPanel;
   }
 
   // public LowShooter getLowShooter() {

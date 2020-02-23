@@ -11,7 +11,7 @@ public class ControlPanel extends SubsystemBase {
   
   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
-  private WPI_VictorSPX m_ControlPanelSubsystem = new WPI_VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
+  private WPI_VictorSPX m_controlPanel = new WPI_VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
 
 
   // public void activateMotor() {
@@ -20,11 +20,11 @@ public class ControlPanel extends SubsystemBase {
   // }
 
   public void stopMotor(){
-    m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 0);
+    m_controlPanel.set(ControlMode.PercentOutput, 0);
   }
 
   public void RotationControl(){
-    m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 1);
+    m_controlPanel.set(ControlMode.PercentOutput, 1);
   }
 
   public void PositionControl(){
@@ -57,7 +57,7 @@ public class ControlPanel extends SubsystemBase {
   public void rotateMotor(String color) {
     ColorSensor colorSensor = new ColorSensor();
     while ( !colorSensor.DetectColor().equals(color)) {
-      m_ControlPanelSubsystem.set(ControlMode.PercentOutput, 1);
+      m_controlPanel.set(ControlMode.PercentOutput, 1);
     }
   }
 
