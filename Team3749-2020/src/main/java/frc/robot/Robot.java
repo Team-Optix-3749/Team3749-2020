@@ -135,7 +135,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    m_vision.readData();
+
   }
 
   @Override
@@ -154,7 +154,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    m_vision.readData();
+
   }
 
   @Override
