@@ -74,6 +74,14 @@ public class Robot extends TimedRobot {
     return m_drive;
   }
 
+  /** 
+  * A simple getter method for Visiion.java
+  * @return m_drive
+  */
+  public static Drivetrain getVision(){
+    return m_vision;
+  }
+
   public void initCamera() {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
