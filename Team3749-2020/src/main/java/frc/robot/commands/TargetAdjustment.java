@@ -14,10 +14,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class TargetAdjustment extends CommandBase {
     private final Drivetrain m_drive;
-    private final Vision m_vision
+    private final Vision m_vision;
 
     /**
-     * @param subsystem
+     * @param subsystem1
+     * @param subsystem2
      */
     public TargetAdjustment(Drivetrain subsystem1, Vision subsystem2) {
            m_drive = subsystem1;
