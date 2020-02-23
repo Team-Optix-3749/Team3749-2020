@@ -25,6 +25,7 @@ public class Robot extends TimedRobot {
   private static RobotContainer m_robotContainer;
 
   private static Drivetrain m_drive;
+  private static Vision m_vision;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
     m_constants = new Constants();
     m_robotContainer = new RobotContainer();
     m_drive = new Drivetrain();
+    m_vision = new Vision();
 
     initCamera();
   }
@@ -133,7 +135,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    // m_drive.updateOdometry();
+    m_vision.readData();
   }
 
   @Override
@@ -152,7 +154,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    
+    m_vision.readData();
   }
 
   @Override

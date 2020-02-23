@@ -24,25 +24,15 @@ public class TargetAdjustment extends CommandBase {
            m_drive = subsystem1;
            m_vision = subsystem2;
     }
-
-    //Gets the current x value from the Pixy2 table
-   public double getx() {
-       return m_vision.getx();
-    }
-
-    //Gets the current distance value from the Pixy2 table
-    public double getdistance() {
-        return m_vision.getdistance();
-     }
-
+    
      // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
        double error = getx()-1;
-       while(getx() != -1) {
+       while(m_vision.getx() != -1) {
            m_drive.arcadeDrive(0, 0.3 * error);
         }
-        while (getdistance() >= 10) {
+        while (m_vision.getdistance() >= 10) {
             m_drive.arcadeDrive(0.3, 0);
         }
     }
