@@ -19,6 +19,7 @@ public class TargetData extends CommandBase {
    */
   public TargetDataStart(Vision subsystem) {
     m_vision = subsystem;
+    addRequirements(m_vision);
   }
 
   // Called when the command is initially scheduled.
@@ -36,7 +37,7 @@ public class TargetData extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-      
+
   }
 
   // Returns true when the command should end.
