@@ -99,8 +99,9 @@ public class RobotContainer {
     
     //Vision to read data, adjust to target, and shoot when X is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenPressed(new TargetAdjustment(m_drive, m_vision)
-      .andThen(new ShootAuto(m_shooter).alongWith(new IndexAuto(m_intake, 0.6))), true);
+      .whenPressed(new TargetDataStart(m_vision)
+      .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
+      new ShootAuto(m_shooter).alongWith(new IndexAuto(m_intake, 0.6))), true);
 
   //   // Low Shooter when start button is pressed 
   //   // new JoystickButton(m_xboxController, Button.kStart.value)
