@@ -46,7 +46,7 @@ public class TargetAdjustment extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        if(error < -1)
+        if(error < -1 && m_vision.getDist() == 10)
             return true;
         return false;
     }
