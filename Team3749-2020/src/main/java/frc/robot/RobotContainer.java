@@ -63,9 +63,16 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+
+    
+    // new JoystickButton(m_xboxController, Button.kA.value)
+    //   .whenPressed(new ShootStart(m_shooter), false);
+    // new JoystickButton(m_xboxController, Button.kA.value)
+    //   .whenReleased(new ShootStop(m_shooter), false);
+
     // Start shooter when X button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new PidShootStart(m_shooter, 4000), false);
+      .whenHeld(new PidShootStart(m_shooter, 8000), false);
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
@@ -107,7 +114,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
     //move elevator motors back down when A is pressed
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
     
     //Vision to read data, adjust to target, and shoot when X is pressed
