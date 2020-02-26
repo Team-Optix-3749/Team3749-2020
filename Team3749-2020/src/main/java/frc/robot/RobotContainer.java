@@ -82,34 +82,6 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
-    // // Start index when left bumper is pressed
-    // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-    //   .whenHeld(new IndexStart(m_intake, 0.6), true);
-    // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-    //   .whenReleased(new IndexStop(m_intake), true);
-
-    // // Start Rotation Control When start button is pressed
-    // new JoystickButton(m_xboxController, Button.kStart.value)
-    //   .whenHeld(new RotationControlStart(m_controlPanel), true);
-    // new JoystickButton(m_xboxController, Button.kStart.value)
-    //   .whenReleased(new RotationControlStop(m_controlPanel), true);
-
-    // // Start Control Panel When back button is pressed
-    // new JoystickButton(m_xboxController, Button.kBack.value)
-    //   .whenHeld(new PositionControl(m_controlPanel), true);
-    // new JoystickButton(m_xboxController, Button.kBack.value)
-    //   .whenReleased(new PositionControl(m_controlPanel), true);
-
-    // // Start color sensor while B button is held
-    // new JoystickButton(m_xboxController, Button.kB.value)
-    //   .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
-
-    // // Start control panel motor while B button is held
-    // new JoystickButton(m_xboxController, Button.kB.value)
-    //   .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false); 
-    // new JoystickButton(m_xboxController, Button.kB.value)
-    //   .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
-
     //move elevator motors to the top  when Y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
@@ -128,6 +100,34 @@ public class RobotContainer {
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
       new ShootAuto(m_shooter).alongWith(new IndexAuto(m_intake, 0.6))), true);
 
+  // // Start index when left bumper is pressed
+  // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+  //   .whenHeld(new IndexStart(m_intake, 0.6), true);
+  // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+  //   .whenReleased(new IndexStop(m_intake), true);
+
+  // // Start Rotation Control When start button is pressed
+  // new JoystickButton(m_xboxController, Button.kStart.value)
+  //   .whenHeld(new RotationControlStart(m_controlPanel), true);
+  // new JoystickButton(m_xboxController, Button.kStart.value)
+  //   .whenReleased(new RotationControlStop(m_controlPanel), true);
+
+  // // Start Control Panel When back button is pressed
+  // new JoystickButton(m_xboxController, Button.kBack.value)
+  //   .whenHeld(new PositionControl(m_controlPanel), true);
+  // new JoystickButton(m_xboxController, Button.kBack.value)
+  //   .whenReleased(new PositionControl(m_controlPanel), true);
+
+  // Start color sensor while B button is held
+  // new JoystickButton(m_xboxController, Button.kB.value)
+  //   .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
+
+  // // Start control panel motor while B button is held
+    // new JoystickButton(m_xboxController, Button.kB.value)
+  //   .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false); 
+  // new JoystickButton(m_xboxController, Button.kB.value)
+  //   .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
+    
   //   // Low Shooter when start button is pressed 
   //   // new JoystickButton(m_xboxController, Button.kStart.value)
   //   // .whenHeld(new LowShootStart(m_lowshooter), true);
