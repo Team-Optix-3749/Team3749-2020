@@ -16,6 +16,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
@@ -27,7 +28,7 @@ public class Robot extends TimedRobot {
 
   private static Drivetrain m_drive;
   private static Vision m_vision;
-
+  private static Elevator m_elevator;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot {
     m_vision = new Vision();
     m_robotContainer = new RobotContainer(m_vision);
     m_drive = new Drivetrain();
+    m_elevator = new Elevator();
 
     Robot.getDrivetrain().resetGyro();
 
@@ -75,6 +77,14 @@ public class Robot extends TimedRobot {
   */
   public static Drivetrain getDrivetrain(){
     return m_drive;
+  }
+
+  /** 
+  * A simple getter method for Constants.java
+  * @return m_drive
+  */
+  public static Elevator getElevator(){
+    return m_elevator;
   }
 
   /** 
