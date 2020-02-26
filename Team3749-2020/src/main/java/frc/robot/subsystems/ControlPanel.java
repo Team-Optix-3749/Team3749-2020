@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -24,7 +25,7 @@ public class ControlPanel extends SubsystemBase {
   }
 
   public void RotationControl(){
-    m_controlPanel.set(ControlMode.PercentOutput, 1);
+    m_controlPanel.set(ControlMode.PercentOutput, controlPanelSpeed);
   }
 
   public void PositionControl(){
@@ -57,7 +58,7 @@ public class ControlPanel extends SubsystemBase {
   public void rotateMotor(String color) {
     ColorSensor colorSensor = new ColorSensor();
     while ( !colorSensor.DetectColor().equals(color)) {
-      m_controlPanel.set(ControlMode.PercentOutput, 1);
+      m_controlPanel.set(ControlMode.PercentOutput, controlPanelSpeed);
     }
   }
 
