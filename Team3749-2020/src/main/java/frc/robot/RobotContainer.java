@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-import frc.robot.subsystems.ColorSensor;
+// import frc.robot.subsystems.ColorSensor;
 // import frc.robot.subsystems.ControlPanel;
 
 /**
@@ -35,7 +35,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final Vision m_vision;
   
-  private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
+  // private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
   // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
 //   private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
 //   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
@@ -206,10 +206,10 @@ public class RobotContainer {
   /**
    * A simple getter method for the shooter system
    * @return m_colorSensorSubsystem
-   */
-  public ColorSensor getColorSensor() {
-    return m_ColorSensorSubsystem;
-  }
+  //  */
+  // public ColorSensor getColorSensor() {
+  //   return m_ColorSensorSubsystem;
+  // }
 
   /**
    * A simple getter method for the shooter system
