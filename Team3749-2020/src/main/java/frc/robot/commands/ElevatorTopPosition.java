@@ -1,6 +1,5 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Elevator;
 
@@ -20,8 +19,8 @@ public class ElevatorTopPosition extends CommandBase {
   private void moveToTop() {
     //using time right now to implement this, will later move to using limit switches 
     m_subsystem.startMotor(0.2);
-    Timer.delay(1);
-    m_subsystem.stopMotor();
+    //Timer.delay(1);
+    //m_subsystem.stopMotor();
   }
 
   @Override

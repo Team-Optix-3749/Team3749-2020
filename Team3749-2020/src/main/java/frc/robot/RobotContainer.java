@@ -113,9 +113,14 @@ public class RobotContainer {
     //move elevator motors to the top  when Y is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
+      new JoystickButton(m_xboxController, Button.kY.value)
+      .whenReleased(new ElevatorStop(m_elevator), true);
+
     //move elevator motors back down when A is pressed
     new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
+      new JoystickButton(m_xboxController, Button.kB.value)
+      .whenReleased(new ElevatorStop(m_elevator), true);
     
     //Vision to read data, adjust to target, and shoot when X is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
