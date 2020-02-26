@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.subsystems.Intake;
@@ -16,6 +15,7 @@ public class IntakeAuto extends CommandBase {
     private final Intake m_intake;
     private double speed;
     private long start;
+    private boolean isFinished = false;
 
     /**
      * 
@@ -50,6 +50,7 @@ public class IntakeAuto extends CommandBase {
     @Override
     public boolean isFinished() {
         if(System.currentTimeMillis() - start > 5000)
-            return true;
+            isFinished = true;
+            return isFinished;
     }
 }
