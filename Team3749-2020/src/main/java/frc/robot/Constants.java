@@ -115,8 +115,6 @@ public final class Constants {
         setCAN("shooter_motor", 10);
         setCAN("intake_motor_r", 21);
         setCAN("intake_motor_l", 22);
-        setCAN("index_motor_f", 23);
-        setCAN("index_motor_b", 25);
         setCAN("elevator_motor", 24);
 
         // whether a subsystem is installed and in use
