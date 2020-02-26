@@ -57,35 +57,29 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
-    // Start intake when right bumper is pressed
+    // Start intake when y button is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
-    //move elevator motors to the top  when Y is pressed
+    // Move elevator motors to the top when the right bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
       new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
-    //move elevator motors back down when A is pressed
+    // Move elevator motors back down when the left bumper is pressed
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
       new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
-    //Vision to read data, adjust to target, and shoot when X is pressed
+    // Vision to read data, adjust to target, and shoot when X is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new TargetDataStart(m_vision)
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
       new ShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), true);
-
-  // // Start index when left bumper is pressed
-  // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-  //   .whenHeld(new IndexStart(m_intake, 0.6), true);
-  // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-  //   .whenReleased(new IndexStop(m_intake), true);
 
   // // Start Rotation Control When start button is pressed
   // new JoystickButton(m_xboxController, Button.kStart.value)
