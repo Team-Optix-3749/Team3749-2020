@@ -7,13 +7,13 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
 public class ShootAuto extends CommandBase {
   private final Shooter m_shooter;
   private long start;
+  private boolean isFinished = false;
 
   /**
    * Creates a new ShootAuto.
@@ -45,7 +45,8 @@ public class ShootAuto extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (System.currentTimeMillis() - start > 5000) // check if current time - initial time > 10 seconds
-      return true;
+      if(System.currentTimeMillis() - start > 5000)
+          isFinished = true;
+          return isFinished;
   }
 }

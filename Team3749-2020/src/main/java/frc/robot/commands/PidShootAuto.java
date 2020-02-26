@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
@@ -17,6 +16,7 @@ import frc.robot.subsystems.Shooter;
 public class PidShootAuto extends CommandBase {
   private final Shooter m_shooter;
   private long start;
+  private boolean isFinished = false;
 
   /**
    * @param subsystem
@@ -29,7 +29,7 @@ public class PidShootAuto extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    start = System.currentTimeMillis()
+    start = System.currentTimeMillis();
   }
 
   //Gets the distance variable from Pixy2 table
@@ -65,7 +65,8 @@ public class PidShootAuto extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (System.currentTimeMillis() - start > 5000) // check if current time - initial time > 10 seconds
-      return true;
+      if(System.currentTimeMillis() - start > 5000)
+          isFinished = true;
+          return isFinished;
   }
 }
