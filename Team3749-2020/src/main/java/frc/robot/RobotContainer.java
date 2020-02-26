@@ -51,13 +51,13 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    // Start shooter when X button is pressed
+    // Start shooter when A button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new PidShootStart(m_shooter, 4000), false);
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
-    // Start intake when y button is pressed
+    // Start intake when Y button is pressed
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
     new JoystickButton(m_xboxController, Button.kY.value)
