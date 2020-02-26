@@ -34,16 +34,6 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Vision m_vision;
-  
-  // private final ColorSensor m_ColorSensorSubsystem = new ColorSensor();
-  // private final ColorSensorCommand m_ColorSensorCommand = new ColorSensorCommand(m_ColorSensorSubsystem);
-//   private final ColorSensorRed m_ColorSensorRed = new ColorSensorRed(m_ColorSensorSubsystem);
-//   private final ColorSensorGreen m_ColorSensorGreen = new ColorSensorGreen(m_ColorSensorSubsystem);
-//   private final ColorSensorBlue m_ColorSensorBlue = new ColorSensorBlue(m_ColorSensorSubsystem);
-//   private final ColorSensorYellow m_ColorSensorYellow = new ColorSensorYellow(m_ColorSensorSubsystem);
-// private final SequentialCommandGroup m_autoCommand = new AutonomousCommand();
-
-  // private final ControlPanel m_controlPanel = new ControlPanel();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
@@ -57,8 +47,6 @@ public class RobotContainer {
          () -> m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
 
-    // m_vision.setDefaultCommand(
-    //     new TargetGetData(m_vision));
     m_vision = vision;
   }
 
