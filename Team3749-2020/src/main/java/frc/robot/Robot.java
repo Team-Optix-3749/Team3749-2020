@@ -39,6 +39,9 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer(m_vision);
     m_drive = new Drivetrain();
 
+    Robot.getDrivetrain().resetGyro();
+
+
     initCamera();
   }
 
@@ -110,6 +113,7 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
   }
 
   /**

@@ -72,7 +72,7 @@ public class RobotContainer {
 
     // Start shooter when X button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenHeld(new PidShootStart(m_shooter, 8000), false);
+      .whenHeld(new PidShootStart(m_shooter, 4000), false);
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
@@ -82,11 +82,11 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
-    // Start index when left bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenHeld(new IndexStart(m_intake, 0.6), true);
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenReleased(new IndexStop(m_intake), true);
+    // // Start index when left bumper is pressed
+    // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+    //   .whenHeld(new IndexStart(m_intake, 0.6), true);
+    // new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+    //   .whenReleased(new IndexStop(m_intake), true);
 
     // Start Rotation Control When start button is pressed
     new JoystickButton(m_xboxController, Button.kStart.value)
