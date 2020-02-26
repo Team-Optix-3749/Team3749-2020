@@ -8,17 +8,19 @@ import frc.robot.subsystems.Elevator;
  */
 public class ElevatorTopPosition extends CommandBase {
   
-    private final Elevator m_subsystem;
+    private final Elevator m_elevator;
 
     public ElevatorTopPosition(Elevator subsystem) {
-    m_subsystem = subsystem;
+      m_elevator = subsystem;
+    addRequirements(m_elevator);
 
 
   }
 
   private void moveToTop() {
     //using time right now to implement this, will later move to using limit switches 
-    m_subsystem.startMotor(0.2);
+    m_elevator.startMotor(1);
+    
     //Timer.delay(1);
     //m_subsystem.stopMotor();
   }

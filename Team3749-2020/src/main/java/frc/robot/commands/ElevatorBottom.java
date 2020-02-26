@@ -7,7 +7,7 @@ import frc.robot.subsystems.Elevator;
  * An example command that uses an example subsystem.
  */
 public class ElevatorBottom extends CommandBase {
-    public final Elevator m_subsystem;
+    public final Elevator m_elevator;
 
     /**
      * Creates a new ExampleCommand.
@@ -16,9 +16,9 @@ public class ElevatorBottom extends CommandBase {
      */
 
     public ElevatorBottom(Elevator subsystem) {
-    m_subsystem = subsystem;
+      m_elevator = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    //addRequirements(subsystem);
+    addRequirements(m_elevator);
   }
   // want to see which branch this pushes to 
 
@@ -29,7 +29,7 @@ public class ElevatorBottom extends CommandBase {
 
   private void moveToBottom() {
     //using time right now to implement this, will later move to using limit switches 
-    m_subsystem.startMotor(-0.2);
+    m_elevator.startMotor(-1);
    // Timer.delay(1);
    // m_subsystem.stopMotor();
   }
