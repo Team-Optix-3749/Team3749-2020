@@ -21,8 +21,6 @@ public class Intake extends SubsystemBase {
     public Intake() {
         m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
         m_leftIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_l"));
-        m_frontIndexMotor = new VictorSPX(Robot.getConstants().getCAN("index_motor_f"));
-        m_backIndexMotor = new VictorSPX(Robot.getConstants().getCAN("index_motor_b"));
     }
 
     public void setIntake(double speed) {
@@ -33,16 +31,6 @@ public class Intake extends SubsystemBase {
     public void stopIntake() {
         m_rightIntakeMotor.set(ControlMode.PercentOutput, 0);
         m_leftIntakeMotor.set(ControlMode.PercentOutput, 0);
-    }
-
-    public void setIndex(double speed) {
-        m_frontIndexMotor.set(ControlMode.PercentOutput, speed);
-        m_backIndexMotor.set(ControlMode.PercentOutput, -speed);
-    }
-
-    public void stopIndex() {
-        m_frontIndexMotor.set(ControlMode.PercentOutput, 0);
-        m_backIndexMotor.set(ControlMode.PercentOutput, 0);
     }
 
     @Override
