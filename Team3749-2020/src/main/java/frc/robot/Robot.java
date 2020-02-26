@@ -15,7 +15,6 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.Constants;
-import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Vision;
 
 public class Robot extends TimedRobot {
@@ -25,7 +24,6 @@ public class Robot extends TimedRobot {
   private static Gains m_gains;
   private static RobotContainer m_robotContainer;
 
-  private static Drivetrain m_drive;
   private static Vision m_vision;
 
   /**
@@ -37,10 +35,8 @@ public class Robot extends TimedRobot {
     m_constants = new Constants();
     m_vision = new Vision();
     m_robotContainer = new RobotContainer(m_vision);
-    m_drive = new Drivetrain();
 
     Robot.getDrivetrain().resetGyro();
-
 
     initCamera();
   }
