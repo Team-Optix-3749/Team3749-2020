@@ -32,7 +32,7 @@ public class TargetAdjustment extends CommandBase {
      // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-       double error = m_vision.getX()-1;
+       double error = m_vision.getX()-100;
        m_drive.arcadeDrive(0, 0.3 * error);
        m_drive.arcadeDrive(0.3, 0);
     }
