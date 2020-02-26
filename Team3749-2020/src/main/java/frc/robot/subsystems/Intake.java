@@ -19,8 +19,8 @@ public class Intake extends SubsystemBase {
     public VictorSPX m_backIndexMotor;
 
     public Intake() {
-        m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
-        m_leftIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_l"));
+        m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_f"));
+        m_leftIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_b"));
     }
 
     public void setIntake(double speed) {
