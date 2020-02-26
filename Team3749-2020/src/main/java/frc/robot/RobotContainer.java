@@ -70,21 +70,21 @@ public class RobotContainer {
       .whenReleased(new PidShootStop(m_shooter), false);
     
     // Start intake when right bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+    new JoystickButton(m_xboxController, Button.kY.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
-    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+    new JoystickButton(m_xboxController, Button.kY.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
     //move elevator motors to the top  when Y is pressed
-    new JoystickButton(m_xboxController, Button.kY.value)
+    new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kY.value)
+      new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
     //move elevator motors back down when A is pressed
-    new JoystickButton(m_xboxController, Button.kB.value)
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kB.value)
+      new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
     //Vision to read data, adjust to target, and shoot when X is pressed
