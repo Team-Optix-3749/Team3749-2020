@@ -63,13 +63,6 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-
-    
-    // new JoystickButton(m_xboxController, Button.kA.value)
-    //   .whenPressed(new ShootStart(m_shooter), false);
-    // new JoystickButton(m_xboxController, Button.kA.value)
-    //   .whenReleased(new ShootStop(m_shooter), false);
-
     // Start shooter when X button is pressed
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenHeld(new PidShootStart(m_shooter, 4000), false);
