@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 //import edu.wpi.first.wpilibj.Timer;
@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class Elevator extends SubsystemBase {
     //include more specific code and stuff, setting up the stuff for the lifting mechanism team-skywalker
-    private WPI_TalonSRX m_elevator = new WPI_TalonSRX(Robot.getConstants().getCAN("elevator_motor"));
+    private WPI_VictorSPX m_elevator = new WPI_VictorSPX(Robot.getConstants().getCAN("elevator_motor"));
    
 
 
