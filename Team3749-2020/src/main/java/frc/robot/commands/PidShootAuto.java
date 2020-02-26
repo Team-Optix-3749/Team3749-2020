@@ -16,7 +16,7 @@ import frc.robot.subsystems.Shooter;
 
 public class PidShootAuto extends CommandBase {
   private final Shooter m_shooter;
-  //private double vel;
+  private long start;
 
   /**
    * @param subsystem
@@ -29,6 +29,7 @@ public class PidShootAuto extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    start = System.currentTimeMillis()
   }
 
   //Gets the distance variable from Pixy2 table
@@ -54,8 +55,6 @@ public class PidShootAuto extends CommandBase {
   @Override
   public void execute() {
     m_shooter.setVelocity(getVelocity());
-    Timer.delay(10.00);
-    m_shooter.stop();
   }
 
   // Called once the command ends or is interrupted.
@@ -66,6 +65,7 @@ public class PidShootAuto extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (System.currentTimeMillis() - start > 5000) // check if current time - initial time > 10 seconds
+      return true;
   }
 }

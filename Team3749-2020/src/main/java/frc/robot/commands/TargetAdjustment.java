@@ -33,8 +33,9 @@ public class TargetAdjustment extends CommandBase {
     @Override
     public void execute() {
        double error = m_vision.getX()-100;
-       m_drive.arcadeDrive(0, 0.3 * error);
-       m_drive.arcadeDrive(0.3, 0);
+       if(m_vision.getDist() > 0 && m_vision.getDist() < 120)
+        m_drive.arcadeDrive(0, 0.3 * error);
+       // m_drive.arcadeDrive(0.3, 0);
     }
 
     // Called once the command ends or is interrupted.
@@ -46,7 +47,7 @@ public class TargetAdjustment extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        if(error < -1 && m_vision.getDist() == 10)
+        if(m_vision.getDist() < 0 || m_vision.getDist() > 120 || error < 5)
             return true;
         return false;
     }
