@@ -10,14 +10,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-// import frc.robot.subsystems.ColorSensor;
-// import frc.robot.subsystems.ControlPanel;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -51,31 +50,26 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    // Start shooter when A button is pressed
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
       .whenHeld(new PidShootStart(m_shooter, 4000), false);
-    new JoystickButton(m_xboxController, Button.kA.value)
+    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
-    // Start intake when Y button is pressed
-    new JoystickButton(m_xboxController, Button.kY.value)
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
-    new JoystickButton(m_xboxController, Button.kY.value)
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
-    // Move elevator motors to the top when the right bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+    new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kBumperRight.value)
+      new JoystickButton(m_xboxController, Button.kY.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
-    // Move elevator motors back down when the left bumper is pressed
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+      new JoystickButton(m_xboxController, Button.kB.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
-    // Vision to read data, adjust to target, and shoot when X is pressed
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new TargetDataStart(m_vision)
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
