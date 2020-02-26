@@ -15,6 +15,7 @@ import frc.robot.subsystems.Intake;
 public class IndexAuto extends CommandBase {
     private final Intake m_intake;
     private double speed;
+    private long start;
 
     /**
      * 
@@ -31,15 +32,13 @@ public class IndexAuto extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        start = System.currentTimeMillis()
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        Timer.delay(5.00);
         m_intake.setIndex(speed);
-        Timer.delay(5.00);
-        m_intake.stopIndex();
     }
 
     // Called once the command ends or is interrupted.
@@ -50,6 +49,7 @@ public class IndexAuto extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return true;
+        if(System.currentTimeMillis() - start > 5000)
+            return true;
     }
 }

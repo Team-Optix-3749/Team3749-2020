@@ -13,6 +13,7 @@ import frc.robot.subsystems.Shooter;
 
 public class ShootAuto extends CommandBase {
   private final Shooter m_shooter;
+  private long start;
 
   /**
    * Creates a new ShootAuto.
@@ -26,24 +27,25 @@ public class ShootAuto extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    start = System.currentTimeMillis();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_shooter.shoot();
-    Timer.delay(10.00);
-    m_shooter.stop();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    // stop
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (System.currentTimeMillis() - start > 5000) // check if current time - initial time > 10 seconds
+      return true;
   }
 }
