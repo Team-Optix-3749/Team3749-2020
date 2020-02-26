@@ -5,27 +5,42 @@
 // import frc.robot.Constants;
 // import edu.wpi.first.wpilibj.DriverStation;
 
+// import com.revrobotics.ColorSensorV3;
+// import com.revrobotics.ColorMatchResult;
+// import com.revrobotics.ColorMatch;
+
+// import edu.wpi.first.wpilibj.I2C;
+// import edu.wpi.first.wpilibj.util.Color;
+
 // import com.ctre.phoenix.motorcontrol.ControlMode;
 // import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 // public class ControlPanel extends SubsystemBase {
-  
+//   private final I2C.Port i2cPort = I2C.Port.kOnboard;
+//   private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 //   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
 //   private WPI_VictorSPX m_controlPanel = new WPI_VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
 
 
-//   // public void activateMotor() {
-//   //   _motor.set(ControlMode.PercentOutput, -1);
-//   //   _motor1.set(ControlMode.PercentOutput, 1);
-//   // }
 
 //   public void stopMotor(){
 //     m_controlPanel.set(ControlMode.PercentOutput, 0);
 //   }
 
 //   public void RotationControl(){
-//     m_controlPanel.set(ControlMode.PercentOutput, controlPanelSpeed);
+//     int noOfPasses = 0;
+//     String firstColor = colorSensor.DetectColor();
+//     String currentColor = firstColor;
+//     while (noOfPasses < 8) {
+//       m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+//       if (!colorSensor.DetectColor().equals(currentColor)) {
+//         currentColor = colorSensor.DetectColor();
+//         if (currentColor == firstColor) {
+//           noOfPasses++;
+//         }
+//       }
+//     }
 //   }
 
 //   public void PositionControl(){
@@ -56,9 +71,8 @@
 //   }
 
 //   public void rotateMotor(String color) {
-//     ColorSensor colorSensor = new ColorSensor();
 //     while ( !colorSensor.DetectColor().equals(color)) {
-//       m_controlPanel.set(ControlMode.PercentOutput, controlPanelSpeed);
+//       m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
 //     }
 //   }
 
