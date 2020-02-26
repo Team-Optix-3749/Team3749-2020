@@ -43,7 +43,6 @@ public class Robot extends TimedRobot {
 
     Robot.getDrivetrain().resetGyro();
 
-
     initCamera();
   }
 
