@@ -32,7 +32,7 @@
 //     int noOfPasses = 0;
 //     String firstColor = colorSensor.DetectColor();
 //     String currentColor = firstColor;
-//     while (noOfPasses < 8) {
+//     while (noOfPasses < 7) {
 //       m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
 //       if (!colorSensor.DetectColor().equals(currentColor)) {
 //         currentColor = colorSensor.DetectColor();
