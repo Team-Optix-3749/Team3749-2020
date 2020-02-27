@@ -4,12 +4,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 
-// import edu.wpi.first.wpilibj.I2C;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class ControlPanel extends SubsystemBase {
-  // private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensor colorSensor = new ColorSensor();
   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
