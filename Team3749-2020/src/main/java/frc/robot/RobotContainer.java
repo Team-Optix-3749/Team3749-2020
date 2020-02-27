@@ -64,7 +64,7 @@ public class RobotContainer {
           () -> m_xboxController.getX(Hand.kRight)), true);
 
     new JoystickButton(m_xboxController, Button.kStickLeft.value)
-      .whenPressed(new ArcadeDriveFast(m_drive), false);
+      .toggleWhenActive(new ArcadeDriveFast(m_drive), false);
 
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenPressed(new PidShootStart(m_shooter, 4000), true);
