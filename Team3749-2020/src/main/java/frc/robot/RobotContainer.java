@@ -78,14 +78,14 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
-    new JoystickButton(m_xboxController, Button.kY.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kY.value)
+      new JoystickButton(m_xboxController, Button.kB.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
-    new JoystickButton(m_xboxController, Button.kB.value)
+    new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed( new ElevatorBottom(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kB.value)
+      new JoystickButton(m_xboxController, Button.kY.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
     new JoystickButton(m_xboxController, Button.kX.value)
