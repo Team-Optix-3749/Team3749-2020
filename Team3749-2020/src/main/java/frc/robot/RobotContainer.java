@@ -55,7 +55,8 @@ public class RobotContainer {
           m_drive,
           () -> m_xboxController.getY(Hand.kLeft),
           () -> m_xboxController.getX(Hand.kRight)));
-    new JoystickButton(m_xboxController, Button.kStart.value)
+
+    new JoystickButton(m_xboxController, Button.kBack.value)
       .whenPressed(
         new ArcadeDrive(
           m_drive,
