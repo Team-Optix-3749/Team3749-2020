@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -50,14 +49,32 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
-      .whenHeld(new PidShootStart(m_shooter, 4000), false);
-    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
+    new JoystickButton(m_xboxController, Button.kStart.value)
+      .whenPressed(
+        new TankDrive(
+          m_drive,
+          () -> m_xboxController.getY(Hand.kLeft),
+          () -> m_xboxController.getX(Hand.kRight)));
+    new JoystickButton(m_xboxController, Button.kStart.value)
+      .whenPressed(
+        new ArcadeDrive(
+          m_drive,
+          () -> m_xboxController.getY(Hand.kLeft),
+          () -> m_xboxController.getX(Hand.kRight)));
+
+    new JoystickButton(m_xboxController, Button.kA.value)
+      .whenPressed(new PidShootStart(m_shooter, 4000), false);
+    new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), false);
     
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+      .whenReleased(new IntakeStop(m_intake), true);
+
+    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+      .whenHeld(new IntakeStart(m_intake, -0.6), true);
+    new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
     new JoystickButton(m_xboxController, Button.kY.value)
