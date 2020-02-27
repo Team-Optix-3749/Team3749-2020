@@ -51,5 +51,7 @@ public class IntakeAuto extends CommandBase {
     public boolean isFinished() {
         if(System.currentTimeMillis() - start > 5000)
             return true;
+        else 
+            return false;
     }
 }
