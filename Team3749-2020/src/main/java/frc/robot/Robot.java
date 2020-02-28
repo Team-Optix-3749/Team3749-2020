@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
   private static Drivetrain m_drive;
   private static Vision m_vision;
   private static Elevator m_elevator;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
 
   /**
    * A simple getter method for RobotContainer.java
+   * 
    * @return m_robotContainer
    */
   public static RobotContainer getRobotContainer() {
@@ -56,6 +59,7 @@ public class Robot extends TimedRobot {
 
   /**
    * A simple getter method for Constants.java
+   * 
    * @return m_constants
    */
   public static Constants getConstants() {
@@ -64,33 +68,37 @@ public class Robot extends TimedRobot {
 
   /**
    * A simple getter method for Gains.java
+   * 
    * @return m_constants
    */
   public static Gains getGains() {
     return m_gains;
   }
 
-  /** 
-  * A simple getter method for Constants.java
-  * @return m_drive
-  */
-  public static Drivetrain getDrivetrain(){
+  /**
+   * A simple getter method for Constants.java
+   * 
+   * @return m_drive
+   */
+  public static Drivetrain getDrivetrain() {
     return m_drive;
   }
 
-  /** 
-  * A simple getter method for Constants.java
-  * @return m_drive
-  */
-  public static Elevator getElevator(){
+  /**
+   * A simple getter method for Constants.java
+   * 
+   * @return m_drive
+   */
+  public static Elevator getElevator() {
     return m_elevator;
   }
 
-  /** 
-  * A simple getter method for Vision.java
-  * @return m_drive
-  */
-  public static Vision getVision(){
+  /**
+   * A simple getter method for Vision.java
+   * 
+   * @return m_drive
+   */
+  public static Vision getVision() {
     return m_vision;
   }
 
@@ -98,7 +106,7 @@ public class Robot extends TimedRobot {
     // start running camera from roboRIO
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setBrightness(8);
-    //camera.setExposureManual(10);
+    // camera.setExposureManual(10);
     camera.setExposureAuto();
   }
 
@@ -113,7 +121,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    
+
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
@@ -122,8 +130,10 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
-  }
+    // System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
+    System.out.println(Robot.getVision().m_arduinoPort.readString());
+    Robot.getVision().timer.reset();
+  } 
 
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -147,7 +157,7 @@ public class Robot extends TimedRobot {
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
-      
+
     }
 
   }
@@ -157,8 +167,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    //CommandScheduler.getInstance().setDefaultCommand(m_vision, new TargetGetData(m_vision));
-    //m_vision.setDefaultCommand(new TargetGetData(m_vision));
+    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new
+    // TargetGetData(m_vision));
+    // m_vision.setDefaultCommand(new TargetGetData(m_vision));
     m_vision.readData();
   }
 
@@ -178,15 +189,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new TargetGetData(m_vision));
-    //m_vision.setDefaultCommand(new TargetGetData(m_vision));
+    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new
+    // TargetGetData(m_vision));
+    // m_vision.setDefaultCommand(new TargetGetData(m_vision));
     m_vision.readData();
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    //CommandScheduler.getInstance().cancelAll();
+    // CommandScheduler.getInstance().cancelAll();
   }
 
   /**
