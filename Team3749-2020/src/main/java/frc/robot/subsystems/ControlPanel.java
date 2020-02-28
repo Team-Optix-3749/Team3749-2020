@@ -20,15 +20,15 @@ public class ControlPanel extends SubsystemBase {
   }
 
   public void RotationControl(){
-    int noOfPasses = 0;
+    int NumberOfPasses = 0;
     String firstColor = colorSensor.DetectColor();
     String currentColor = firstColor;
-    while (noOfPasses < 8) {
+    while (NumberOfPasses < 8) {
       m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
       if (!colorSensor.DetectColor().equals(currentColor)) {
         currentColor = colorSensor.DetectColor();
         if (currentColor == firstColor) {
-          noOfPasses++;
+          NumberOfPasses++;
         }
       }
     }
