@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.I2C.Port;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -13,7 +13,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Vision extends Subsystem {
 
-    private static I2C m_arduinoPort = new I2C(Port.kOnboard, 4);
+    public SerialPort m_arduinoPort;
+    private String message;
+    private int m_x, m_y;
+    private double m_distance;
+    public Timer timer;
 
     private NetworkTableInstance inst;
     private NetworkTable table;
@@ -23,9 +27,33 @@ public class Vision extends Subsystem {
 
     private boolean enabled;
 
-    private static final int MAX_BYTES = 32;
-
     public Vision() {
+      try {
+        m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB);
+        System.out.println("Connected to arduino in vision!");
+      } catch (Exception e) {
+        System.out.println("kUSB failed");
+  
+        try {
+          m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB1);
+          System.out.println("Connected to arduino!");
+        } catch (Exception e1) {
+          System.out.println("kUSB1 failed");
+          
+          try {
+            m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB2);
+            System.out.println("Connected to arduino!"); 
+          } catch(Exception e2){
+            System.out.println("kUSB2 failed");
+          }
+        }
+      }
+
+      timer = new Timer();
+      timer.start();
+        message = new String("");
+        m_x = m_y = 0;
+        m_distance = 0;
         enabled = false;
 
         inst = NetworkTableInstance.getDefault();
@@ -37,27 +65,16 @@ public class Vision extends Subsystem {
 
     public void readData() {
         if (enabled == true) {
-          String[] message = read().split("ab");
-
-          if(message[0].equals("0") && message[1].equals("0")) {
-            setX(Integer.parseInt("0"));
-            setX(Integer.parseInt("0"));
-            setDist(Double.parseDouble("0"));
-          }
-          else if(message.length == 3) {
-            setX(Integer.parseInt(message[0]));
-            setX(Integer.parseInt(message[1]));
-            setDist(Double.parseDouble(message[2]));
-          }
+          message = m_arduinoPort.readString();
+          System.out.println(message);
+          m_x = Integer.parseInt(message.substring(0, 1));
+          m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
+          m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
+          
+          setX(m_x);
+          setY(m_y);
+          setDist(m_distance);
         }
-    }
-
-    private String read(){
-      byte[] data = new byte[MAX_BYTES];
-      m_arduinoPort.read(4, MAX_BYTES, data);
-      String output = new String(data);
-      int pt = output.indexOf((char)255);
-      return (String) output.subSequence(0, pt < 0 ? 0 : pt);
     }
 
     public double getX() {
@@ -88,6 +105,10 @@ public class Vision extends Subsystem {
         return enabled;
       }
 
+    public String getMessage() {
+        return message;
+    }
+
     public void start() {
       enabled = true;
     }
@@ -96,10 +117,13 @@ public class Vision extends Subsystem {
         enabled = false;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     protected void initDefaultCommand() {
 
     }
 
 }
-
