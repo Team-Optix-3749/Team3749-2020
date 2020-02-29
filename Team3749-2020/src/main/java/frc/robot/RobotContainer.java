@@ -33,12 +33,12 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final ControlPanel m_controlPanel = new ControlPanel();
-  private final Vision m_vision;
+  private final Vision m_vision = new Vision();
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
 
-  public RobotContainer(Vision vision) {
+  public RobotContainer() {
     configureButtonBindings();
 
     m_drive.setDefaultCommand(
@@ -46,8 +46,6 @@ public class RobotContainer {
          m_drive,
          () -> m_xboxController.getY(Hand.kLeft),
          () -> m_xboxController.getX(Hand.kRight)));
-
-    m_vision = vision;
   }
 
   private void configureButtonBindings() {
