@@ -83,6 +83,15 @@ public class Robot extends TimedRobot {
     return m_drive;
   }
 
+    /**
+   * A simple getter method for Shooter.java
+   * 
+   * @return m_drive
+   */
+  public static Shooter getShooter() {
+    return m_shooter;
+  }
+
   /**
    * A simple getter method for Constants.java
    * 
