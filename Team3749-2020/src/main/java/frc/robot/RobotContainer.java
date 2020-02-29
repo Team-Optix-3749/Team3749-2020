@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.subsystems.*;
@@ -35,6 +35,8 @@ public class RobotContainer {
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
+
+  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_shooter);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -154,7 +156,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
    public Command getAutonomousCommand() {
-  // // An ExampleCommand will run in autonomous
-    return null; 
+    // An ExampleCommand will run in autonomous
+    return m_autonomousCommand;
   }
 }
