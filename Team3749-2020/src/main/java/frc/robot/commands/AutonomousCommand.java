@@ -6,7 +6,7 @@ import frc.robot.subsystems.Shooter;
 /**
  * An example command that uses an example subsystem.
  */
-public class AutonomousCommand extends CommandBase{
+public class AutonomousCommand extends CommandBase {
     private final Shooter m_shooter;
 
     /**
@@ -14,27 +14,25 @@ public class AutonomousCommand extends CommandBase{
      *
      * @param subsystem The subsystem used by this command.
      */
-
     public AutonomousCommand(Shooter subsystem) {
         m_shooter = subsystem;
         addRequirements(m_shooter);
     }
 
-  @Override
-  public void initialize() {
-      m_shooter.setVelocity(2000);
-  }
+    @Override
+    public void initialize() {
+        m_shooter.setVelocity(2000);
+    }
 
-  @Override
-  public void execute() {
-  
-  }
+    @Override
+    public void execute() {
 
-  @Override
-  public boolean isFinished() {
-      //when should this command be terminated
-      return false; 
-  }
-  
- 
+    }
+
+    @Override
+    public boolean isFinished() {
+        // when should this command be terminated
+        return false;
+    }
+
 }
