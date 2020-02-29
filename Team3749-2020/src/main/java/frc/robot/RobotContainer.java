@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+
+import javax.net.ssl.TrustManagerFactorySpi;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -36,6 +39,9 @@ public class RobotContainer {
 
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
+
+  private JoystickButton rotationControlButton = new JoystickButton(m_joystick, 5);
+  private JoystickButton positionControlButton = new JoystickButton(m_joystick, 6);
 
   public RobotContainer(Vision vision) {
     configureButtonBindings();
@@ -107,6 +113,12 @@ public class RobotContainer {
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
       new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), false);
     
+    // rotation control
+    rotationControlButton.whenPressed(new RotationControl(m_controlPanel), true);
+
+    // position control
+    positionControlButton.whenPressed(new PositionControl(m_controlPanel), true);
+
     // rotation control
     new JoystickButton(m_xboxController, Button.kStart.value)
       .whenPressed(new RotationControl(m_controlPanel), true);
