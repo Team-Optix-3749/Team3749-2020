@@ -36,7 +36,7 @@ public class RobotContainer {
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
 
-  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_shooter);
+  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drive, m_shooter);
 
   public RobotContainer() {
     configureButtonBindings();
