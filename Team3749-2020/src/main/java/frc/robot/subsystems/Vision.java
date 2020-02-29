@@ -15,7 +15,7 @@ public class Vision extends Subsystem {
 
     public SerialPort m_arduinoPort;
     private String message;
-    private int m_x, m_y;
+    private int m_x;
     private double m_distance;
     public Timer timer;
 
@@ -56,7 +56,7 @@ public class Vision extends Subsystem {
 
       //Instantiating and setting data variables
       message = new String("");
-      m_x = m_y = 0;
+      m_x = 0;
       m_distance = 0;
       enabled = false;
 
@@ -64,7 +64,7 @@ public class Vision extends Subsystem {
       inst = NetworkTableInstance.getDefault();
       table = inst.getTable("Pixy2");
       xEntry = table.getEntry("X");
-      yEntry = table.getEntry("Y");
+      //yEntry = table.getEntry("Y");
       distanceEntry = table.getEntry("Distance");
     }
 
@@ -73,11 +73,11 @@ public class Vision extends Subsystem {
           message = m_arduinoPort.readString();
           System.out.println(message);
           m_x = Integer.parseInt(message.substring(0, 1));
-          m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
+          //m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
           m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
           
           setX(m_x);
-          setY(m_y);
+          //setY(m_y);
           setDist(m_distance);
         }
     }
@@ -86,9 +86,9 @@ public class Vision extends Subsystem {
         return xEntry.getDouble(0);
       }
     
-      public double getY() {
-        return yEntry.getDouble(0);
-      }
+      // public double getY() {
+      //   return yEntry.getDouble(0);
+      // }
     
       public double getDist() {
         return distanceEntry.getDouble(0);
@@ -98,9 +98,9 @@ public class Vision extends Subsystem {
         xEntry.forceSetDouble(entry);
       }
     
-      public void setY(int entry) {
-        yEntry.forceSetDouble(entry);
-      }
+      // public void setY(int entry) {
+      //   yEntry.forceSetDouble(entry);
+      // }
     
       public void setDist(double entry) {
         distanceEntry.forceSetDouble(entry);

@@ -46,7 +46,7 @@ void loop()
     {
         distance = (1.5 * 271.06) / pixy.ccc.blocks[i].m_width+3;
         dtostrf(distance, 5, 2, distanceStr);
-        sprintf(str, "%da%db%s", pixy.ccc.blocks[i].m_x, pixy.ccc.blocks[i].m_y, distanceStr);
+        sprintf(str, "%d|%s", pixy.ccc.blocks[i].m_x, distanceStr);
         Serial.println(str);
     }
   }  
