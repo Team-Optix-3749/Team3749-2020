@@ -95,13 +95,33 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
+
+    // intake up 2
+    new JoystickButton(m_xboxController2, Button.kBumperLeft.value)
+      .whenHeld(new IntakeUp(m_intake), true)
+      .whenReleased(new IntakeStop(m_intake), true);
+
+    // intake down 2
+    new JoystickButton(m_xboxController2, Button.kBumperRight.value)
+      .whenHeld(new IntakeDown(m_intake), true)
+      .whenReleased(new IntakeStop(m_intake), true);
+
+    // elevator up 2
+    new JoystickButton(m_xboxController2, Button.kY.value)
+      .whenPressed( new ElevatorBottom(m_elevator), true)
+      .whenReleased(new ElevatorStop(m_elevator), true);
+
+    // elevator down 2
+    new JoystickButton(m_xboxController2, Button.kB.value)
+      .whenPressed(new ElevatorTopPosition(m_elevator), true)
+      .whenReleased(new ElevatorStop(m_elevator), true);
     
     // rotation control
     new JoystickButton(m_xboxController2, Button.kA.value)
       .whenPressed(new RotationControl(m_controlPanel), true);
 
     // position control
-    new JoystickButton(m_xboxController2, Button.kB.value)
+    new JoystickButton(m_xboxController2, Button.kX.value)
       .whenPressed(new PositionControl(m_controlPanel), true);
 
     // auto shoot
