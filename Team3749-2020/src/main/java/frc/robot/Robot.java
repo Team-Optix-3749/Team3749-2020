@@ -138,9 +138,6 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    // System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
-    // System.out.println(Robot.getVision().m_arduinoPort.readString());
-    // Robot.getVision().timer.reset();
   } 
 
   /**
