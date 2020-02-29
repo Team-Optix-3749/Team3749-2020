@@ -62,6 +62,9 @@ public final class Constants {
     // Joystick map
     public final int kJoystickPort = 1;
 
+    public final int kRotationControl = 5;
+    public final int kPositionControl = 6;
+
     // Motor Map
     public static final int m_leftFrontMotor = 10;
     public static final int m_leftBackMotor = 23;
