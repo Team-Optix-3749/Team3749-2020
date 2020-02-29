@@ -34,7 +34,8 @@ public class RobotContainer {
   private final Vision m_vision = new Vision();
 
   public XboxController m_xboxController = new XboxController(0);
-  public Joystick m_joystick = new Joystick(1);
+  public XboxController m_xboxController2 = new XboxController(1);
+  public Joystick m_joystick = new Joystick(3);
 
   private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drive, m_shooter);
 
@@ -96,11 +97,11 @@ public class RobotContainer {
       .whenReleased(new ElevatorStop(m_elevator), true);
     
     // rotation control
-    new JoystickButton(m_joystick, Robot.getConstants().kRotationControl)
+    new JoystickButton(m_xboxController2, Button.kA.value)
       .whenPressed(new RotationControl(m_controlPanel), true);
 
     // position control
-    new JoystickButton(m_joystick, Robot.getConstants().kPositionControl)
+    new JoystickButton(m_xboxController2, Button.kB.value)
       .whenPressed(new PositionControl(m_controlPanel), true);
 
     // auto shoot
