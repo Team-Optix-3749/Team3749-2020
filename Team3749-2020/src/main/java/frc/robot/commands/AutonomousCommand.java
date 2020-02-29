@@ -23,12 +23,11 @@ public class AutonomousCommand extends CommandBase {
 
     @Override
     public void initialize() {
-        m_shooter.setVelocity(2000);
     }
 
     @Override
     public void execute() {
-
+        m_shooter.setVelocity(2000);
     }
 
     @Override
