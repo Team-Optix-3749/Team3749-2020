@@ -74,7 +74,7 @@ public class Vision extends Subsystem {
           System.out.println(message);
           m_x = Integer.parseInt(message.substring(0, 1));
           //m_y = Integer.parseInt(message.substring(message.indexOf("a")+1,message.indexOf("b")));
-          m_distance = Double.parseDouble(message.substring(message.indexOf("b")+1));
+          m_distance = Double.parseDouble(message.substring(message.indexOf("|")+1));
           
           setX(m_x);
           //setY(m_y);
