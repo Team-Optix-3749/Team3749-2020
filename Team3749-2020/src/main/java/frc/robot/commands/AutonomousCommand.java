@@ -34,11 +34,11 @@ public class AutonomousCommand extends CommandBase {
     public void execute() {
         // drive
         if (m_timer.get() < 1.0) {
-            m_drivetrain.arcadeDrive(0.5, 0.0); // drive forwards half speed
+            m_drivetrain.arcadeDrive(-0.5, 0.0); // drive forwards half speed
         } else {
             m_drivetrain.stopMotors();; // stop robot
         }
-        
+
         // shoot
         if (m_timer.get() < 10.0) {
             m_shooter.setVelocity(2000);
