@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_constants = new Constants();
-    m_robotContainer = new RobotContainer(m_vision);
+    m_robotContainer = new RobotContainer();
     m_drive = new Drivetrain();
     m_shooter = new Shooter();
     m_elevator = new Elevator();
