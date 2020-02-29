@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
@@ -9,6 +10,8 @@ import frc.robot.subsystems.*;
 public class AutonomousCommand extends CommandBase {
     private final Shooter m_shooter;
     private final Drivetrain m_drivetrain;
+
+    private final Timer m_timer = new Timer();
 
     /**
      * Creates a new ExampleCommand.
@@ -23,10 +26,19 @@ public class AutonomousCommand extends CommandBase {
 
     @Override
     public void initialize() {
+        m_timer.reset();
+        m_timer.start();
     }
 
     @Override
     public void execute() {
+        // drive
+        if (m_timer.get() < 1.0) {
+            m_drivetrain.arcadeDrive(0.5, 0.0); // drive forwards half speed
+        } else {
+            m_drivetrain.setMotors(0, 0); // stop robot
+        }
+        // shoot
         m_shooter.setVelocity(2000);
     }
 
