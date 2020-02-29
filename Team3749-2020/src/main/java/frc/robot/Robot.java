@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
   private static Vision m_vision;
   private static Elevator m_elevator;
   private static Shooter m_shooter;
+  private static ControlPanel m_controlPanel;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
     m_shooter = new Shooter();
     m_elevator = new Elevator();
     m_vision = new Vision();
+    m_controlPanel = new ControlPanel();
 
     Robot.getDrivetrain().resetGyro();
 
@@ -99,6 +101,14 @@ public class Robot extends TimedRobot {
    */
   public static Elevator getElevator() {
     return m_elevator;
+  }
+
+  /**
+   * A simple getter method for the Control Panel system
+   * @return m_controlPanel
+   */
+  public static ControlPanel getControlPanel() {
+    return m_controlPanel;
   }
 
   /**
