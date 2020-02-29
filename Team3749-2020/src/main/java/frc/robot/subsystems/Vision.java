@@ -28,6 +28,8 @@ public class Vision extends Subsystem {
     private boolean enabled;
 
     public Vision() {
+      /*Instantiating arduino port as SerialPort, trying every instantiation
+        with kUSB, kUSB1, and kUSB2. We used try-catch to see which instantiation failed*/
       try {
         m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB);
         System.out.println("Connected to arduino in vision!");
@@ -48,19 +50,22 @@ public class Vision extends Subsystem {
           }
         }
       }
-
+      //Instantiating timer in order to receive data
       timer = new Timer();
       timer.start();
-        message = new String("");
-        m_x = m_y = 0;
-        m_distance = 0;
-        enabled = false;
 
-        inst = NetworkTableInstance.getDefault();
-        table = inst.getTable("Pixy2");
-        xEntry = table.getEntry("X");
-        yEntry = table.getEntry("Y");
-        distanceEntry = table.getEntry("Distance");
+      //Instantiating and setting data variables
+      message = new String("");
+      m_x = m_y = 0;
+      m_distance = 0;
+      enabled = false;
+
+      //Instantiating NetworkTables
+      inst = NetworkTableInstance.getDefault();
+      table = inst.getTable("Pixy2");
+      xEntry = table.getEntry("X");
+      yEntry = table.getEntry("Y");
+      distanceEntry = table.getEntry("Distance");
     }
 
     public void readData() {
