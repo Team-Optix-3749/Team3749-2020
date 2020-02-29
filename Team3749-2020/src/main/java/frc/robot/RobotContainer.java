@@ -104,11 +104,11 @@ public class RobotContainer {
       new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), false);
     
     // rotation control
-    new JoystickButton(m_joystick, 5)
+    new JoystickButton(m_joystick, Robot.getConstants().kRotationControl)
       .whenPressed(new RotationControl(m_controlPanel), true);
 
     // position control
-    new JoystickButton(m_joystick, 6)
+    new JoystickButton(m_joystick, Robot.getConstants().kPositionControl)
       .whenPressed(new PositionControl(m_controlPanel), true);
   }
 
