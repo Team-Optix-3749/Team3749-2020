@@ -130,8 +130,8 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
     // System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
-    System.out.println(Robot.getVision().m_arduinoPort.readString());
-    Robot.getVision().timer.reset();
+    // System.out.println(Robot.getVision().m_arduinoPort.readString());
+    // Robot.getVision().timer.reset();
   } 
 
   /**
