@@ -104,7 +104,7 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new TargetDataStart(m_vision)
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
-      new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), true);
+      new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), false);
 
   // // Start Rotation Control When start button is pressed
   // new JoystickButton(m_xboxController, Button.kStart.value)
