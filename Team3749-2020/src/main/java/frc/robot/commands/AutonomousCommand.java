@@ -1,11 +1,13 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Shooter;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class AutonomousCommand extends Command {
+public class AutonomousCommand extends CommandBase{
+    private final Shooter m_shooter;
 
     /**
      * Creates a new ExampleCommand.
@@ -13,16 +15,14 @@ public class AutonomousCommand extends Command {
      * @param subsystem The subsystem used by this command.
      */
 
-    public AutonomousCommand() {
-   
-    // Use addRequirements() here to declare subsystem dependencies.
-    //addRequirements(subsystem);
-  }
-  // want to see which branch this pushes to 
+    public AutonomousCommand(Shooter subsystem) {
+        m_shooter = subsystem;
+        addRequirements(m_shooter);
+    }
 
   @Override
   public void initialize() {
-      //initialization code here
+      m_shooter.setVelocity(2000);
   }
 
   @Override
