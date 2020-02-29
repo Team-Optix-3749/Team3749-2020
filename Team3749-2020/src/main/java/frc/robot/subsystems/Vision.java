@@ -36,13 +36,13 @@ public class Vision extends Subsystem {
   
         try {
           m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB1);
-          System.out.println("Connected to arduino!");
+          System.out.println("Connected to arduino in vision!");
         } catch (Exception e1) {
           System.out.println("kUSB1 failed");
           
           try {
             m_arduinoPort = new SerialPort(115200, SerialPort.Port.kUSB2);
-            System.out.println("Connected to arduino!"); 
+            System.out.println("Connected to arduino in vision!"); 
           } catch(Exception e2){
             System.out.println("kUSB2 failed");
           }
