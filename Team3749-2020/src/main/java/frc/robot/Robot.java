@@ -15,9 +15,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.Constants;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
