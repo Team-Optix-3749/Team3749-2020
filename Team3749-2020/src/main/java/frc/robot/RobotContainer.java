@@ -70,32 +70,27 @@ public class RobotContainer {
 
     // raw shoot
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenPressed(new PidShootStart(m_shooter, 4000), true);
-    new JoystickButton(m_xboxController, Button.kA.value)
+      .whenPressed(new PidShootStart(m_shooter, 4000), true)
       .whenReleased(new PidShootStop(m_shooter), true);
     
     // intake up
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenHeld(new IntakeUp(m_intake), true);
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value)
+      .whenHeld(new IntakeUp(m_intake), true)
       .whenReleased(new IntakeStop(m_intake), true);
 
     // intake down
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
-      .whenHeld(new IntakeDown(m_intake), true);
-    new JoystickButton(m_xboxController, Button.kBumperRight.value)
+      .whenHeld(new IntakeDown(m_intake), true)
       .whenReleased(new IntakeStop(m_intake), true);
 
     // elevator up
     new JoystickButton(m_xboxController, Button.kY.value)
-      .whenPressed( new ElevatorBottom(m_elevator), true);
-    new JoystickButton(m_xboxController, Button.kY.value)
+      .whenPressed( new ElevatorBottom(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
     // elevator down
     new JoystickButton(m_xboxController, Button.kB.value)
-      .whenPressed(new ElevatorTopPosition(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kB.value)
+      .whenPressed(new ElevatorTopPosition(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
     // rotation control
