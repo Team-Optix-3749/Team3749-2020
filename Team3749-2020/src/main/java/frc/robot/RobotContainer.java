@@ -65,7 +65,8 @@ public class RobotContainer {
 
     // increase drive speed
     new JoystickButton(m_xboxController, Button.kStickLeft.value)
-      .toggleWhenActive(new ArcadeDriveFast(m_drive), false);
+        .whenPressed(() -> Robot.getDrivetrain().setMaxOutput(1))
+        .whenReleased(() -> Robot.getDrivetrain().setMaxOutput(Robot.getConstants().kDriveSpeed));
 
     // raw shoot
     new JoystickButton(m_xboxController, Button.kA.value)
