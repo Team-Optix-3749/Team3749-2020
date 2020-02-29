@@ -38,8 +38,13 @@ public class AutonomousCommand extends CommandBase {
         } else {
             m_drivetrain.stopMotors();; // stop robot
         }
+        
         // shoot
-        m_shooter.setVelocity(2000);
+        if (m_timer.get() < 10.0) {
+            m_shooter.setVelocity(2000);
+        } else {
+            m_shooter.stop(); // stop robot
+        }
     }
 
     @Override
