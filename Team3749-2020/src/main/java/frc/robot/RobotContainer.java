@@ -113,7 +113,7 @@ public class RobotContainer {
     
     // position control
     new JoystickButton(m_xboxController, Button.kBack.value)
-    .whenPressed(new PositionControl(m_controlPanel), true);
+      .whenPressed(new PositionControl(m_controlPanel), true);
 
   // // Start Rotation Control When start button is pressed
   // new JoystickButton(m_xboxController, Button.kStart.value)
