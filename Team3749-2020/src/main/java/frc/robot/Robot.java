@@ -68,14 +68,14 @@ public class Robot extends TimedRobot {
   /**
    * A simple getter method for Gains.java
    * 
-   * @return m_constants
+   * @return m_gains
    */
   public static Gains getGains() {
     return m_gains;
   }
 
   /**
-   * A simple getter method for Constants.java
+   * A simple getter method for Drivetrain.java
    * 
    * @return m_drive
    */
@@ -86,16 +86,16 @@ public class Robot extends TimedRobot {
     /**
    * A simple getter method for Shooter.java
    * 
-   * @return m_drive
+   * @return m_shooter
    */
   public static Shooter getShooter() {
     return m_shooter;
   }
 
   /**
-   * A simple getter method for Constants.java
+   * A simple getter method for Elevator.java
    * 
-   * @return m_drive
+   * @return m_elevator
    */
   public static Elevator getElevator() {
     return m_elevator;
@@ -104,7 +104,7 @@ public class Robot extends TimedRobot {
   /**
    * A simple getter method for Vision.java
    * 
-   * @return m_drive
+   * @return m_vision
    */
   public static Vision getVision() {
     return m_vision;
