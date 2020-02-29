@@ -75,13 +75,13 @@ public class RobotContainer {
     
     // intake up
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
-      .whenHeld(new IntakeStart(m_intake, Robot.getConstants().kIntakeSpeed), true);
+      .whenHeld(new IntakeUp(m_intake), true);
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
     // intake down
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
-      .whenHeld(new IntakeStart(m_intake, -Robot.getConstants().kIntakeSpeed), true);
+      .whenHeld(new IntakeDown(m_intake), true);
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
