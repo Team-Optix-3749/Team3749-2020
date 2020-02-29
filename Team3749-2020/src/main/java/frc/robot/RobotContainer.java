@@ -38,9 +38,6 @@ public class RobotContainer {
   public XboxController m_xboxController = new XboxController(0);
   public Joystick m_joystick = new Joystick(1);
 
-  private JoystickButton rotationControlButton = new JoystickButton(m_joystick, 5);
-  private JoystickButton positionControlButton = new JoystickButton(m_joystick, 6);
-
   public RobotContainer(Vision vision) {
     configureButtonBindings();
 
