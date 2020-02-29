@@ -71,6 +71,7 @@ public final class Constants {
 
     // Other constants
     public final double kDriveSpeed = 0.7;
+    public final double kDriveOffest = 0.1;
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1; 
