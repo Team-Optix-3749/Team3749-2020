@@ -56,6 +56,11 @@ public class Drivetrain extends SubsystemBase {
         m_rightBackMotor.set(ControlMode.PercentOutput, speed);
     }
 
+    public void stopMotors() {
+        speedLeftMotors(0);
+        speedRightMotors(0);
+    }
+
     public void setMaxOutput(double maxOutput){
         m_drive.setMaxOutput(maxOutput);
     }
