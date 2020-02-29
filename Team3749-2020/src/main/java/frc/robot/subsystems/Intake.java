@@ -13,22 +13,22 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
-    public VictorSPX m_rightIntakeMotor;
-    public VictorSPX m_leftIntakeMotor;
+    public VictorSPX m_frontIntakeMotor;
+    public VictorSPX m_backIntakeMotor;
 
     public Intake() {
-        m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_f"));
-        m_leftIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_b"));
+        m_frontIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_f"));
+        m_backIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_b"));
     }
 
     public void setIntake(double speed) {
-        m_rightIntakeMotor.set(ControlMode.PercentOutput, speed);
-        m_leftIntakeMotor.set(ControlMode.PercentOutput, speed);
+        m_frontIntakeMotor.set(ControlMode.PercentOutput, speed);
+        m_backIntakeMotor.set(ControlMode.PercentOutput, speed);
     }
     
     public void stopIntake() {
-        m_rightIntakeMotor.set(ControlMode.PercentOutput, 0);
-        m_leftIntakeMotor.set(ControlMode.PercentOutput, 0);
+        m_frontIntakeMotor.set(ControlMode.PercentOutput, 0);
+        m_backIntakeMotor.set(ControlMode.PercentOutput, 0);
     }
 
     @Override
