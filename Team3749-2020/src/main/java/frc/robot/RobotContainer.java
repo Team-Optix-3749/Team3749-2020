@@ -49,6 +49,8 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+
+    // toggle to tank drive
     new JoystickButton(m_xboxController, Button.kStart.value)
       .whenPressed(
         new TankDrive(
@@ -56,6 +58,7 @@ public class RobotContainer {
           () -> m_xboxController.getY(Hand.kLeft),
           () -> m_xboxController.getY(Hand.kRight)), true);
 
+    // toggle to arcade drive
     new JoystickButton(m_xboxController, Button.kBack.value)
       .whenPressed(
         new ArcadeDrive(
@@ -63,34 +66,41 @@ public class RobotContainer {
           () -> m_xboxController.getY(Hand.kLeft),
           () -> m_xboxController.getX(Hand.kRight)), true);
 
+    // increase drive speed
     new JoystickButton(m_xboxController, Button.kStickLeft.value)
       .toggleWhenActive(new ArcadeDriveFast(m_drive), false);
 
+    // raw shoot
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenPressed(new PidShootStart(m_shooter, 4000), true);
     new JoystickButton(m_xboxController, Button.kA.value)
       .whenReleased(new PidShootStop(m_shooter), true);
     
+    // intake forward
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenHeld(new IntakeStart(m_intake, 0.6), true);
     new JoystickButton(m_xboxController, Button.kBumperLeft.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
+    // intake backward
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenHeld(new IntakeStart(m_intake, -0.6), true);
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenReleased(new IntakeStop(m_intake), true);
 
+    // elevator up
+    new JoystickButton(m_xboxController, Button.kY.value)
+      .whenPressed( new ElevatorBottom(m_elevator), true);
+    new JoystickButton(m_xboxController, Button.kY.value)
+      .whenReleased(new ElevatorStop(m_elevator), true);
+
+    // elevator down
     new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true);
       new JoystickButton(m_xboxController, Button.kB.value)
       .whenReleased(new ElevatorStop(m_elevator), true);
-
-    new JoystickButton(m_xboxController, Button.kY.value)
-      .whenPressed( new ElevatorBottom(m_elevator), true);
-      new JoystickButton(m_xboxController, Button.kY.value)
-      .whenReleased(new ElevatorStop(m_elevator), true);
     
+    // auto shoot
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new TargetDataStart(m_vision)
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
