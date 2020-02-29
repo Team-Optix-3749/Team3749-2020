@@ -26,8 +26,6 @@ import frc.robot.commands.*;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-
   private final Drivetrain m_drive = new Drivetrain();
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
@@ -49,7 +47,6 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-
     // toggle to tank drive
     new JoystickButton(m_xboxController, Button.kStart.value)
       .whenPressed(
@@ -113,65 +110,6 @@ public class RobotContainer {
     // position control
     new JoystickButton(m_joystick, 6)
       .whenPressed(new PositionControl(m_controlPanel), true);
-
-  // // Start Rotation Control When start button is pressed
-  // new JoystickButton(m_xboxController, Button.kStart.value)
-  //   .whenHeld(new RotationControlStart(m_controlPanel), true);
-  // new JoystickButton(m_xboxController, Button.kStart.value)
-  //   .whenReleased(new RotationControlStop(m_controlPanel), true);
-
-  // // Start Control Panel When back button is pressed
-  // new JoystickButton(m_xboxController, Button.kBack.value)
-  //   .whenHeld(new PositionControl(m_controlPanel), true);
-  // new JoystickButton(m_xboxController, Button.kBack.value)
-  //   .whenReleased(new PositionControl(m_controlPanel), true);
-
-  // Start color sensor while B button is held
-  // new JoystickButton(m_xboxController, Button.kB.value)
-  //   .whenHeld(new ColorSensorCommand(m_ColorSensorSubsystem), false);
-
-  // // Start control panel motor while B button is held
-    // new JoystickButton(m_xboxController, Button.kB.value)
-  //   .whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), false); 
-  // new JoystickButton(m_xboxController, Button.kB.value)
-  //   .whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), false);
-    
-  //   // Low Shooter when start button is pressed 
-  //   // new JoystickButton(m_xboxController, Button.kStart.value)
-  //   // .whenHeld(new LowShootStart(m_lowshooter), true);
-  //   // new JoystickButton(m_xboxController, Button.kStart.value)
-  //   // .whenReleased(new LowShootStop(m_lowshooter), true);
-
-  //   // control panel code
-  //   rJoy.whileHeld(m_ColorSensorCommand, true);
-  //   if(m_ColorSensorCommand.isFinished() == false){
-  //     rJoy.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-  //     rJoy.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-  //   }
-
-  //   a.whileHeld(m_ColorSensorGreen, true);
-  //   if(m_ColorSensorGreen.isFinished() == false){
-  //     a.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-  //     a.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-  //   }
-
-  //   b.whileHeld(m_ColorSensorRed, true);
-  //   if(m_ColorSensorRed.isFinished() == false){
-  //     b.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-  //     b.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-  //   }
-
-  //   x.whileHeld(m_ColorSensorBlue, true);
-  //   if(m_ColorSensorBlue.isFinished() == false){
-  //     x.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-  //     x.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-  //   }
-
-  //   y.whileHeld(m_ColorSensorYellow, true);
-  //   if(m_ColorSensorYellow.isFinished() == false){
-  //     y.whenHeld(new ControlPanelStart(m_ControlPanelSubsystem), true);
-  //     y.whenReleased(new ControlPanelStop(m_ControlPanelSubsystem), true);
-  //   }
   }
 
   /**
@@ -215,34 +153,9 @@ public class RobotContainer {
   }
 
   /**
-   * A simple getter method for the shooter system
-   * @return m_elevatorRight
-   */
- 
-  /**
-   * A simple getter method for the shooter system
-   * @return m_colorSensorSubsystem
-  //  */
-  // public ColorSensor getColorSensor() {
-  //   return m_ColorSensorSubsystem;
-  // }
-
-  /**
-   * A simple getter method for the shooter system
-   * @return m_controlPanel
-  //  */
-  // public ControlPanel getControlPanel() {
-  //   return m_controlPanel;
-  // }
-
-  // public LowShooter getLowShooter() {
-  //   return m_lowshooter;
-  // }
-
-  /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
-   * @return the command to run in autonom  ous
+   * @return the command to run in autonomous
    */
    public Command getAutonomousCommand() {
   // // An ExampleCommand will run in autonomous
