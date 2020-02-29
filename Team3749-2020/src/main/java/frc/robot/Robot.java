@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
   private static Drivetrain m_drive;
   private static Vision m_vision;
   private static Elevator m_elevator;
+  private static Shooter m_shooter;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,10 +36,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_constants = new Constants();
-    m_vision = new Vision();
     m_robotContainer = new RobotContainer(m_vision);
     m_drive = new Drivetrain();
+    m_shooter = new Shooter();
     m_elevator = new Elevator();
+    m_vision = new Vision();
 
     Robot.getDrivetrain().resetGyro();
 
