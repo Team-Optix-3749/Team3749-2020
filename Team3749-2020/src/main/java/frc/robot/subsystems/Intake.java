@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Intake extends SubsystemBase {
     public VictorSPX m_rightIntakeMotor;
     public VictorSPX m_leftIntakeMotor;
-    public VictorSPX m_frontIndexMotor;
-    public VictorSPX m_backIndexMotor;
 
     public Intake() {
         m_rightIntakeMotor = new VictorSPX(Robot.getConstants().getCAN("intake_motor_f"));
