@@ -31,6 +31,7 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
+  private final ControlPanel m_controlPanel = new ControlPanel();
   private final Vision m_vision;
 
   public XboxController m_xboxController = new XboxController(0);
@@ -105,6 +106,14 @@ public class RobotContainer {
       .whenPressed(new TargetDataStart(m_vision)
       .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
       new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), false);
+    
+    // rotation control
+    new JoystickButton(m_xboxController, Button.kStart.value)
+      .whenPressed(new RotationControl(m_controlPanel), true);
+    
+    // Position control
+    new JoystickButton(m_xboxController, Button.kBack.value)
+    .whenPressed(new PositionControl(m_controlPanel), true);
 
   // // Start Rotation Control When start button is pressed
   // new JoystickButton(m_xboxController, Button.kStart.value)
@@ -196,6 +205,14 @@ public class RobotContainer {
    */
   public Vision getVision() {
     return m_vision;
+  }
+
+    /**
+   * A simple getter method for the Control Panel system
+   * @return m_controlPanel
+   */
+  public ControlPanel getControlPanel() {
+    return m_controlPanel;
   }
 
   /**
