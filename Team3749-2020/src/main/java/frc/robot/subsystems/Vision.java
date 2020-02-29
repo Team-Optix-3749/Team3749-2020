@@ -22,7 +22,6 @@ public class Vision extends Subsystem {
     private NetworkTableInstance inst;
     private NetworkTable table;
     private NetworkTableEntry xEntry;
-    private NetworkTableEntry yEntry;
     private NetworkTableEntry distanceEntry;
 
     private boolean enabled;
