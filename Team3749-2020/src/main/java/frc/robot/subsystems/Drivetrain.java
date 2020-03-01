@@ -1,20 +1,25 @@
 package frc.robot.subsystems;
 
-import frc.robot.Robot;
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import com.kauailabs.navx.frc.AHRS;
+import frc.robot.Robot;
 
 public class Drivetrain extends SubsystemBase {
+
+    private NetworkTable vision_table = NetworkTableInstance.getDefault().getTable("limelight");
+
+    private NetworkTableEntry target_offset = vision_table.getEntry("tx");
 
     private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
     private WPI_VictorSPX m_leftBackMotor = new WPI_VictorSPX(Robot.getConstants().getCAN("drive_lb"));
@@ -31,6 +36,16 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain()
     {
         m_gyro.reset();
+    }
+
+    public void vision_align() {
+        double output = 0;
+       
+        output = target_offset.getDouble(0) * Robot.getConstants().visionP;
+
+        output *= Robot.getConstants().visionLimit;
+
+        tankDrive(-output, output);
     }
 
     public void arcadeDrive(double fwd, double rot) {
