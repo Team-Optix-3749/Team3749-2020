@@ -80,7 +80,7 @@ public class Shooter extends SubsystemBase {
   /**
    * Set desired shooter velocity
    * 
-   * @param velocity desired velocity
+   * @param velocity desired velocity (values -1 to 1)
    */
   public void setVelocity(double velocity) {
     /* Velocity Closed Loop */
