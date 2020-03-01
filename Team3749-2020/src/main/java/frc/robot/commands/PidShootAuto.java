@@ -46,7 +46,8 @@ public class PidShootAuto extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.setVelocity(getVelocity());
+    if(System.currentTimeMillis() - start > 5000)
+      m_shooter.setVelocity(getVelocity());
   }
 
   // Called once the command ends or is interrupted.
@@ -57,7 +58,7 @@ public class PidShootAuto extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-      if(System.currentTimeMillis() - start > 5000)
+      if(System.currentTimeMillis() - start > 10000)
           isFinished = true;
           return isFinished;
   }
