@@ -35,7 +35,7 @@ public class PidShootAuto extends CommandBase {
 
  //Calculates and returns the angular velocity needed based on distance away from target
  public double getVelocity() {
-   double xDisplacement = (m_vision.getDist() * 0.0254) + .207;
+   double xDisplacement = m_vision.getDist() + .207;
    double yDisplacement = 2.49 - Robot.getConstants().kShooterHeight;
 
    double velocity = (-4.9 * Math.pow(xDisplacement, 2) * Math.pow(Math.acos(Robot.getConstants().kShooterAngle), 2)) /
