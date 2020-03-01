@@ -125,6 +125,8 @@ public class RobotContainer {
       .whenPressed(new PositionControl(m_controlPanel), true);
 
     // auto shoot
+    new JoystickButton(m_xboxController, Button.kX.value)
+      .whenPressed(new VisionAlign(m_drive), true);
   }
 
   /**
