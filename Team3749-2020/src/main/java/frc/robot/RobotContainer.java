@@ -125,10 +125,6 @@ public class RobotContainer {
       .whenPressed(new PositionControl(m_controlPanel), true);
 
     // auto shoot
-    new JoystickButton(m_xboxController, Button.kX.value)
-      .whenPressed(new TargetDataStart(m_vision)
-      .andThen(new TargetAdjustment(m_drive, m_vision), new TargetDataStop(m_vision),
-      new PidShootAuto(m_shooter).alongWith(new IntakeAuto(m_intake, 0.6))), false);
   }
 
   /**
