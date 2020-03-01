@@ -5,13 +5,13 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class ControlPanel extends SubsystemBase {
   private final ColorSensor colorSensor = new ColorSensor();
   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
-  private WPI_VictorSPX m_controlPanel = new WPI_VictorSPX(Robot.getConstants().getCAN("control_panel_motor"));
+  private TalonSRX m_controlPanel = new TalonSRX(Robot.getConstants().getCAN("control_panel_motor"));
 
 
 
