@@ -24,4 +24,8 @@ public class Vision {
   public double getSkew() {
     return table.getEntry("ts").getDouble(0);
   }
+
+  public double getDist() {
+    return (2.496 - 0.991) / getAngleY();
+  }
 }
