@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.SerialPort;
 public class Vision {
   private NetworkTable table;
   private SerialPort m_arduinoPort;
-  private double pixy_xVal = 0;
+  private double pixy_xVal = -1;
 
   public Vision() {
     table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -39,7 +39,7 @@ public class Vision {
     try {
       pixy_xVal = Integer.parseInt(m_arduinoPort.readString());
     } catch(Exception e) {
-      pixy_xVal = 0;
+      pixy_xVal = -1;
     }
   }
 
