@@ -17,9 +17,9 @@ import frc.robot.Robot;
 
 public class Drivetrain extends SubsystemBase {
 
-    private NetworkTable vision_table = NetworkTableInstance.getDefault().getTable("limelight");
+    private NetworkTable kVisionTable = NetworkTableInstance.getDefault().getTable("limelight");
 
-    private NetworkTableEntry target_offset = vision_table.getEntry("tx");
+    private NetworkTableEntry kTargetOffset = kVisionTable.getEntry("tx");
 
     private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Robot.getConstants().getCAN("drive_lf"));
     private WPI_VictorSPX m_leftBackMotor = new WPI_VictorSPX(Robot.getConstants().getCAN("drive_lb"));
@@ -38,12 +38,12 @@ public class Drivetrain extends SubsystemBase {
         m_gyro.reset();
     }
 
-    public void vision_align() {
+    public void visionAlign() {
         double output = 0;
        
-        output = target_offset.getDouble(0) * Robot.getConstants().visionP;
+        output = kTargetOffset.getDouble(0) * Robot.getConstants().kVisionP;
 
-        output *= Robot.getConstants().visionLimit;
+        output *= Robot.getConstants().kVisionLimit;
 
         tankDrive(-output, output);
     }
