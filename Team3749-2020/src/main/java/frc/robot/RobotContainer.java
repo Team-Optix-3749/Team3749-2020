@@ -87,12 +87,12 @@ public class RobotContainer {
       .whenReleased(new IntakeStop(m_intake), true);
 
     // elevator up
-    new JoystickButton(m_xboxController, Button.kY.value)
+    new JoystickButton(m_xboxController, Button.kB.value)
       .whenPressed( new ElevatorBottom(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
     // elevator down
-    new JoystickButton(m_xboxController, Button.kB.value)
+    new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
@@ -107,12 +107,12 @@ public class RobotContainer {
       .whenReleased(new IntakeStop(m_intake), true);
 
     // elevator up 2
-    new JoystickButton(m_xboxController2, Button.kY.value)
+    new JoystickButton(m_xboxController2, Button.kB.value)
       .whenPressed( new ElevatorBottom(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
 
     // elevator down 2
-    new JoystickButton(m_xboxController2, Button.kB.value)
+    new JoystickButton(m_xboxController2, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
     
