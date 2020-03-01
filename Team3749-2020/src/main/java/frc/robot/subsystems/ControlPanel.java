@@ -62,12 +62,30 @@ public class ControlPanel extends SubsystemBase {
   }
 
   public void rotateMotor(String color) {
-    while ( !colorSensor.DetectColor().equals(color)) {
-      m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+    if (color == "Red"){
+      while ( !colorSensor.DetectColor().equals("Blue")) {
+        m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+      }
+    }
+
+    if (color == "Yellow"){
+      while ( !colorSensor.DetectColor().equals("Green")) {
+        m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+      }
+    }
+
+    if (color == "Blue"){
+      while ( !colorSensor.DetectColor().equals("Red")) {
+        m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+      }
+    }
+
+    if (color == "Green"){
+      while ( !colorSensor.DetectColor().equals("Yellow")) {
+        m_controlPanel.set(ControlMode.PercentOutput, Robot.getConstants().controlPanelSpeed);
+      }
     }
   }
-
-
  
   @Override
   public void periodic() {
