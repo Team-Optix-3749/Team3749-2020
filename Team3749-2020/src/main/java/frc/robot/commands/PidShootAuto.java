@@ -12,17 +12,20 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Vision;
 
 public class PidShootAuto extends CommandBase {
   private final Shooter m_shooter;
+  private final Vision m_vision;
   private long start;
   private boolean isFinished = false;
 
   /**
    * @param subsystem
    */
-  public PidShootAuto(Shooter subsystem) {
-    m_shooter = subsystem;
+  public PidShootAuto(Shooter subsystem1, Vision subsystem2) {
+    m_shooter = subsystem1;
+    m_vision = subsystem2;
     addRequirements(m_shooter);
   }
 
@@ -32,18 +35,9 @@ public class PidShootAuto extends CommandBase {
     start = System.currentTimeMillis();
   }
 
-  //Gets the distance variable from Pixy2 table
-  public double getdistance() {
-    NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
-    NetworkTable networkTable;
-    networkTableInstance.startServer();
-    networkTable = networkTableInstance.getTable("Pixy2");
-        return networkTable.getEntry("distance").getDouble(10);
- }
-
  //Calculates and returns the angular velocity needed based on distance away from target
  public double getVelocity() {
-   double xDisplacement = (getdistance() * 0.0254) + .207;
+   double xDisplacement = (m_vision.getDist() * 0.0254) + .207;
    double yDisplacement = 2.49 - Robot.getConstants().kShooterHeight;
 
    double velocity = (-4.9 * Math.pow(xDisplacement, 2) * Math.pow(Math.acos(Robot.getConstants().kShooterAngle), 2)) /
