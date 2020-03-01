@@ -32,9 +32,7 @@ void setup()
 void loop()
 { 
   int i;
-  float distance;
   char str[80];
-  char distanceStr[5];
   // grab blocks!
   pixy.ccc.getBlocks();
   // If there are detect blocks, print them!
@@ -44,9 +42,7 @@ void loop()
     Serial.println(pixy.ccc.numBlocks+"\n\t");
     for (i=0; i<pixy.ccc.numBlocks; i++)
     {
-        distance = (1.5 * 271.06) / pixy.ccc.blocks[i].m_width+3;
-        dtostrf(distance, 5, 2, distanceStr);
-        sprintf(str, "%d|%s", pixy.ccc.blocks[i].m_x, distanceStr);
+        sprintf(str, "%d", pixy.ccc.blocks[i].m_x);
         Serial.println(str);
     }
   }  
