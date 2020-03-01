@@ -80,7 +80,7 @@ public class Shooter extends SubsystemBase {
   /**
    * Set desired shooter velocity
    * 
-   * @param velocity desired veloci
+   * @param velocity desired velocity (values -1 to 1)
    */
   public void setVelocity(double velocity) {
     /* Velocity Closed Loop */
@@ -90,10 +90,15 @@ public class Shooter extends SubsystemBase {
      * either direction: velocity setpoint is in units/100ms
      */
 
-    // double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096 / 600;
+    /**
+			* Convert 500 RPM to units / 100ms.
+			* 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+			* velocity setpoint is in units/100ms
+			*/
+		double targetVelocity_UnitsPer100ms = velocity * 500.0 * 4096 / 600;
 
     /* 500 RPM in either direction */
-    m_shooterMotor.set(ControlMode.Velocity, velocity);
+    m_shooterMotor.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
 
     /* Append more signals to print when in speed mode. */
     m_stringBuilder.append("\terr:");
