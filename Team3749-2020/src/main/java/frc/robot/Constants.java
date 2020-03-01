@@ -71,7 +71,7 @@ public final class Constants {
 
     // Other constants
     public final double kDriveSpeed = 0.7;
-    public final double kDriveOffest = 0.1;
+    public final double kDriveOffest = 0.3;
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1; 
@@ -118,7 +118,7 @@ public final class Constants {
         setCAN("intake_motor_f", 21);
         setCAN("intake_motor_b", 22);
         setCAN("elevator_motor", 24);
-        setCAN("control_panel_motor", 25);
+        setCAN("control_panel_motor", 15);
 
         // whether a subsystem is installed and in use
         // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
