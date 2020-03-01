@@ -62,9 +62,6 @@ public final class Constants {
     // Joystick map
     public final int kJoystickPort = 1;
 
-    public final int kRotationControl = 5;
-    public final int kPositionControl = 6;
-
     // Motor Map
     public static final int m_leftFrontMotor = 10;
     public static final int m_leftBackMotor = 23;
@@ -121,6 +118,7 @@ public final class Constants {
         setCAN("intake_motor_f", 21);
         setCAN("intake_motor_b", 22);
         setCAN("elevator_motor", 24);
+        setCAN("control_panel_motor", 25);
 
         // whether a subsystem is installed and in use
         // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)

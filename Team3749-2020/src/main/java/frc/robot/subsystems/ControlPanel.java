@@ -11,7 +11,7 @@ public class ControlPanel extends SubsystemBase {
   private final ColorSensor colorSensor = new ColorSensor();
   private final String gameData = DriverStation.getInstance().getGameSpecificMessage();
   
-  private WPI_VictorSPX m_controlPanel = new WPI_VictorSPX(Robot.getConstants().getCAN("intake_motor_r"));
+  private WPI_VictorSPX m_controlPanel = new WPI_VictorSPX(Robot.getConstants().getCAN("control_panel_motor"));
 
 
 
