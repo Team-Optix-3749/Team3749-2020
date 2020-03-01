@@ -149,8 +149,6 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
     // System.out.println(Robot.getDrivetrain().m_gyro.getRoll());
-    // System.out.println(Robot.getVision().m_arduinoPort.readString());
-    // Robot.getVision().timer.reset();
   } 
 
   /**
@@ -183,10 +181,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new
-    // TargetGetData(m_vision));
-    // m_vision.setDefaultCommand(new TargetGetData(m_vision));
-    m_vision.readData();
   }
 
   @Override
@@ -205,10 +199,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    // CommandScheduler.getInstance().setDefaultCommand(m_vision, new
-    // TargetGetData(m_vision));
-    // m_vision.setDefaultCommand(new TargetGetData(m_vision));
-    m_vision.readData();
   }
 
   @Override
