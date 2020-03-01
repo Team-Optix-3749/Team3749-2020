@@ -39,7 +39,7 @@ public class PidShootAuto extends CommandBase {
    double yDisplacement = 2.49 - Robot.getConstants().kShooterHeight;
 
    double velocity = (-4.9 * Math.pow(xDisplacement, 2) * Math.pow(Math.acos(Robot.getConstants().kShooterAngle), 2)) /
-                      (yDisplacement - Math.asin(Robot.getConstants().kShooterAngle) * xDisplacement * Math.acos(Robot.getConstants().kShooterAngle));
+                      (yDisplacement - Math.sin(Robot.getConstants().kShooterAngle) * xDisplacement * Math.cos(Robot.getConstants().kShooterAngle));
    return Robot.getConstants().kWheelRadius * velocity;
  }
 

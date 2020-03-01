@@ -26,6 +26,6 @@ public class Vision {
   }
 
   public double getDist() {
-    return (2.496 - 0.991) / getAngleY();
+    return (2.496 - 0.991) / Math.tan(getAngleY());
   }
 }
