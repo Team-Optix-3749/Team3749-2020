@@ -53,6 +53,10 @@ public class Vision {
     return pixy_SetPointVal;
   }
 
+  public double getError() {
+    return pixy_xVal - pixy_SetPointVal;
+  }
+
   public double getAngleX() {
     return table.getEntry("tx").getDouble(0);
   }
