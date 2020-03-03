@@ -36,10 +36,8 @@ public class IntakeAlign extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if(m_vision.getPixyXValue() > 158)
-            m_drive.arcadeDrive(0, -0.3);
-        if(m_vision.getPixyXValue() < 158)
-            m_drive.arcadeDrive(0, 0.3);
+        if(m_vision.getError() != 0)
+            m_drive.arcadeDrive(0, -0.3 * m_vision.getError());
     }
 
     // Called once the command ends or is interrupted.
@@ -50,7 +48,7 @@ public class IntakeAlign extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        if(m_vision.getPixyXValue() == 158)
+        if(m_vision.getError() == 0)
             return true;
         return false;
     }
