@@ -23,6 +23,7 @@
 #include <math.h>
 // This is the main Pixy object 
 Pixy2 pixy;
+double currentArea = 0, currentX = 0;
 void setup()
 {
   Serial.begin(115200);
@@ -42,8 +43,23 @@ void loop()
     Serial.println(pixy.ccc.numBlocks+"\n\t");
     for (i=0; i<pixy.ccc.numBlocks; i++)
     {
+      if(pixy.ccc.blocks[i].m_width * pixy.ccc.blocks[i].m_height > currentArea)
+      {
         sprintf(str, "%d", pixy.ccc.blocks[i].m_x);
         Serial.println(str);
+        currentArea = (pixy.ccc.blocks[i].m_width * pixy.ccc.blocks[i].m_height;
+        currentX = pixy.ccc.blocks[i].m_x;
+      }
+      else
+      {
+        sprintf(str, "%d", currentX);
+        Serial.println(str);
+      }
     }
-  }  
+  }
+  else
+  {
+    currentArea = 0;
+    currentX = 0;
+  }
 }
