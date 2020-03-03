@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.SerialPort;
 public class Vision {
   private NetworkTable table;
   private SerialPort m_arduinoPort;
-  private double pixy_xVal = -1;
+  private double pixy_xVal = -1, pixy_SetPointVal = -1;
 
   public Vision() {
     table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -37,14 +37,20 @@ public class Vision {
 
   public void readData() {
     try {
-      pixy_xVal = Integer.parseInt(m_arduinoPort.readString());
+      pixy_xVal = Integer.parseInt(m_arduinoPort.readString().substring(0, m_arduinoPort.readString().indexOf("|")));
+      pixy_SetPointVal = Integer.parseInt(m_arduinoPort.readString().substring(m_arduinoPort.readString().indexOf("|") + 1));
     } catch(Exception e) {
       pixy_xVal = -1;
+      pixy_SetPointVal = -1;
     }
   }
 
   public double getPixyXValue() {
     return pixy_xVal;
+  }
+
+  public double getPixySetPointValue() {
+    return pixy_SetPointVal;
   }
 
   public double getAngleX() {
