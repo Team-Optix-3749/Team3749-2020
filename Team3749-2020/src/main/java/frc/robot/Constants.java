@@ -88,6 +88,7 @@ public final class Constants {
     public final double kIntakeSpeed = 0.6;
 
     // Shooter constants
+    public double kMaxShooterSpeed = 6000;
     public double shooterP = 0.0011;
     public double shooterI = 0;
     public double shooterD = 4;
