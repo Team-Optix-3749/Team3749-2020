@@ -31,7 +31,8 @@ public class Shooter extends SubsystemBase {
         stop();
     }
 
-    public void set(double setpoint) {
+    public void set(double velocity) {
+        double setpoint = velocity * 500.0 * 6000 / 600;
         m_controller.setReference(setpoint, ControlType.kVelocity);
     }
 
