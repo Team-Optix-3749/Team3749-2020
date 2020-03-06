@@ -32,7 +32,7 @@ public class Shooter extends SubsystemBase {
     }
 
     public void set(double velocity) {
-        double setpoint = velocity * 500.0 * 6000 / 600;
+        double setpoint = velocity * 500.0 * Robot.getConstants().kMaxShooterSpeed / 600;
         m_controller.setReference(setpoint, ControlType.kVelocity);
     }
 
