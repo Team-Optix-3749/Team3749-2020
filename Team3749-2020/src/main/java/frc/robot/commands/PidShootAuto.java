@@ -46,7 +46,7 @@ public class PidShootAuto extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.setVelocity(getVelocity());
+    m_shooter.set(getVelocity());
   }
 
   // Called once the command ends or is interrupted.
