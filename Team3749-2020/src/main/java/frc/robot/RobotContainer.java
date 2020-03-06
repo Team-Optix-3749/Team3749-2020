@@ -73,7 +73,7 @@ public class RobotContainer {
 
     // raw shoot
     new JoystickButton(m_xboxController, Button.kA.value)
-      .whenPressed(new PidShootStart(m_shooter, 1), true)
+      .whenPressed(new PidShootStart(m_shooter, 10), true)
       .whenReleased(new PidShootStop(m_shooter), true);
     
     // intake up
