@@ -15,13 +15,13 @@ import frc.robot.Robot;
  * 
  * @author Raadwan Masum
  */
-public class NewShooter extends SubsystemBase {
+public class Shooter extends SubsystemBase {
 
     private CANSparkMax m_shooterMotor;
     CANEncoder m_encoder;
     CANPIDController m_controller;
 
-    public NewShooter() {
+    public Shooter() {
         m_shooterMotor = new CANSparkMax(Robot.getConstants().getCAN("shooter_motor"), MotorType.kBrushless);
 
         m_shooterMotor.setIdleMode(IdleMode.kCoast);
