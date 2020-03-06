@@ -1,0 +1,52 @@
+package frc.robot.subsystems;
+
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.ControlType;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
+
+/**
+ * class Shooter
+ * 
+ * @author Raadwan Masum
+ */
+public class NewShooter extends SubsystemBase {
+
+    private CANSparkMax m_shooterMotor;
+    CANEncoder m_encoder;
+    CANPIDController m_controller;
+
+    public NewShooter() {
+        m_shooterMotor = new CANSparkMax(Robot.getConstants().getCAN("shooter_motor"), MotorType.kBrushless);
+
+        m_encoder = m_shooterMotor.getEncoder();
+        m_controller = m_shooterMotor.getPIDController();
+        m_controller.setFeedbackDevice(m_encoder);
+        stop();
+    }
+
+    public void set(double setpoint) {
+        m_controller.setReference(setpoint, ControlType.kVelocity);
+    }
+
+    public void stop() {
+        m_controller.setReference(0, ControlType.kDutyCycle);
+    }
+
+    public void updateConstants() {
+    m_controller.setOutputRange(-1, 0);
+        m_controller.setP(Robot.getConstants().shooterP);
+        m_controller.setI(Robot.getConstants().shooterI);
+        m_controller.setD(Robot.getConstants().shooterD);
+        m_controller.setFF(Robot.getConstants().shooterF);
+    }
+
+    @Override
+    public void periodic() {
+    }
+}
