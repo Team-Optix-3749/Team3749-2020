@@ -41,7 +41,7 @@ public class AutonomousCommand extends CommandBase {
 
         // shoot
         if (m_timer.get() < 10.0) {
-            m_shooter.setVelocity(2000);
+            m_shooter.set(2000);
         } else {
             m_shooter.stop(); // stop robot
         }
