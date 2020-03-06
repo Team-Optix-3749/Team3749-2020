@@ -20,8 +20,12 @@ public class ControlPanelSimple extends SubsystemBase {
         m_motor = new VictorSPX(Robot.getConstants().getCAN("control_panel_motor"));
     }
 
-    public void set(double speed){
+    public void set(double speed) {
         m_motor.set(ControlMode.PercentOutput, speed);
+    }
+
+    public void stop() {
+        m_motor.set(ControlMode.PercentOutput, 0);
     }
 
     @Override
