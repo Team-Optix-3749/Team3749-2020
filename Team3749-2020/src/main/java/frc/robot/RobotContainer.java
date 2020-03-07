@@ -37,7 +37,7 @@ public class RobotContainer {
   public XboxController m_xboxController2 = new XboxController(1);
   public Joystick m_joystick = new Joystick(3);
 
-  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drive, m_shooter);
+  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_drive, m_shooter, m_intake);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -65,11 +65,6 @@ public class RobotContainer {
           m_drive,
           () -> m_xboxController.getY(Hand.kLeft),
           () -> m_xboxController.getX(Hand.kRight)), true);
-
-    // increase drive speed
-    new JoystickButton(m_xboxController, Button.kStickLeft.value)
-        .whenPressed(() -> Robot.getDrivetrain().setMaxOutput(0.9))
-        .whenReleased(() -> Robot.getDrivetrain().setMaxOutput(Robot.getConstants().kDriveSpeed));
 
     // raw shoot
     new JoystickButton(m_xboxController, Button.kA.value)
@@ -120,10 +115,15 @@ public class RobotContainer {
     new JoystickButton(m_xboxController2, Button.kX.value)
       .whenPressed(new ControlPanelCommand(m_controlPanel), true);
 
+    // raw shoot
+    new JoystickButton(m_xboxController2, Button.kA.value)
+      .whenPressed(new PidShootStart(m_shooter, 10), true)
+      .whenReleased(new PidShootStop(m_shooter), true);
+     
     // auto shoot
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new VisionAlign(m_drive)
-      .andThen(new PidShootAuto(m_shooter, m_vision)));
+      .andThen(new PidShootStart(m_shooter, 10)), true);
   }
 
   /**

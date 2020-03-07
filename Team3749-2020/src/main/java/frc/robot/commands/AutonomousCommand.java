@@ -10,6 +10,7 @@ import frc.robot.subsystems.*;
 public class AutonomousCommand extends CommandBase {
     private final Shooter m_shooter;
     private final Drivetrain m_drivetrain;
+    private final Intake m_intake;
 
     private final Timer m_timer = new Timer();
 
@@ -18,9 +19,10 @@ public class AutonomousCommand extends CommandBase {
      *
      * @param subsystem The subsystem used by this command.
      */
-    public AutonomousCommand(Drivetrain drivetrain, Shooter shooter) {
+    public AutonomousCommand(Drivetrain drivetrain, Shooter shooter, Intake intake) {
         m_drivetrain = drivetrain;
         m_shooter = shooter;
+        m_intake = intake;
         addRequirements(m_drivetrain, m_shooter);
     }
 
@@ -32,18 +34,25 @@ public class AutonomousCommand extends CommandBase {
 
     @Override
     public void execute() {
-        // drive
-        if (m_timer.get() < 1.0) {
-            m_drivetrain.arcadeDrive(-0.5, 0.0); // drive forwards half speed
-        } else {
-            m_drivetrain.stopMotors();; // stop robot
-        }
-
         // shoot
-        if (m_timer.get() < 10.0) {
-            m_shooter.set(2000);
+        if (m_timer.get() < 10) {
+            m_shooter.set(12);
         } else {
             m_shooter.stop(); // stop robot
+        }
+        
+        // intake
+        if (m_timer.get() > 5 && m_timer.get() < 10) {
+            m_intake.setIntake(0.2);
+        } else {
+            m_intake.setIntake(0); // stop robot
+        }
+
+        // drive
+        if (m_timer.get() > 11.0 && m_timer.get() < 13.0) {
+            m_drivetrain.tankDrive(0.6, 0.4); // drive forwards half speed
+        } else {
+            m_drivetrain.stopMotors();; // stop robot
         }
     }
 
