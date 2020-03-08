@@ -70,8 +70,9 @@ public final class Constants {
     public static final int m_shooterMotor = 15;
 
     // Other constants
-    public final double kDriveSpeed = 0.7;
+    public final double kDriveSpeed = 0.8;
     public final double kDriveOffest = 0.3;
+    ;
     public final double kSlowDriveSpeed = kDriveSpeed - 0.25;
     public final double kFastDriveSpeed = kDriveSpeed + 0.25;
     public final double kShooterSpeed = 1; 
@@ -85,7 +86,7 @@ public final class Constants {
     public final double kWheelRadius = 0.0508; // meters
     public final int kEncoderResolution = 4096;
     public final double kControlSpeed = 0.5;
-    public final double kIntakeSpeed = 0.4;
+    public final double kIntakeSpeed = 0.5;
 
     // Shooter constants
     public double kMaxShooterSpeed = 6000;

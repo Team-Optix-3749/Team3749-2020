@@ -93,12 +93,12 @@ public class RobotContainer {
 
     // intake up 2
     new JoystickButton(m_xboxController2, Button.kBumperLeft.value)
-      .whenHeld(new IntakeUp(m_intake), true)
+      .whenHeld(new IntakeUpFast(m_intake), true)
       .whenReleased(new IntakeStop(m_intake), true);
 
     // intake down 2
     new JoystickButton(m_xboxController2, Button.kBumperRight.value)
-      .whenHeld(new IntakeDown(m_intake), true)
+      .whenHeld(new IntakeDownFast(m_intake), true)
       .whenReleased(new IntakeStop(m_intake), true);
 
     // elevator up 2
@@ -120,10 +120,14 @@ public class RobotContainer {
       .whenPressed(new PidShootStart(m_shooter, 10), true)
       .whenReleased(new PidShootStop(m_shooter), true);
      
-    // auto shoot
     new JoystickButton(m_xboxController, Button.kX.value)
-      .whenPressed(new VisionAlign(m_drive)
-      .andThen(new PidShootStart(m_shooter, 10)), true);
+      .whenPressed(new PidShootStart(m_shooter, 12), true)
+      .whenReleased(new PidShootStop(m_shooter), true);
+
+    // // auto shoot
+    // new JoystickButton(m_xboxController, Button.kX.value)
+    //   .whenPressed(new VisionAlign(m_drive)
+    //   .andThen(new PidShootStart(m_shooter, 10)), true);
   }
 
   /**

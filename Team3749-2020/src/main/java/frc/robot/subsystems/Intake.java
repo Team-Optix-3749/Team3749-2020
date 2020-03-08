@@ -22,8 +22,8 @@ public class Intake extends SubsystemBase {
     }
 
     public void setIntake(double speed) {
-        m_frontIntakeMotor.set(ControlMode.PercentOutput, -speed);
-        m_backIntakeMotor.set(ControlMode.PercentOutput, speed);
+        m_frontIntakeMotor.set(ControlMode.PercentOutput, -(speed * 0.8));
+        m_backIntakeMotor.set(ControlMode.PercentOutput, speed * 1.3);
     }
     
     public void stopIntake() {

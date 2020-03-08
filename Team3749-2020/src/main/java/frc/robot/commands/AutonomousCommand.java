@@ -43,7 +43,7 @@ public class AutonomousCommand extends CommandBase {
         
         // intake
         if (m_timer.get() > 5 && m_timer.get() < 10) {
-            m_intake.setIntake(0.2);
+            m_intake.setIntake(0.5);
         } else {
             m_intake.setIntake(0); // stop robot
         }
