@@ -50,7 +50,7 @@ public class AutonomousCommand extends CommandBase {
 
         // drive
         if (m_timer.get() > 11.0 && m_timer.get() < 13.0) {
-            m_drivetrain.tankDrive(0.6, 0.4); // drive forwards half speed
+            m_drivetrain.arcadeDrive(0.6, 0); // drive forwards half speed
         } else {
             m_drivetrain.stopMotors();; // stop robot
         }
