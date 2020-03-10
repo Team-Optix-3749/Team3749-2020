@@ -13,8 +13,8 @@ import frc.robot.Robot;
 
 public class Elevator extends SubsystemBase {
   private WPI_VictorSPX m_elevator = new WPI_VictorSPX(Robot.getConstants().getCAN("elevator_motor"));
-  DigitalInput topLimitSwitch = new DigitalInput(1);
-  DigitalInput bottomLimitSwitch = new DigitalInput(2);
+  private DigitalInput topLimitSwitch = new DigitalInput(1);
+  private DigitalInput bottomLimitSwitch = new DigitalInput(2);
 
   @Override
   public void periodic() {
