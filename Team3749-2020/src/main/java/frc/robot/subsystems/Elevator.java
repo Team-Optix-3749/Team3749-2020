@@ -11,10 +11,7 @@ import frc.robot.Robot;
 
 
 public class Elevator extends SubsystemBase {
-    //include more specific code and stuff, setting up the stuff for the lifting mechanism team-skywalker
     private WPI_VictorSPX m_elevator = new WPI_VictorSPX(Robot.getConstants().getCAN("elevator_motor"));
-   
-
 
     @Override
     public void periodic() { 
