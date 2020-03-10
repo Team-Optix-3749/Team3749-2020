@@ -35,21 +35,21 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public void execute() {
         // shoot
-        if (m_timer.get() < 10) {
+        if (m_timer.get() < 8.0) {
             m_shooter.set(12);
         } else {
             m_shooter.stop(); // stop robot
         }
         
         // intake
-        if (m_timer.get() > 5 && m_timer.get() < 10) {
+        if (m_timer.get() > 5.0 && m_timer.get() < 8.0) {
             m_intake.setIntake(0.5);
         } else {
             m_intake.setIntake(0); // stop robot
         }
 
         // drive
-        if (m_timer.get() > 11.0 && m_timer.get() < 13.0) {
+        if (m_timer.get() > 9.0 && m_timer.get() < 11.0) {
             m_drivetrain.arcadeDrive(0.6, 0); // drive forwards half speed
         } else {
             m_drivetrain.stopMotors();; // stop robot
