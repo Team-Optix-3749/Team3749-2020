@@ -80,6 +80,10 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kBumperRight.value)
       .whenHeld(new IntakeDown(m_intake), true)
       .whenReleased(new IntakeStop(m_intake), true);
+    
+    // intake alignment
+    new JoystickButton(m_xboxController, Button.kStickLeft.value)
+      .whenPressed(new IntakeAlign(m_drive, m_vision), true);
 
     // elevator up
     new JoystickButton(m_xboxController, Button.kB.value)
@@ -90,7 +94,8 @@ public class RobotContainer {
     new JoystickButton(m_xboxController, Button.kY.value)
       .whenPressed(new ElevatorTopPosition(m_elevator), true)
       .whenReleased(new ElevatorStop(m_elevator), true);
-     
+    
+    // PID shoot
     new JoystickButton(m_xboxController, Button.kX.value)
       .whenPressed(new PidShootStart(m_shooter, 12), true)
       .whenReleased(new PidShootStop(m_shooter), true);
