@@ -82,7 +82,7 @@ public class RobotContainer {
       .whenReleased(new IntakeStop(m_intake), true);
     
     // intake alignment
-    new JoystickButton(m_xboxController, Button.kStickLeft.value)
+    new JoystickButton(m_xboxController, Button.kStickRight.value)
       .whenPressed(new IntakeAlign(m_drive, m_vision), true);
 
     // elevator up
